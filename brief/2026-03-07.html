@@ -502,32 +502,89 @@
     .back-to-top { bottom: 20px; right: 20px; }
   }
 
-  /* ===== Insight Block ===== */
-  .insight {
+  /* ===== Insight Block (Collapsible) ===== */
+  .insight-wrapper {
+    margin: 12px 0 6px;
     background: linear-gradient(135deg, var(--accent-soft), rgba(201, 100, 66, 0.03));
     border: 1px solid var(--accent-border);
     border-left: 3px solid var(--accent);
     border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-    padding: 18px 22px;
-    margin: 12px 0 6px;
     font-size: 13.5px;
     line-height: 1.95;
     color: var(--text-secondary);
   }
 
-  .insight-title {
+  .insight-wrapper summary {
+    padding: 16px 22px;
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  .insight-wrapper summary::-webkit-details-marker { display: none; }
+  .insight-wrapper summary::marker { display: none; content: ''; }
+
+  .insight-wrapper summary:hover {
+    background: rgba(201, 100, 66, 0.04);
+  }
+
+  .insight-summary-header {
     font-size: 12px;
     font-weight: 600;
     color: var(--accent);
     text-transform: uppercase;
     letter-spacing: 1.2px;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     display: flex;
     align-items: center;
     gap: 6px;
   }
 
-  .insight h4 {
+  .insight-toggle {
+    margin-left: auto;
+    font-size: 11px;
+    color: var(--accent);
+    font-weight: 500;
+    letter-spacing: 0;
+    text-transform: none;
+    transition: transform 0.2s;
+  }
+
+  .insight-wrapper[open] .insight-toggle { display: none; }
+
+  .insight-summary-text {
+    font-size: 13.5px;
+    line-height: 1.85;
+    color: var(--text-secondary);
+  }
+
+  .insight-summary-text strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .insight-summary-text em {
+    color: var(--accent);
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  .insight-full {
+    padding: 0 22px 18px;
+    border-top: 1px solid var(--accent-border);
+  }
+
+  .insight-collapse-hint {
+    font-size: 11px;
+    color: var(--accent);
+    font-weight: 500;
+    text-align: right;
+    padding: 8px 0 0;
+    cursor: pointer;
+  }
+
+  .insight-full h4 {
     font-size: 14px;
     font-weight: 600;
     color: var(--text);
@@ -536,25 +593,25 @@
     border-top: 1px solid var(--border-light);
   }
 
-  .insight h4:first-of-type {
-    margin-top: 8px;
+  .insight-full h4:first-of-type {
+    margin-top: 12px;
     padding-top: 0;
     border-top: none;
   }
 
-  .insight ul {
+  .insight-full ul {
     list-style: none;
     padding: 0;
     margin: 4px 0;
   }
 
-  .insight ul li {
+  .insight-full ul li {
     position: relative;
     padding-left: 16px;
     margin-bottom: 4px;
   }
 
-  .insight ul li::before {
+  .insight-full ul li::before {
     content: '·';
     position: absolute;
     left: 4px;
@@ -562,12 +619,12 @@
     font-weight: 700;
   }
 
-  .insight strong {
+  .insight-full strong {
     color: var(--text);
     font-weight: 600;
   }
 
-  .insight em {
+  .insight-full em {
     color: var(--accent);
     font-style: normal;
     font-weight: 600;
@@ -648,8 +705,12 @@
     </div>
     <div class="item-source">来源：<a href="https://x.com/claudeai/status/2029966517497122886?s=20">Claude AI (X/Twitter)</a> · <a href="https://claude.com/platform/marketplace">Claude Marketplace 官网</a> · <a href="https://www.bloomberg.com/news/articles/2026-03-06/anthropic-unveils-amazon-inspired-marketplace-for-ai-software">Bloomberg</a> ｜ 3月6日</div>
 
-    <div class="insight">
-      <div class="insight-title">💡 深度洞察</div>
+    <details class="insight-wrapper">
+      <summary>
+        <div class="insight-summary-header">💡 深度洞察 <span class="insight-toggle">▼ 展开全文</span></div>
+        <div class="insight-summary-text">Marketplace 标志着 Anthropic 从"模型供应商"向<strong>"AI 生态平台"</strong>跃迁。零佣金的本质不是不赚钱，而是借鉴 AWS 飞轮——每笔第三方交易都间接放大 Claude API 消耗量。模型公司做平台是 2026 年最重要的行业趋势之一，OpenAI 有 GPT Store、Google 有 Vertex AI Marketplace，AI 应用分发权之争正式开启。长期来看，AI 应用分发的终局不是"应用商店"，而是<strong>"Agent 调度中心"</strong>——用户不下载应用，而是直接让 Agent 跨应用完成任务。Marketplace 只是这个终局的过渡形态。对国内企业的启示：<strong>加速平台化转型，用免费分发层+付费算力层建生态</strong>。</div>
+      </summary>
+      <div class="insight-full">
 
       <h4>一、对 Anthropic 自身：从"模型供应商"到"AI 生态平台"的关键跃迁</h4>
       <ul>
@@ -685,7 +746,10 @@
         <li>长期来看，AI 应用分发的终局不是"应用商店"，而是<strong>"Agent 调度中心"</strong>——用户不下载应用，而是直接让 Agent 跨应用完成任务。Marketplace 只是这个终局的过渡形态。</li>
         <li>Anthropic 的 $3800 亿估值已隐含了"平台公司"预期。如果 Marketplace 能在 12 个月内达到 <em>$10 亿+</em> GMV，将验证"模型公司→平台公司"的转型逻辑，并可能推动其 IPO 进程。</li>
       </ul>
-    </div>
+
+      <div class="insight-collapse-hint" onclick="this.closest('details').removeAttribute('open')">▲ 收起</div>
+      </div>
+    </details>
   </div>
 
   <div class="item">
@@ -826,8 +890,12 @@
     </div>
     <div class="item-source">来源：<a href="https://mp.weixin.qq.com/s/TLU6WXkgI-7Ph2ebGQKARg">小米技术（微信公众号）</a> · <a href="https://www.ithome.com/0/926/529.htm">IT之家</a> · <a href="https://news.pconline.com.cn/2110/21109233.html">太平洋科技</a> ｜ 3月6日</div>
 
-    <div class="insight">
-      <div class="insight-title">💡 深度洞察</div>
+    <details class="insight-wrapper">
+      <summary>
+        <div class="insight-summary-header">💡 深度洞察 <span class="insight-toggle">▼ 展开全文</span></div>
+        <div class="insight-summary-text"><strong>国内首个手机厂商级系统 AI Agent。</strong>与传统语音助手的本质区别：miclaw 是"执行引擎"而非"对话工具"，封装 <em>50+</em> 系统级工具，具备推理-执行闭环。依托小米 IoT <em>8 亿+</em> 设备生态，可调度手机、汽车、家电形成跨设备任务链。端侧 Agent 对芯片的推理算力和能效比提出了更高要求，高通/联发科/小米自研澎湃芯片将面临"端侧推理性能"的新军备竞赛。模型层面，端侧部署要求模型足够小且快，会加速<strong>小模型蒸馏</strong>和<strong>MoE 架构</strong>在手机端的落地。2026 年将成"手机 Agent 元年"，小米率先出手意味着<strong>中国厂商首次在移动 AI 赛道站在起跑线前面</strong>。</div>
+      </summary>
+      <div class="insight-full">
 
       <h4>一、对小米自身：从"硬件+互联网"到"硬件+AI 原生"的战略升级</h4>
       <ul>
@@ -864,7 +932,10 @@
         <li>端侧 Agent 将催生新的"<strong>注意力经济</strong>"：谁的 Agent 帮用户完成的任务最多，谁就掌握了新的流量分发权。传统 App 的"搜索→下载→打开"模式可能被"一句话→Agent 执行"模式逐步替代。</li>
         <li>小米"人车家全生态 + Agent 执行引擎"的组合如果跑通，将从"智能设备公司"升级为"AI 服务公司"，商业模型从<strong>硬件毛利</strong>转向<strong>服务收入</strong>（Agent 订阅、AI 增值服务、生态分发佣金），长期想象空间巨大。</li>
       </ul>
-    </div>
+
+      <div class="insight-collapse-hint" onclick="this.closest('details').removeAttribute('open')">▲ 收起</div>
+      </div>
+    </details>
   </div>
 
 </section>
@@ -917,8 +988,12 @@
     </div>
     <div class="item-source">来源：<a href="https://www.nvidia.com/en-us/gtc/">NVIDIA GTC 官网</a> · <a href="https://blogs.nvidia.com/blog/category/deep-learning/">NVIDIA Blog</a> · <a href="https://www.trustedreviews.com/brands/nvidia/">Trusted Reviews</a> ｜ 3月</div>
 
-    <div class="insight">
-      <div class="insight-title">💡 深度洞察</div>
+    <details class="insight-wrapper">
+      <summary>
+        <div class="insight-summary-header">💡 深度洞察 <span class="insight-toggle">▼ 展开全文</span></div>
+        <div class="insight-summary-text">英伟达从"卖 FLOPS"转向<strong>"卖 Token 经济学"</strong>，数据中心单季营收 <em>$623 亿</em>，首次全年不更新消费级 GPU。Blackwell 推理成本降 10x 的核心数据：每百万 Token 的硬件摊销成本从 <em>$0.20 降至 $0.05 以下</em>。Blackwell 上运行开源模型的评估速度提升 <em>3-5 倍</em>，这意味着过去需要一周完成的模型评估，现在可以在 <em>1-2 天</em>内完成。未来 AI 推理成本将再降 <em>10-100 倍</em>。对国内启示：<strong>国产推理芯片达 Hopper 级即可抢份额，液冷产业链是不受管制的确定性机会</strong>。</div>
+      </summary>
+      <div class="insight-full">
 
       <h4>一、英伟达的业务战略变化：从"卖 GPU"到"卖推理经济学"</h4>
       <ul>
@@ -977,7 +1052,10 @@
         <li><strong>"推理即服务"（Inference-as-a-Service）将成为比"模型即服务"更大的市场。</strong>Baseten、Together AI、Fireworks AI 等推理服务商正在快速崛起，预计 2027 年全球 AI 推理服务市场规模将超 <em>$500 亿</em>。</li>
         <li>英伟达放弃消费级 GPU 更新，短期看是"聚焦高利润业务"，长期看可能留下战略隐患——如果 AI PC 和端侧推理需求爆发，缺乏消费级产品线的英伟达可能将这一市场拱手让给 AMD、Intel 和高通。</li>
       </ul>
-    </div>
+
+      <div class="insight-collapse-hint" onclick="this.closest('details').removeAttribute('open')">▲ 收起</div>
+      </div>
+    </details>
   </div>
 </section>
 
