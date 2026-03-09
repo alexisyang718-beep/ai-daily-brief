@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Daily Brief | 2026年3月9日</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap');
+
+  :root {
+    --bg: #FAF9F5;
+    --bg-warm: #F5F0E8;
+    --card: #FFFFFF;
+    --border: #E8E2D9;
+    --border-light: #F0EBE3;
+    --accent: #C96442;
+    --accent-hover: #B5573A;
+    --accent-soft: rgba(201, 100, 66, 0.08);
+    --accent-border: rgba(201, 100, 66, 0.2);
+    --text: #1A1A1A;
+    --text-secondary: #6B6560;
+    --text-tertiary: #9B9590;
+    --tag-red: #C96442;
+    --tag-red-bg: rgba(201, 100, 66, 0.08);
+    --tag-green: #5A8F6B;
+    --tag-green-bg: rgba(90, 143, 107, 0.08);
+    --tag-blue: #4A7B9D;
+    --tag-blue-bg: rgba(74, 123, 157, 0.08);
+    --tag-purple: #7B6B9D;
+    --tag-purple-bg: rgba(123, 107, 157, 0.08);
+    --tag-orange: #B8863B;
+    --tag-orange-bg: rgba(184, 134, 59, 0.08);
+    --tag-teal: #4A8F8F;
+    --tag-teal-bg: rgba(74, 143, 143, 0.08);
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.06);
+    --shadow-hover: 0 6px 20px rgba(0,0,0,0.08);
+    --radius: 16px;
+    --radius-sm: 10px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, 'SF Pro Text', 'PingFang SC', 'Noto Sans SC', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ===== Header ===== */
+  .header {
+    padding: 60px 0 40px;
+    text-align: center;
+  }
+
+  .header-logo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background: var(--accent);
+    border-radius: 12px;
+    margin-bottom: 20px;
+  }
+
+  .header-logo svg {
+    width: 26px;
+    height: 26px;
+    fill: white;
+  }
+
+  .header h1 {
+    font-family: 'Noto Serif SC', 'Georgia', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+  }
+
+  .header .date {
+    color: var(--text-tertiary);
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+  }
+
+  .header .divider {
+    width: 40px;
+    height: 2px;
+    background: var(--accent);
+    margin: 24px auto;
+    border-radius: 1px;
+  }
+
+  .summary-card {
+    background: var(--bg-warm);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px 28px;
+    margin-top: 8px;
+    text-align: left;
+    font-size: 15px;
+    line-height: 1.9;
+    color: var(--text-secondary);
+  }
+
+  .summary-card strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  /* ===== TOC ===== */
+  .toc {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px 28px;
+    margin: 32px 0;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .toc h3 {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 16px;
+  }
+
+  .toc ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 24px;
+  }
+
+  .toc li a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .toc li a:hover {
+    color: var(--accent);
+  }
+
+  .toc li a .toc-icon {
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  /* ===== Section ===== */
+  .section {
+    margin-bottom: 40px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-header .icon {
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  .section-header h2 {
+    font-family: 'Noto Serif SC', 'Georgia', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: -0.3px;
+  }
+
+  /* ===== Item Card ===== */
+  .item {
+    background: var(--card);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin-bottom: 14px;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.3s, border-color 0.3s;
+  }
+
+  .item:hover {
+    box-shadow: var(--shadow-hover);
+    border-color: var(--border);
+  }
+
+  .item-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 1.5;
+  }
+
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-top: 2px;
+    letter-spacing: 0.3px;
+  }
+
+  .tag-hot { background: var(--tag-red-bg); color: var(--tag-red); }
+  .tag-new { background: var(--tag-green-bg); color: var(--tag-green); }
+  .tag-money { background: var(--tag-orange-bg); color: var(--tag-orange); }
+  .tag-chip { background: var(--tag-purple-bg); color: var(--tag-purple); }
+  .tag-agent { background: var(--tag-blue-bg); color: var(--tag-blue); }
+  .tag-phone { background: var(--tag-teal-bg); color: var(--tag-teal); }
+  .tag-policy { background: var(--tag-green-bg); color: var(--tag-green); }
+  .tag-game { background: var(--tag-blue-bg); color: var(--tag-blue); }
+
+  .item-body {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.85;
+    margin-bottom: 10px;
+  }
+
+  .item-body strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .item-source {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    padding-top: 8px;
+    border-top: 1px solid var(--border-light);
+  }
+
+  .item-source a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  .item-source a:hover {
+    color: var(--accent-hover);
+    text-decoration: underline;
+  }
+
+  /* ===== Stats ===== */
+  .stat-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 10px 0;
+  }
+
+  .stat {
+    background: var(--bg-warm);
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-light);
+  }
+
+  .stat em {
+    color: var(--accent);
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  /* ===== GitHub Cards ===== */
+  .github-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .gh-item {
+    background: var(--card);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-sm);
+    padding: 16px 18px;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.3s, border-color 0.3s;
+  }
+
+  .gh-item:hover {
+    box-shadow: var(--shadow-hover);
+    border-color: var(--border);
+  }
+
+  .gh-name {
+    font-weight: 600;
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
+
+  .gh-name a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .gh-name a:hover {
+    color: var(--accent-hover);
+    text-decoration: underline;
+  }
+
+  .gh-desc {
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 8px;
+  }
+
+  .gh-star {
+    font-size: 12px;
+    color: var(--tag-orange);
+    font-weight: 500;
+  }
+
+  /* ===== Footer ===== */
+  .footer {
+    text-align: center;
+    padding: 40px 0 50px;
+    border-top: 1px solid var(--border);
+    margin-top: 32px;
+  }
+
+  .footer p {
+    color: var(--text-tertiary);
+    font-size: 12px;
+    line-height: 2;
+  }
+
+  .footer .footer-brand {
+    font-family: 'Noto Serif SC', 'Georgia', serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+  }
+
+  /* ===== Back to Top ===== */
+  .back-to-top {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    width: 40px;
+    height: 40px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s;
+    opacity: 0;
+    pointer-events: none;
+    color: var(--text-secondary);
+    font-size: 18px;
+    text-decoration: none;
+  }
+
+  .back-to-top.visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .back-to-top:hover {
+    box-shadow: var(--shadow-hover);
+    color: var(--accent);
+    border-color: var(--accent-border);
+  }
+
+  /* ===== Back to Home ===== */
+  .back-home {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-tertiary);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    transition: all 0.2s;
+    position: fixed;
+    top: 24px;
+    left: 24px;
+    z-index: 100;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .back-home:hover {
+    color: var(--accent);
+    border-color: var(--accent-border);
+    box-shadow: var(--shadow-md);
+  }
+
+  @media (max-width: 640px) {
+    .back-home { top: 16px; left: 16px; font-size: 12px; padding: 5px 12px; }
+  }
+
+  /* ===== Dark Mode Toggle ===== */
+  .theme-toggle {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    width: 36px;
+    height: 36px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s;
+    font-size: 16px;
+    z-index: 100;
+  }
+
+  .theme-toggle:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--accent-border);
+  }
+
+  /* ===== Dark Mode ===== */
+  [data-theme="dark"] {
+    --bg: #1C1B18;
+    --bg-warm: #252420;
+    --card: #2A2925;
+    --border: #3D3B36;
+    --border-light: #333230;
+    --accent: #D4845F;
+    --accent-hover: #E0966F;
+    --accent-soft: rgba(212, 132, 95, 0.1);
+    --accent-border: rgba(212, 132, 95, 0.25);
+    --text: #E8E4DE;
+    --text-secondary: #A8A29A;
+    --text-tertiary: #78736C;
+    --tag-red: #D4845F;
+    --tag-red-bg: rgba(212, 132, 95, 0.12);
+    --tag-green: #7DB88D;
+    --tag-green-bg: rgba(125, 184, 141, 0.12);
+    --tag-blue: #6DA0C2;
+    --tag-blue-bg: rgba(109, 160, 194, 0.12);
+    --tag-purple: #9D8DBF;
+    --tag-purple-bg: rgba(157, 141, 191, 0.12);
+    --tag-orange: #D4A95F;
+    --tag-orange-bg: rgba(212, 169, 95, 0.12);
+    --tag-teal: #6DB5B5;
+    --tag-teal-bg: rgba(109, 181, 181, 0.12);
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.15);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.2);
+    --shadow-hover: 0 6px 20px rgba(0,0,0,0.25);
+  }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 640px) {
+    .container { padding: 0 16px; }
+    .header { padding: 40px 0 28px; }
+    .header h1 { font-size: 26px; }
+    .toc ul { grid-template-columns: 1fr; }
+    .github-grid { grid-template-columns: 1fr; }
+    .summary-card { padding: 18px 20px; }
+    .item { padding: 16px 18px; }
+    .theme-toggle { top: 16px; right: 16px; }
+    .back-to-top { bottom: 20px; right: 20px; }
+  }
+
+  /* ===== Insight Collapsible ===== */
+  .insight-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 10px;
+    padding: 12px 18px;
+    background: var(--bg-warm);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-light);
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+    user-select: none;
+  }
+
+  .insight-toggle:hover {
+    border-color: var(--accent-border);
+  }
+
+  .insight-toggle .insight-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.5;
+    flex: 1;
+  }
+
+  .insight-toggle .insight-chevron {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-tertiary);
+    transition: transform 0.3s ease;
+  }
+
+  .insight-toggle.open .insight-chevron {
+    transform: rotate(180deg);
+  }
+
+  .insight-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.35s ease, opacity 0.25s ease;
+    opacity: 0;
+    padding: 0 18px;
+    background: var(--bg-warm);
+    border: 1px solid var(--border-light);
+    border-top: none;
+    border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.85;
+  }
+
+  .insight-body.open {
+    max-height: 600px;
+    opacity: 1;
+    padding: 0 18px 14px;
+  }
+
+  .insight-body strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .insight-toggle.open {
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+    border-bottom: none;
+  }
+
+  /* ===== Smooth Scroll ===== */
+  html { scroll-behavior: smooth; }
+
+  /* ===== Selection ===== */
+  ::selection {
+    background: var(--accent-soft);
+    color: var(--accent);
+  }
+</style>
+</head>
+<body>
+
+<a class="back-home" href="../index.html">&larr; 返回存档</a>
+<button class="theme-toggle" onclick="toggleTheme()" title="切换深色/浅色模式" aria-label="切换主题">&#9728;&#65039;</button>
+
+<div class="container">
+
+<header class="header">
+  <div class="header-logo">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+  </div>
+  <h1>AI Daily Brief</h1>
+  <div class="date">2026年3月9日 · 周一</div>
+  <div class="divider"></div>
+  <div class="summary-card">
+    <strong>核心洞察</strong> — ❶ Kimi 付费订单<strong>暴涨 80 倍</strong>，跻身 Stripe 全球前 10，20 天收入超 2025 全年——Agent 驱动的付费拐点已至；❷ 大四学生 10 天 Vibe Coding 做出 <strong>MiroFish</strong> 登顶 GitHub，获陈天桥 <strong>3000 万</strong>投资；❸ <strong>Karpathy 开源 autoresearch</strong>——630 行代码 AI 自主研究员，多 Agent 协作构建 AGI 雏形；❹ 小米推出 <strong>Xiaomi miclaw</strong>——首个手机端编程 Agent，内置 <strong>27 类</strong>系统工具，MiMo 模型十几秒完成任务；❺ 千问 AI 眼镜 G1 开售 <strong>3 小时全平台登顶</strong>；❻ 博通 AI 芯片收入 <strong>Q1 暴涨 106%</strong>，六大超级计算客户全部押注定制 ASIC；❼ GDC 2026 今日开幕，<strong>苹果首次官宣三场 GDC 游戏演讲</strong>；❽ DeepSeek V4 传闻：原生多模态、<strong>100 万 token</strong>。今日主线：Agent 正从云端走向终端——<strong>模型付费拉动算力投资，硬件厂商争抢 Agent 入口，手机成为 AI 生活管家的天然载体</strong>。
+  </div>
+</header>
+
+<nav class="toc">
+  <h3>目录</h3>
+  <ul>
+    <li><a href="#model"><span class="toc-icon">🧠</span> 模型与产品</a></li>
+    <li><a href="#phone"><span class="toc-icon">📱</span> 手机厂商 AI 动态</a></li>
+    <li><a href="#chip"><span class="toc-icon">🔧</span> 芯片与算力</a></li>
+    <li><a href="#game"><span class="toc-icon">🎮</span> 游戏行业 AI 应用</a></li>
+    <li><a href="#industry"><span class="toc-icon">🏛️</span> 行业动向</a></li>
+    <li><a href="#github"><span class="toc-icon">📦</span> GitHub 高增长项目</a></li>
+  </ul>
+</nav>
+
+<!-- ==================== 模型与产品 ==================== -->
+<section class="section" id="model">
+  <div class="section-header">
+    <span class="icon">🧠</span>
+    <h2>模型与产品</h2>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-hot">爆发</span>
+      Kimi 付费订单暴涨 80 倍，跻身 Stripe 全球前 10，20 天收入超去年全年
+    </div>
+    <div class="item-body">
+      据全球支付巨头 Stripe 数据，Kimi 个人订阅用户支付订单量 1-2 月呈<strong>爆发式增长</strong>：1 月环比增长 <strong>8280%</strong>，2 月在高位基础上再涨 <strong>123.8%</strong>。Stripe 全球排名从百名开外飙升至 1 月第 22 位、2 月<strong>第 9 位</strong>。受 Kimi <strong>K2.5 模型</strong>及 <strong>Kimi Claw</strong>（OpenClaw 适配版）带动，1 月底以来 Kimi 创下 <strong>20 天收入超 2025 年全年</strong>的增长纪录。在 OpenRouter 的 OpenClaw 模型调用榜单上，K2.5 保持第一。
+    </div>
+    <div class="stat-row">
+      <span class="stat">1月订单 <em>+8280%</em></span>
+      <span class="stat">Stripe 排名 <em>#9</em></span>
+      <span class="stat">20天收入 <em>&gt;去年全年</em></span>
+    </div>
+    <div class="item-source">来源：<a href="http://www.iheima.com/article-394717.html">i黑马/科创板日报</a> · <a href="https://www.theinformation.com/briefings/">The Information</a> · <a href="http://finance.eastmoney.com/a/202603083665350353.html">东方财富网</a> · <a href="https://www.sohu.com/a/993997602_121956424">搜狐科技</a> ｜ 3月8日</div>
+
+    <div class="insight-toggle" onclick="toggleInsight(this)">
+      <span class="insight-title">🔍 深度洞察｜Agent 生态引爆 AI 应用付费的"从 0 到 1"拐点</span>
+      <span class="insight-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    </div>
+    <div class="insight-body">
+      8280% 的环比增长不是"产品好用了一点"能解释的，而是<strong>Agent 生态引爆了 AI 应用付费的"从 0 到 1"拐点</strong>。逻辑链：Agent 需要调用大模型 API → 用户需要订阅 → Kimi K2.5 调用量排名第一 → Agent 用户涌入 = Kimi 付费用户暴涨。过去用户觉得"聊天不值得付费"，但当 AI 能替你干活时，付费意愿陡增。每个 Agent 实例每天消耗的 Token 量是普通聊天的 <strong>100-1000 倍</strong>。Stripe 全球排名飙升到第 9 位，说明这不是中国局部现象。<strong>启示：谁的模型在 Agent 场景下体验最好，谁就抢到这波红利。</strong>隐忧：DeepSeek V3 API 价格仅 $0.27/百万 Token，远低于 Kimi。一旦价格战升级，高增长可能转化为"高收入低利润"。<strong>商业化不一定要像 OpenAI 那样烧钱做通用模型，精准卡位 Agent 生态的模型公司也能快速变现。</strong>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-new">开源</span>
+      大四学生 10 天 Vibe Coding，MiroFish 登顶 GitHub，获陈天桥 3000 万投资
+    </div>
+    <div class="item-body">
+      大四学生郭航江（BaiFu）开发的群体智能引擎 <strong>MiroFish</strong> 登顶 GitHub 全球趋势榜（今日 +1,104），并获盛大集团创始人陈天桥 <strong>3000 万元</strong>投资用于产品孵化。MiroFish 是一款基于<strong>多智能体技术</strong>的 AI 预测引擎，通过提取现实世界的种子信息（突发新闻、政策草案、金融信号），自动构建高保真的<strong>平行数字世界</strong>，让成千上万个具备独立人格与长期记忆的智能体进行自由交互与社会演化，推演未来走向。此前其开源项目"BettaFish"曾登顶热榜获陈天桥关注。从毕设到公司，仅用 3 个月。
+    </div>
+    <div class="stat-row">
+      <span class="stat">GitHub <em>7.2K ★</em></span>
+      <span class="stat">投资 <em>3000万元</em></span>
+      <span class="stat">开发周期 <em>10天</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://finance.sina.com.cn/wm/2026-03-08/doc-inhqhisp0760007.shtml">新智元/新浪财经</a> · <a href="https://sea.mashable.com/tech/42396/ai-agents-in-2026-5-ways-they-can-help">Mashable</a> · <a href="http://finance.eastmoney.com/a/202603093665451794.html">东方财富网</a> ｜ 3月8-9日</div>
+
+    <div class="insight-toggle" onclick="toggleInsight(this)">
+      <span class="insight-title">🔍 深度洞察｜"超级个体"时代——从毕设到公司仅 3 个月</span>
+      <span class="insight-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    </div>
+    <div class="insight-body">
+      MiroFish 以"多智能体"重构预测逻辑——在数字世界中模拟现实演化的复杂性。<strong>AI 应用正从"回答问题"走向"模拟世界"。</strong>更值得关注：一个大四学生用 10 天 Vibe Coding 做出全球爆款——<strong>"超级个体"时代的标志。</strong>陈天桥 24 小时内 3000 万下注，押的不是技术，而是"以代码理解世界"的方法论。当 AI 编码工具足够强大，项目壁垒从"能写多少代码"变为"有没有好想法"。<strong>"编码能力"正在贬值，"系统设计能力"和"创意直觉"才是稀缺资源。</strong>从毕设到公司仅 3 个月——AI 时代创业周期极度压缩。
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-new">发售</span>
+      千问 AI 眼镜 G1 开售 3 小时全平台登顶，部分渠道售罄
+    </div>
+    <div class="item-body">
+      3 月 8 日上午 10 点，阿里千问 AI 眼镜 G1 现货开售，<strong>3 小时即登顶全平台智能眼镜热销榜</strong>，部分渠道已售罄。这是千问品牌在智能硬件领域的首款统一命名产品。G1 搭载双旗舰芯片双系统，内置 <strong>64GB 存储</strong>，整机重量仅约 <strong>40 克</strong>，镜腿最细处 8mm，佩戴感与普通眼镜无异。官方标价 2899 元，叠加国补后到手价 <strong>1997 元</strong>起。首批实用服务功能（在线点餐、酒店预订等）计划 3 月底全量开放。
+    </div>
+    <div class="stat-row">
+      <span class="stat">整机重量 <em>40g</em></span>
+      <span class="stat">国补价 <em>1997元</em></span>
+      <span class="stat">存储 <em>64GB</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://finance.sina.com.cn/tech/roll/2026-03-08/doc-inhqhuha0582242.shtml">新浪科技</a> · <a href="http://finance.eastmoney.com/a/202603083665356153.html">东方财富网</a> · <a href="https://ai.zol.com.cn/1143/11439474.html">中关村在线</a> ｜ 3月8日</div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-new">开源</span>
+      Karpathy 开源 autoresearch：630 行代码 AI 自主研究员，单卡一夜跑百次实验
+    </div>
+    <div class="item-body">
+      Andrej Karpathy 开源 <strong>autoresearch</strong>——将 LLM 训练压缩为约 <strong>630 行</strong>单文件代码，单 GPU 即可运行。AI Agent 自主循环"编辑代码→训练 5 分钟→检查得分→保留/回滚"，<strong>无需人工干预</strong>。下一阶段构想更大胆：从单 Agent 进化为<strong>多 Agent 异步协作</strong>，目标是模拟"由博士生组成的研究社区"。Karpathy 本人正在 <strong>8×H100</strong> 上运行更大规模版本。
+    </div>
+    <div class="stat-row">
+      <span class="stat">代码量 <em>630行</em></span>
+      <span class="stat">单次训练 <em>5分钟</em></span>
+      <span class="stat">生产环境 <em>8×H100</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://mp.weixin.qq.com/s/-8crktVMYow2W1hLf8-rOA">花不玩/AI寒武纪</a> · <a href="https://mp.weixin.qq.com/s/ThK4Kn54UN6cHDkX6JgkGg">花不玩/AI寒武纪(续)</a> · <a href="https://github.com/karpathy/autoresearch">GitHub</a> ｜ 3月8-9日</div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-new">传闻</span>
+      DeepSeek V4 或即将发布：原生多模态、100 万 token、参数量或超万亿
+    </div>
+    <div class="item-body">
+      据多家媒体援引知情人士消息，DeepSeek 正秘密测试最新大模型 <strong>V4</strong>。据称该版本为<strong>原生多模态架构</strong>，可同步生成图片、视频与文本，并针对<strong>国产算力完成深度优化</strong>，意在降低对海外芯片依赖。V4 Lite 代号"sealion-lite"，上下文窗口达 <strong>100 万 tokens</strong>（较 V3 系列 128K 提升近 8 倍），参数规模约 2000 亿，完整版或突破 <strong>1 万亿</strong>。这是 DeepSeek 继 2025 年 1 月 R1 推理模型后的首次重大更新，间隔超一年。
+    </div>
+    <div class="stat-row">
+      <span class="stat">上下文 <em>100万token</em></span>
+      <span class="stat">参数 <em>或超1万亿</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://radicaldatascience.wordpress.com/2026/03/04/ai-news-briefs-bulletin-board-for-march-2026/">Radical Data Science</a> · <a href="https://new.qq.com/rain/a/20260301A05WCZ00">腾讯新闻</a> · <a href="https://www.sohu.com/a/994035139_122014422">搜狐科技</a> ｜ 3月1-9日（传闻）</div>
+  </div>
+
+</section>
+
+<!-- ==================== 手机厂商 AI 动态 ==================== -->
+<section class="section" id="phone">
+  <div class="section-header">
+    <span class="icon">📱</span>
+    <h2>手机厂商 AI 动态</h2>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-phone">小米</span>
+      小米 miclaw 上手：首个手机端编程 Agent，27 类系统工具直接调用，MiMo 模型加持十几秒完成任务
+    </div>
+    <div class="item-body">
+      小米正式推出 <strong>Xiaomi miclaw</strong>，首个以编程与工具调用为核心逻辑（而非视觉 Agent 模拟点击）的手机端 Agent。首批内置 <strong>27 类系统工具</strong>：短信读取/发送、电话拨打/AI 接管、联系人管理、日历、闹钟、文件读写、笔记、浏览器自动化、WiFi/蓝牙控制、录音录屏、相机相册、智能家居、甚至 React Native 小程序生成。基座模型 <strong>MiMo-V2-Flash</strong> 推理速度极快，总结短信、批量拒收垃圾营销等操作<strong>十几秒完成</strong>。博主实测亮点：语音记日记自动 OCR 纠错并写入系统笔记；名片拍照一键录入联系人；日历+天气+TTS 组合成私人晨间播报。定位清晰：<strong>电脑 Agent 是生产力工具，手机 Agent 是生活管家</strong>。
+    </div>
+    <div class="stat-row">
+      <span class="stat">系统工具 <em>27类</em></span>
+      <span class="stat">基座模型 <em>MiMo-V2-Flash</em></span>
+      <span class="stat">核心逻辑 <em>编程Agent</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://mp.weixin.qq.com/s/PszEPEHv-q0OicQPx-0G9Q">数字生命卡兹克</a> ｜ 3月8-9日</div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-phone">苹果</span>
+      iPhone 17 系列国内销量突破 2000 万，Pro Max 150 天破千万
+    </div>
+    <div class="item-body">
+      截至 2026 年第九周，iPhone 17 系列在华销量已突破 <strong>2383 万台</strong>，远超同期其他安卓旗舰。其中 <strong>Pro Max 单品激活量 150 天内破千万</strong>，表现亮眼。搭载 M5 芯片的 MacBook Air 在游戏测试中功耗仅 <strong>7-8W</strong> 即可流畅运行《赛博朋克 2077》。此外，苹果计划年内推出三款 Ultra 新品——<strong>iPhone Ultra、AirPods Ultra、MacBook Ultra</strong>，加速高端转型。分析师郭明錤预测第二代 MacBook Neo 将于 2027 年推出，有望配备触摸屏。
+    </div>
+    <div class="stat-row">
+      <span class="stat">国内销量 <em>2383万</em></span>
+      <span class="stat">Pro Max <em>150天破千万</em></span>
+      <span class="stat">M5 功耗 <em>7-8W</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://www.ithome.com/0/927/054.htm">IT之家</a> · 彭博社 · 郭明錤 ｜ 3月8-9日</div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-hot">预警</span>
+      内存 Q2 继续涨价，前小米高管预言手机行业今年"大裁员"
+    </div>
+    <div class="item-body">
+      前小米中国区市场部总经理、REDMI 品牌总经理王腾（现宜休科技创始人）发文称：<strong>"内存二季度还要继续涨价，今年消费电子行业太难了。"</strong>他预计内存价格恢复正常要等到 <strong>2028 年</strong>，存储扩产需 <strong>2-3 年</strong>。三星电子计划 Q2 将主要 NAND 产品供货价涨幅维持与 Q1 相近水平。存储芯片成本攀升已冲击品牌 2026 年出货规划，全球手机面板出货量预计从 2025 年 23.1 亿片下滑至 <strong>21.4 亿片（-7.3%）</strong>。王腾直言：<strong>"我担心还在手机行业的兄弟们，估计今年各家会有一波大裁员。"</strong>
+    </div>
+    <div class="stat-row">
+      <span class="stat">价格恢复 <em>要到2028年</em></span>
+      <span class="stat">面板出货 <em>-7.3%</em></span>
+      <span class="stat">扩产周期 <em>2-3年</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://news.mydrivers.com/1/1107/1107759.htm">快科技</a> · <a href="https://new.qq.com/rain/a/20260308A04DF200">腾讯新闻</a> · <a href="https://www.sohu.com/a/993981713_362225">搜狐科技</a> ｜ 3月8日</div>
+
+    <div class="insight-toggle" onclick="toggleInsight(this)">
+      <span class="insight-title">🔍 深度洞察｜AI 基建"抽血"消费电子，恢复正常要等 2028</span>
+      <span class="insight-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    </div>
+    <div class="insight-body">
+      昨天我们报道了存储芯片暴涨 369% 的数据，今天王腾给出了更悲观的时间线：恢复正常要等 2028 年。<strong>"AI 基建抽血消费电子"不是短期阵痛，而是持续 2 年以上的结构性挤压。</strong>传导链已从"成本端"蔓延到"人力端"：涨价→出货下滑→利润压缩→裁员。AI 数据中心对 HBM 需求激增，直接挤占消费级存储产能。面板出货预计下滑 <strong>7.3%</strong>，结束 3 年增长周期。<strong>设备换机周期拉长 = 存量用户博弈加剧，中低端机型适配和云游戏方案的战略重要性进一步提升。</strong>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-phone">三星</span>
+      三星 Galaxy S26 韩国预售创 S 系列之最，Ultra 占比 70%
+    </div>
+    <div class="item-body">
+      三星 Galaxy S26 系列韩国预售仅 <strong>7 天达到 135 万部</strong>，超越 S25 系列纪录，创 S 系列历史新高。其中 <strong>S26 Ultra 占比高达 70%</strong>，搭载定制版第五代骁龙 8 至尊版芯片，NPU 算力提升 39%，Galaxy AI 从被动响应升级为<strong>主动预判式服务</strong>——即时简报功能可基于用户习惯主动推送个性化建议，"即圈即搜"支持多目标同时识别，Bixby 智能体实现跨应用操作。首发"隐私显示"功能，AI 智能识别特定应用进行防窥处理。
+    </div>
+    <div class="stat-row">
+      <span class="stat">7天预售 <em>135万部</em></span>
+      <span class="stat">Ultra 占比 <em>70%</em></span>
+      <span class="stat">NPU 提升 <em>39%</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://www.ithome.com/0/927/054.htm">IT之家</a> · <a href="https://price.zol.com.cn/1142/11428661.html">中关村在线</a> · 企鹅号 ｜ 3月8-9日</div>
+  </div>
+</section>
+
+<!-- ==================== 芯片与算力 ==================== -->
+<section class="section" id="chip">
+  <div class="section-header">
+    <span class="icon">🔧</span>
+    <h2>芯片与算力</h2>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-chip">ASIC</span>
+      博通 AI 芯片收入暴涨 106%，Q2 指引 107 亿美元，剑指千亿年收入
+    </div>
+    <div class="item-body">
+      博通（Broadcom）2026 财年 Q1 <strong>AI 业务收入达 84 亿美元</strong>，同比暴涨 <strong>106%</strong>，主要由定制 AI 加速器和 AI 网络产品的强劲需求驱动。CEO 陈福阳表示 AI 收入增长正在加速，Q2 AI 半导体收入指引 <strong>107 亿美元</strong>（同比 +140%），并明确<strong>明年 AI 芯片销售额将超 1000 亿美元</strong>。博通已获得<strong>谷歌、Anthropic、Meta、OpenAI</strong>等六家头部 AI 企业的定制芯片订单——其中 Anthropic 单笔追加订单达 <strong>110 亿美元</strong>。随着 TPU Ironwood、Anthropic 1GW TPU 部署及 OpenAI 首代 ASIC 于 2027 年超 1GW 量产落地，AI 算力底层架构正加速向<strong>专用化演进</strong>。
+    </div>
+    <div class="stat-row">
+      <span class="stat">Q1 AI 收入 <em>$84亿</em></span>
+      <span class="stat">Q2 指引 <em>$107亿</em></span>
+      <span class="stat">目标 <em>千亿美元/年</em></span>
+      <span class="stat">Anthropic 追加 <em>$110亿</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://www.cnbc.com/2026/03/04/broadcoms-custom-ai-chip-business-stays-hot-and-gives-the-bulls-a-much-needed-win-.html">CNBC</a> · <a href="https://www.techbuzz.ai/articles/broadcom-ai-revenue-doubles-as-custom-chip-boom-accelerates">TechBuzz</a> · <a href="https://www.21jingji.com/article/20260307/herald/e1fe53cde44a9670d552180a07d857f6.html">21经济网</a> · <a href="https://www.ithome.com/0/904/925.htm">IT之家</a> ｜ 3月5-8日</div>
+
+    <div class="insight-toggle" onclick="toggleInsight(this)">
+      <span class="insight-title">🔍 深度洞察｜ASIC 路线已占 GPU 路线约 30% 市场份额</span>
+      <span class="insight-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    </div>
+    <div class="insight-body">
+      博通 Q2 指引 107 亿美元（同比+140%）对比 NVIDIA 数据中心季度收入约 355 亿美元，ASIC 路线已占 GPU 路线约 <strong>30%</strong> 的市场份额，且增速远超 NVIDIA。<strong>六大头部客户全部选择定制 ASIC，这不是"尝试"而是"战略转向"。</strong>昨天我们报道了硅谷巨头集体"叛逃"GPU，今天博通的数据是最好的注脚。谷歌第七代 TPU、Meta 最新 MTIA 架构都在放量。Anthropic 单笔 <strong>$110 亿</strong>追加订单值得特别关注——它同时使用谷歌 TPU 和博通 ASIC，走"多云多芯片"策略。<strong>即使最依赖谷歌的 AI 公司，也在刻意分散算力来源。</strong>ASIC 路线的崛起对中国是机遇：相比通用 GPU，定制 ASIC 的设计壁垒相对较低，中国在推理芯片领域有追赶空间。
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-chip">数据中心</span>
+      Marvell 强调 AI 数据中心需求强劲，股价单日涨近 20%
+    </div>
+    <div class="item-body">
+      芯片设计公司 Marvell（美满科技）CEO 在最新财报电话会中强调<strong>数据中心的 AI 需求持续强劲</strong>，并上调了截至 2027 年的收入增长预期。受此消息提振，Marvell 股价单日飙升近 <strong>20%</strong>。Marvell 在定制 AI 芯片和数据中心网络互联（DCI）领域与博通形成差异化竞争，其 Teralynx 交换芯片和定制 ASIC 解决方案正获得更多超大规模客户采用。这是继博通之后，又一家 AI 芯片公司用业绩证明<strong>超级计算客户的 AI 投入不仅没有放缓，反而在加速</strong>。
+    </div>
+    <div class="stat-row">
+      <span class="stat">股价 <em>+20%</em></span>
+      <span class="stat">核心驱动 <em>AI数据中心</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://www.theneuron.ai/ai-news-digests/around-the-horn-digest-everything-that-happened-in-ai-this-week-mar-813-2026/">The Neuron</a> ｜ 3月8-9日</div>
+  </div>
+
+
+</section>
+
+<!-- ==================== 游戏行业 AI 应用 ==================== -->
+<section class="section" id="game">
+  <div class="section-header">
+    <span class="icon">🎮</span>
+    <h2>游戏行业 AI 应用</h2>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-game">GDC</span>
+      GDC 2026 今日旧金山开幕，苹果首次官宣 GDC 游戏演讲
+    </div>
+    <div class="item-body">
+      全球游戏开发者大会 <strong>GDC 2026</strong> 于 3 月 9-13 日在旧金山 Moscone Center 举办，本届设有 <strong>225+ 场</strong>周边活动（Meetup/Party/Workshop），涵盖 AI、VR/AR、编程、叙事、独立游戏等多主题。微软、Meta、Epic Games、腾讯等均参展。<strong>苹果首次官宣在 GDC 发表游戏演讲</strong>（3月11日），预计围绕 M5 芯片游戏性能和 Apple Vision Pro 游戏生态展开。此前 GDC 调查显示 <strong>52% 游戏业界人士认为 AI 产生负面影响</strong>，AI 在游戏行业的角色争议将成为本届焦点。
+    </div>
+    <div class="stat-row">
+      <span class="stat">时间 <em>3月9-13日</em></span>
+      <span class="stat">周边活动 <em>225+场</em></span>
+      <span class="stat">AI负面看法 <em>52%</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://appleinsider.com/articles/26/03/03/apple-outlines-game-dev-strategy-with-three-gdc-sessions">AppleInsider</a> · <a href="https://www.gamesradar.com/events/gdc/">GamesRadar</a> · <a href="http://www.199it.com/archives/1810182.html">199IT</a> · <a href="https://new.qq.com/rain/a/20260306A086IJ00">腾讯新闻</a> ｜ 3月6-9日</div>
+
+    <div class="insight-toggle" onclick="toggleInsight(this)">
+      <span class="insight-title">🔍 深度洞察｜苹果首次在 GDC 发表演讲，"认真对待游戏开发者"</span>
+      <span class="insight-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    </div>
+    <div class="insight-body">
+      苹果首次在 GDC 发表演讲是一个重要信号。据 AppleInsider 报道，苹果将在 3 月 11 日带来三场演讲（硬件/软件全景、《赛博朋克 2077》Mac 移植幕后、App Store 游戏运营），出动六位高管。<strong>这不是"来看看"，而是"认真对待游戏开发者"。</strong>过去苹果对游戏开发者生态一直"不太上心"，而 M5 芯片 7-8W 功耗跑《赛博朋克 2077》的实测数据，加上 Vision Pro，让苹果终于有了底气。三场演讲覆盖<strong>硬件+开发工具+商业化全链条。</strong>52% 的负面看法比其他行业更复杂——创意劳动者的替代焦虑真实存在。<strong>争议焦点将从"要不要用"转向"怎么用、谁受益"。</strong>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-game">影视</span>
+      AI 短片《霍去病》导演澄清：3000 元仅为算力成本，团队近 20 人
+    </div>
+    <div class="item-body">
+      近期爆火的 AI 生成短片《霍去病》引发热议，导演杨涵涵公开澄清网传数据：<strong>3000 元仅为算力成本</strong>，并非全部制作费用；<strong>团队有近 20 人</strong>参与制作，并非"一人完成"；也没有网传的 80 集。该短片展示了 AI 视频生成在影视内容领域的应用潜力，但也提醒行业：AI 降低了技术门槛，但<strong>优质内容仍然需要专业团队和创意投入</strong>。
+    </div>
+    <div class="item-source">来源：<a href="https://www.ithome.com/0/927/054.htm">IT之家</a> ｜ 3月9日</div>
+  </div>
+</section>
+
+<!-- ==================== 行业动向 ==================== -->
+<section class="section" id="industry">
+  <div class="section-header">
+    <span class="icon">🏛️</span>
+    <h2>行业动向</h2>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-agent">Agent</span>
+      OpenClaw 飞书插件上线 + 10 余家公司率先"养龙虾"部署
+    </div>
+    <div class="item-body">
+      OpenClaw 飞书官方插件已上线，支持找资料、看档期、理解群聊上下文等功能。与此同时，A 股市场 <strong>10 余家公司率先布局 OpenClaw</strong> 部署服务——拓维信息涨停，优刻得涨 4.5%，每日互动涨超 5%。券商分析认为，Agent 的渗透导致 token 消耗激增（约 <strong>1000 倍</strong>），制造了"算力真空"，云服务成为最确定受益方向。浪潮信息发布 <strong>AIStation V5.4</strong>，已实现与 OpenClaw 的最佳实践整合。
+    </div>
+    <div class="item-source">来源：<a href="https://www.ithome.com/0/927/054.htm">IT之家</a> · <a href="https://www.sohu.com/a/994035139_122014422">搜狐财经</a> · <a href="https://www.21ic.com/a/1001090.html">21IC</a> ｜ 3月8-9日</div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-phone">华为</span>
+      华为鸿蒙智选 2026 春季新品发布会定档 3 月 10 日
+    </div>
+    <div class="item-body">
+      华为 <strong>HarmonyOS Connect 伙伴峰会暨鸿蒙智选 2026 年春季新品发布会</strong>定于 3 月 10 日在上海举行。华为终端 BG IoT 产品线总裁余隽将致辞，推介鸿蒙智选新品。此前消息，华为 Mate 80 系列销量已突破 <strong>405 万台</strong>，AI 眼镜预计 4 月与 Pura 90 同步发布。
+    </div>
+    <div class="item-source">来源：<a href="https://www.ithome.com/0/927/054.htm">IT之家</a> ｜ 3月9日</div>
+  </div>
+
+</section>
+
+<!-- ==================== GitHub 高增长 ==================== -->
+<section class="section" id="github">
+  <div class="section-header">
+    <span class="icon">📦</span>
+    <h2>GitHub 今日高增长项目</h2>
+  </div>
+  <div class="github-grid">
+    <div class="gh-item">
+      <div class="gh-name"><a href="https://github.com/openclaw/openclaw">openclaw/openclaw</a></div>
+      <div class="gh-desc">你的个人 AI 助手，支持任何操作系统和平台，以"龙虾方式"实现</div>
+      <div class="gh-star">⭐ 281,687 · 今日 +4,603</div>
+    </div>
+    <div class="gh-item">
+      <div class="gh-name"><a href="https://github.com/666ghj/MiroFish">666ghj/MiroFish</a></div>
+      <div class="gh-desc">群体智能引擎，基于多智能体技术预测万物（大四学生作品，获 3000 万投资）</div>
+      <div class="gh-star">⭐ 7,261 · 今日 +1,104</div>
+    </div>
+    <div class="gh-item">
+      <div class="gh-name"><a href="https://github.com/openai/skills">openai/skills</a></div>
+      <div class="gh-desc">OpenAI Codex 技能目录，为 AI 编码助手添加专业能力</div>
+      <div class="gh-star">⭐ 13,281 · 今日 +612</div>
+    </div>
+    <div class="gh-item">
+      <div class="gh-name"><a href="https://github.com/shareAI-lab/learn-claude-code">shareAI-lab/learn-claude-code</a></div>
+      <div class="gh-desc">Bash is all you need — 类似 Claude Code 的极简 AI 代理，从 0 到 1 构建</div>
+      <div class="gh-star">⭐ 23,964 · 今日 +566</div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <p class="footer-brand">AI Daily Brief</p>
+  <p>2026年3月9日 · 覆盖范围：3月8日-9日（严格24小时内）</p>
+  <p>数据来源：CNBC · TechBuzz · TechCrunch · AppleInsider · GamesRadar · The Neuron · The Information · Mashable · Radical Data Science · IT之家 · 新浪科技 · 新浪财经 · 搜狐科技 · 东方财富网 · 快科技 · 21经济网 · 腾讯新闻 · 凤凰财经 · i黑马 · AI寒武纪 · 数字生命卡兹克 · GitHub Trending 等 23+ 源</p>
+</footer>
+
+</div>
+
+<a href="#" class="back-to-top" id="backToTop" title="回到顶部">&uarr;</a>
+
+<script>
+  // Theme toggle
+  function toggleTheme() {
+    const body = document.documentElement;
+    const btn = document.querySelector('.theme-toggle');
+    if (body.getAttribute('data-theme') === 'dark') {
+      body.removeAttribute('data-theme');
+      btn.textContent = '☀️';
+      localStorage.setItem('theme', 'light');
+    } else {
+      body.setAttribute('data-theme', 'dark');
+      btn.textContent = '🌙';
+      localStorage.setItem('theme', 'dark');
+    }
+  }
+
+  // Restore theme
+  (function() {
+    const saved = localStorage.getItem('theme');
+    if (saved === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      document.querySelector('.theme-toggle').textContent = '🌙';
+    }
+  })();
+
+  // Back to top
+  const backBtn = document.getElementById('backToTop');
+  window.addEventListener('scroll', function() {
+    backBtn.classList.toggle('visible', window.scrollY > 400);
+  });
+
+  // Insight toggle
+  function toggleInsight(el) {
+    const body = el.nextElementSibling;
+    const isOpen = el.classList.contains('open');
+    if (isOpen) {
+      el.classList.remove('open');
+      body.classList.remove('open');
+    } else {
+      el.classList.add('open');
+      body.classList.add('open');
+    }
+  }
+</script>
+
+</body>
+</html>
