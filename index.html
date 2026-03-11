@@ -371,6 +371,59 @@
     background: var(--accent-soft);
     color: var(--accent);
   }
+
+  /* 研究报告区块 */
+  .reports-section {
+    margin: 40px 0 8px;
+  }
+  .reports-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+    margin-bottom: 16px;
+  }
+  .report-card {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    background: var(--card);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-sm);
+    padding: 18px 22px;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: var(--text);
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+  }
+  .report-card:hover {
+    box-shadow: var(--shadow-hover);
+    border-color: var(--accent-border);
+    transform: translateY(-2px);
+  }
+  .report-card-icon {
+    width: 40px; height: 40px; flex-shrink: 0;
+    background: var(--accent-soft);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+  }
+  .report-card-body { flex: 1; min-width: 0; }
+  .report-card-title {
+    font-weight: 600; font-size: 15px;
+    color: var(--text); margin-bottom: 3px;
+  }
+  .report-card-meta {
+    font-size: 12px; color: var(--text-tertiary);
+  }
+  .report-card-arrow {
+    font-size: 14px; color: var(--text-tertiary);
+    transition: color 0.2s;
+  }
+  .report-card:hover .report-card-arrow { color: var(--accent); }
 </style>
 </head>
 <body>
@@ -401,6 +454,35 @@
     <div class="stat-num">20+</div>
     <div class="stat-label">信源</div>
   </div>
+</div>
+
+<!-- ====== 研究报告 ====== -->
+<div class="reports-section">
+  <div class="reports-title">专题研究报告</div>
+  <a class="report-card" href="report_mobile_ai_claw_2026.html">
+    <div class="report-card-icon">🦞</div>
+    <div class="report-card-body">
+      <div class="report-card-title">三大手机厂商 AI 龙虾全面评测</div>
+      <div class="report-card-meta">2026-03-11 · 小米 miclaw · 华为 小艺Claw · 荣耀 龙虾宇宙</div>
+    </div>
+    <div class="report-card-arrow">→</div>
+  </a>
+  <a class="report-card" href="report_ai_chips_2026.html">
+    <div class="report-card-icon">💾</div>
+    <div class="report-card-body">
+      <div class="report-card-title">AI 芯片格局研究报告</div>
+      <div class="report-card-meta">2026 · 算力底座全景分析</div>
+    </div>
+    <div class="report-card-arrow">→</div>
+  </a>
+  <a class="report-card" href="report_llm_comparison_2026.html">
+    <div class="report-card-icon">🤖</div>
+    <div class="report-card-body">
+      <div class="report-card-title">主流大模型横向对比报告</div>
+      <div class="report-card-meta">2026 · GPT / Claude / Gemini / Qwen 能力矩阵</div>
+    </div>
+    <div class="report-card-arrow">→</div>
+  </a>
 </div>
 
 <!-- ====== 日报存档列表 ====== -->
@@ -555,3 +637,4 @@ function toggleTheme() {
 
 </body>
 </html>
+
