@@ -296,11 +296,23 @@
 
   .footer {
     text-align: center;
-    padding: 48px 0;
-    color: var(--text-tertiary);
-    font-size: 13px;
+    padding: 40px 0 50px;
     border-top: 1px solid var(--border);
-    margin-top: 48px;
+    margin-top: 32px;
+  }
+
+  .footer p {
+    color: var(--text-tertiary);
+    font-size: 12px;
+    line-height: 2;
+  }
+
+  .footer .footer-brand {
+    font-family: 'Noto Serif SC', 'Georgia', serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
   }
 
   .footer a {
@@ -314,40 +326,45 @@
 
   .github-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
   }
 
-  .github-item {
+  .gh-item {
     background: var(--card);
-    border: 1px solid var(--border);
+    border: 1px solid var(--border-light);
     border-radius: var(--radius-sm);
-    padding: 16px;
-    transition: all 0.2s;
+    padding: 16px 18px;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.3s, border-color 0.3s;
   }
 
-  .github-item:hover {
-    box-shadow: var(--shadow-md);
-    border-color: var(--accent-border);
+  .gh-item:hover {
+    box-shadow: var(--shadow-hover);
+    border-color: var(--border);
   }
 
-  .github-item .name {
-    font-weight: 600;
-    font-size: 14px;
-    color: var(--text);
-    margin-bottom: 6px;
+  .gh-name { font-weight: 600; font-size: 13px; margin-bottom: 6px; }
+
+  .gh-name a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: color 0.2s;
   }
 
-  .github-item .desc {
+  .gh-name a:hover { color: var(--accent-hover); text-decoration: underline; }
+
+  .gh-desc {
     font-size: 12px;
     color: var(--text-secondary);
     line-height: 1.6;
     margin-bottom: 8px;
   }
 
-  .github-item .meta {
-    font-size: 11px;
-    color: var(--text-tertiary);
+  .gh-star {
+    font-size: 12px;
+    color: var(--tag-orange);
+    font-weight: 500;
   }
 
   .back-to-top {
@@ -952,50 +969,36 @@
   </div>
 
   <div class="github-grid">
-    <div class="github-item">
-      <div class="name">🤖 microsoft/autogen</div>
-      <div class="desc">A programming framework for agentic AI - 多智能体协作框架，支持复杂任务编排</div>
-      <div class="meta">⭐ 39.2K · Python · 更新于 1 小时前</div>
+    <div class="gh-item">
+      <div class="gh-name"><a href="https://github.com/obra/superpowers">obra/superpowers</a></div>
+      <div class="gh-desc">个人 AI 助手系统：整合日历、邮件、笔记、终端，打造全场景智能工作流</div>
+      <div class="gh-star">⭐ 8,200+ · 今日 +1,387 · Rust</div>
     </div>
-    <div class="github-item">
-      <div class="name">🎨 Automatic1111/Stable-Diffusion-Webui</div>
-      <div class="desc">Stable Diffusion web UI - 最流行的开源 AI 绘图工具</div>
-      <div class="meta">⭐ 148K · Python · 更新于昨天</div>
+    <div class="gh-item">
+      <div class="gh-name"><a href="https://github.com/karpathy/nanochat">karpathy/nanochat</a></div>
+      <div class="gh-desc">Karpathy 新作：极简 LLM 聊天训练框架，从零训练对话模型的教学级实现</div>
+      <div class="gh-star">⭐ 4,500+ · 今日 +705 · Python</div>
     </div>
-    <div class="github-item">
-      <div class="name">💬 ChatGPTNextWeb/NextChat</div>
-      <div class="desc">Next.js 构建的 ChatGPT 网页客户端，支持多模型</div>
-      <div class="meta">⭐ 80K+ · TypeScript · 更新于 6 小时前</div>
+    <div class="gh-item">
+      <div class="gh-name"><a href="https://github.com/virattt/ai-hedge-fund">virattt/ai-hedge-fund</a></div>
+      <div class="gh-desc">AI 对冲基金：多 Agent 协作的量化投资系统，集成基本面/技术面/情绪分析</div>
+      <div class="gh-star">⭐ 18,300+ · 今日 +300 · Python</div>
     </div>
-    <div class="github-item">
-      <div class="name">🌐 open-webui/open-webui</div>
-      <div class="desc">User-friendly AI Interface - 支持 Ollama、OpenAI API 等</div>
-      <div class="meta">⭐ 72.3K · JavaScript · 更新于 18 小时前</div>
-    </div>
-    <div class="github-item">
-      <div class="name">📚 microsoft/Generative-AI-for-Beginners</div>
-      <div class="desc">21 Lessons, Get Started Building with Generative AI - 入门教程</div>
-      <div class="meta">⭐ 70.3K · Jupyter Notebook · 更新于 7 天前</div>
-    </div>
-    <div class="github-item">
-      <div class="name">🦙 rasbt/LLMs-from-scratch</div>
-      <div class="desc">Implement a ChatGPT-like LLM in PyTorch from scratch</div>
-      <div class="meta">⭐ 39.6K · Jupyter Notebook · 更新于 2 天前</div>
-    </div>
-    <div class="github-item">
-      <div class="name">🏢 hpcaitech/ColossalAI</div>
-      <div class="desc">Making large AI models cheaper, faster and accessible</div>
-      <div class="meta">⭐ 39.1K · Python · 更新于 8 小时前</div>
-    </div>
-    <div class="github-item">
-      <div class="name">💬 lobehub/lobe-chat</div>
-      <div class="desc">开源现代设计 AI 聊天框架，支持多模型</div>
-      <div class="meta">⭐ 54.9K · TypeScript · 活跃开发中</div>
+    <div class="gh-item">
+      <div class="gh-name"><a href="https://github.com/nicepkg/agent-skills">nicepkg/agent-skills</a></div>
+      <div class="gh-desc">即用型 Agent 技能集：覆盖研究、工程、分析、金融和写作等多领域</div>
+      <div class="gh-star">⭐ 12,680 · 今日 +926 · TypeScript</div>
     </div>
   </div>
 </section>
 
 </div>
+
+<footer class="footer">
+  <p class="footer-brand">AI Daily Brief</p>
+  <p>2026年3月11日 · 覆盖范围：3月7日-11日</p>
+  <p>数据来源：Reuters · Fortune · <strong>Bloomberg Power On (Mark Gurman)</strong> · CNBC · WIRED · Vox · The Verge · TechCrunch · Ars Technica · VentureBeat · <strong>Ming-Chi Kuo (郭明錤)</strong> · AppleInsider · MacRumors · 9to5Mac · ZDNet · Data Center Knowledge · IGN · GDC 官方 · GameSpot · Game Developer · POKDE · TechPowerUp · NVIDIA GeForce · Radical Data Science · Global News · HuggingFace · GitHub Trending · 机器之心 · 量子位 · 新智元 · 新浪科技 · 搜狐科技 · 快科技 · IT之家 · 财联社 · 科技日报 · 深圳新闻网 · 国际电子商情 · Mean CEO Blog 等 40+ 源</p>
+</footer>
 
 <a href="#" class="back-to-top" id="backToTop" title="回到顶部">&uarr;</a>
 
