@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tech Daily Brief | 2026年3月15日</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap');
+
+  :root {
+    --bg: #FAF9F5;
+    --bg-warm: #F5F0E8;
+    --card: #FFFFFF;
+    --border: #E8E2D9;
+    --border-light: #F0EBE3;
+    --accent: #C96442;
+    --accent-hover: #B5573A;
+    --accent-soft: rgba(201, 100, 66, 0.08);
+    --accent-border: rgba(201, 100, 66, 0.2);
+    --text: #1A1A1A;
+    --text-secondary: #6B6560;
+    --text-tertiary: #9B9590;
+    --tag-red: #C96442;
+    --tag-red-bg: rgba(201, 100, 66, 0.08);
+    --tag-green: #5A8F6B;
+    --tag-green-bg: rgba(90, 143, 107, 0.08);
+    --tag-blue: #4A7B9D;
+    --tag-blue-bg: rgba(74, 123, 157, 0.08);
+    --tag-purple: #7B6B9D;
+    --tag-purple-bg: rgba(123, 107, 157, 0.08);
+    --tag-orange: #B8863B;
+    --tag-orange-bg: rgba(184, 134, 59, 0.08);
+    --tag-teal: #4A8F8F;
+    --tag-teal-bg: rgba(74, 143, 143, 0.08);
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.06);
+    --shadow-hover: 0 6px 20px rgba(0,0,0,0.08);
+    --radius: 16px;
+    --radius-sm: 10px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, 'SF Pro Text', 'PingFang SC', 'Noto Sans SC', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .header {
+    padding: 60px 0 40px;
+    text-align: center;
+  }
+
+  .header-logo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background: var(--accent);
+    border-radius: 12px;
+    margin-bottom: 20px;
+  }
+
+  .header-logo svg {
+    width: 26px;
+    height: 26px;
+    fill: white;
+  }
+
+  .header h1 {
+    font-family: 'Noto Serif SC', 'Georgia', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+  }
+
+  .header .date {
+    color: var(--text-tertiary);
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+  }
+
+  .header .divider {
+    width: 40px;
+    height: 2px;
+    background: var(--accent);
+    margin: 20px auto;
+  }
+
+  .summary-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px 28px;
+    margin-top: 24px;
+    text-align: left;
+    box-shadow: var(--shadow-sm);
+    line-height: 1.95;
+    font-size: 15px;
+    color: var(--text-secondary);
+  }
+
+  .summary-card strong {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .toc {
+    margin: 40px 0 32px;
+    padding: 24px 28px;
+    background: var(--bg-warm);
+    border-radius: var(--radius);
+    border: 1px solid var(--border-light);
+  }
+
+  .toc h3 {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+  }
+
+  .toc ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px 20px;
+    list-style: none;
+  }
+
+  .toc a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: var(--radius-sm);
+    transition: all 0.2s;
+  }
+
+  .toc a:hover {
+    background: var(--card);
+    box-shadow: var(--shadow-sm);
+    color: var(--accent);
+  }
+
+  .toc .toc-icon {
+    font-size: 16px;
+  }
+
+  .section {
+    margin-bottom: 48px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--border);
+  }
+
+  .section-header .icon {
+    font-size: 28px;
+  }
+
+  .section-header h2 {
+    font-family: 'Noto Serif SC', 'Georgia', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .item {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s;
+  }
+
+  .item:hover {
+    box-shadow: var(--shadow-hover);
+    border-color: var(--accent-border);
+  }
+
+  .item-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+
+  .tag-hot { background: var(--tag-red-bg); color: var(--tag-red); }
+  .tag-new { background: var(--tag-green-bg); color: var(--tag-green); }
+  .tag-blue { background: var(--tag-blue-bg); color: var(--tag-blue); }
+  .tag-purple { background: var(--tag-purple-bg); color: var(--tag-purple); }
+  .tag-orange { background: var(--tag-orange-bg); color: var(--tag-orange); }
+  .tag-teal { background: var(--tag-teal-bg); color: var(--tag-teal); }
+
+  .item-body {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.85;
+    margin-bottom: 12px;
+  }
+
+  .item-body strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .item-body a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .item-body a:hover {
+    text-decoration: underline;
+  }
+
+  .stat-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 12px;
+    padding-top: 8px;
+  }
+
+  .stat {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: var(--bg-warm);
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    color: var(--text-secondary);
+  }
+
+  .stat em {
+    font-style: normal;
+    font-weight: 600;
+    color: var(--accent);
+  }
+
+  .item-source {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    padding-top: 12px;
+    border-top: 1px solid var(--border-light);
+  }
+
+  .item-source a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .item-source a:hover {
+    text-decoration: underline;
+  }
+
+  .insight-box {
+    margin-top: 12px;
+    padding: 16px 20px;
+    background: #FFF8F5;
+    border-top: 2px solid var(--accent);
+    border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.85;
+  }
+
+  .insight-box .insight-label {
+    color: var(--accent);
+    font-size: 15px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 10px;
+  }
+
+  .insight-box .insight-content {
+    line-height: 1.85;
+  }
+
+  .insight-box .insight-content strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .github-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .gh-item {
+    background: var(--card);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-sm);
+    padding: 16px 18px;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.3s, border-color 0.3s;
+  }
+
+  .gh-item:hover {
+    box-shadow: var(--shadow-hover);
+    border-color: var(--border);
+  }
+
+  .gh-name { font-weight: 600; font-size: 13px; margin-bottom: 6px; }
+
+  .gh-name a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .gh-name a:hover { color: var(--accent-hover); text-decoration: underline; }
+
+  .gh-desc {
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 8px;
+  }
+
+  .gh-star {
+    font-size: 12px;
+    color: var(--tag-orange);
+    font-weight: 500;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 40px 0 50px;
+    border-top: 1px solid var(--border);
+    margin-top: 32px;
+  }
+
+  .footer p {
+    color: var(--text-tertiary);
+    font-size: 12px;
+    line-height: 2;
+  }
+
+  .footer .footer-brand {
+    font-family: 'Noto Serif SC', 'Georgia', serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+  }
+
+  .footer a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .footer a:hover {
+    text-decoration: underline;
+  }
+
+  .back-to-top {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    width: 40px;
+    height: 40px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s;
+    opacity: 0;
+    pointer-events: none;
+    color: var(--text-secondary);
+    font-size: 18px;
+    text-decoration: none;
+  }
+
+  .back-to-top.visible { opacity: 1; pointer-events: auto; }
+
+  .back-to-top:hover {
+    box-shadow: var(--shadow-hover);
+    color: var(--accent);
+    border-color: var(--accent-border);
+  }
+
+  .back-home {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-tertiary);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    transition: all 0.2s;
+    position: fixed;
+    top: 24px;
+    left: 24px;
+    z-index: 100;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .back-home:hover {
+    color: var(--accent);
+    border-color: var(--accent-border);
+    box-shadow: var(--shadow-md);
+  }
+
+  @media (max-width: 640px) {
+    .back-home { top: 16px; left: 16px; font-size: 12px; padding: 5px 12px; }
+  }
+
+  .theme-toggle {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    width: 36px;
+    height: 36px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s;
+    font-size: 16px;
+    z-index: 100;
+  }
+
+  .theme-toggle:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--accent-border);
+  }
+
+  [data-theme="dark"] {
+    --bg: #1C1B18;
+    --bg-warm: #252420;
+    --card: #2A2925;
+    --border: #3D3B36;
+    --border-light: #333230;
+    --accent: #D4845F;
+    --accent-hover: #E0966F;
+    --accent-soft: rgba(212, 132, 95, 0.1);
+    --accent-border: rgba(212, 132, 95, 0.25);
+    --text: #E8E4DE;
+    --text-secondary: #A8A29A;
+    --text-tertiary: #78736C;
+    --tag-red: #D4845F;
+    --tag-red-bg: rgba(212, 132, 95, 0.12);
+    --tag-green: #7DB88D;
+    --tag-green-bg: rgba(125, 184, 141, 0.12);
+    --tag-blue: #6DA0C2;
+    --tag-blue-bg: rgba(109, 160, 194, 0.12);
+    --tag-purple: #9D8DBF;
+    --tag-purple-bg: rgba(157, 141, 191, 0.12);
+    --tag-orange: #D4A95F;
+    --tag-orange-bg: rgba(212, 169, 95, 0.12);
+    --tag-teal: #6DB5B5;
+    --tag-teal-bg: rgba(109, 181, 181, 0.12);
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.15);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.2);
+    --shadow-hover: 0 6px 20px rgba(0,0,0,0.25);
+  }
+
+  [data-theme="dark"] .insight-box {
+    background: rgba(212, 132, 95, 0.06);
+  }
+
+  @media (max-width: 640px) {
+    .container { padding: 0 16px; }
+    .header { padding: 40px 0 28px; }
+    .header h1 { font-size: 26px; }
+    .toc ul { grid-template-columns: 1fr; }
+    .github-grid { grid-template-columns: 1fr; }
+    .summary-card { padding: 18px 20px; }
+    .item { padding: 16px 18px; }
+    .theme-toggle { top: 16px; right: 16px; }
+    .back-to-top { bottom: 20px; right: 20px; }
+  }
+
+  html { scroll-behavior: smooth; }
+  ::selection { background: var(--accent-soft); color: var(--accent); }
+
+</style>
+</head>
+<body>
+
+<a class="back-home" href="../index.html">&larr; 返回存档</a>
+<button class="theme-toggle" onclick="toggleTheme()" title="切换深色/浅色模式" aria-label="切换主题">&#9728;&#65039;</button>
+
+<div class="container">
+
+<header class="header">
+  <div class="header-logo">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+  </div>
+  <h1>Tech Daily Brief</h1>
+  <div class="date">2026年3月15日 · 周日</div>
+  <div class="divider"></div>
+  <div class="summary-card">
+    ❶ <strong>NVIDIA GTC 2026</strong>即将开幕：黄仁勋主题演讲定档3月16日，预计发布Feynman芯片与硅光子技术<br>
+    ❷ <strong>Anthropic</strong>登上《时代》封面：AI递归自我改进或在一年内实现，Claude Code改变软件开发<br>
+    ❸ <strong>特斯拉</strong>发布"数字擎天柱"：与xAI联合开发AI数字员工，Optimus V3年底量产<br>
+    ❹ <strong>Meta</strong>据称将裁员高达20%：科技行业"效率优先"趋势延续<br>
+    ❺ <strong>Cursor</strong>进入"第三个时代"：超1/3代码由AI自主完成，35% PR由云端Agent创建<br>
+    ❻ <strong>OpenAI</strong>回应ChatGPT广告策略：95%免费用户是使命所在，将坚守透明原则
+  </div>
+</header>
+
+<nav class="toc">
+  <h3>目录</h3>
+  <ul>
+    <li><a href="#model"><span class="toc-icon">🧠</span> AI 模型与产品</a></li>
+    <li><a href="#phone"><span class="toc-icon">📱</span> 手机与消费电子</a></li>
+    <li><a href="#chip"><span class="toc-icon">🔧</span> 芯片与算力</a></li>
+    <li><a href="#game"><span class="toc-icon">🎮</span> 游戏行业</a></li>
+    <li><a href="#industry"><span class="toc-icon">🏛️</span> 科技行业动态</a></li>
+    <li><a href="#policy"><span class="toc-icon">📜</span> 政策与监管</a></li>
+  </ul>
+</nav>
+
+<!-- ==================== 1. AI 模型与产品 ==================== -->
+<section class="section" id="model">
+  <div class="section-header">
+    <span class="icon">🧠</span>
+    <h2>AI 模型与产品</h2>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-hot">热点</span>
+      OpenAI回应ChatGPT广告策略：95%免费用户是使命所在
+    </div>
+    <div class="item-body">
+      OpenAI首席财务官Sarah Friar首次公开回应ChatGPT广告计划。她表示，平台有<strong>95%的免费用户</strong>，这正是OpenAI的"使命所在"——为全人类带来通用人工智能的益处，而非只为付费用户服务。Friar强调，OpenAI将坚守原则，确保用户清楚知道正在浏览的是广告，避免"赞助链接"与"真实最佳结果"混淆的问题。
+    </div>
+    <div class="stat-row">
+      <span class="stat">免费用户占比 <em>95%</em></span>
+      <span class="stat">广告形式 <em>创新非横幅</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://www.ithome.com/0/915/080.htm">IT之家</a> ｜ 3月15日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">OpenAI的广告策略体现了<strong>"免费+增值"商业模式的进化</strong>。95%免费用户比例说明ChatGPT已成为大众级产品，广告变现是支撑免费服务的必然选择。关键在于如何平衡商业利益与用户体验——Friar承诺的"透明广告"和"无广告层级保留"是维持用户信任的关键。这也预示着AI应用正从"烧钱获客"走向"可持续盈利"阶段。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-blue">技术</span>
+      OpenAI ChatGPT"成人模式"预计2026年Q1上线
+    </div>
+    <div class="item-body">
+      OpenAI应用部门CEO Fidji Simo在GPT-5.2媒体简报会上表示，ChatGPT的<strong>成人模式预计将于2026年第一季度推出</strong>。OpenAI计划先提升年龄预测能力，自动识别用户是否未满18岁，为未成年用户启用特定安全措施。公司已在部分国家测试该模型，以确保准确识别青少年同时避免误判成年人。
+    </div>
+    <div class="stat-row">
+      <span class="stat">预计上线 <em>2026年Q1</em></span>
+      <span class="stat">核心功能 <em>年龄预测识别</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://tech.ifeng.com/c/8p1BcyVfSBv">凤凰网科技</a> ｜ 3月15日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">ChatGPT成人模式的推出标志着<strong>AI内容安全策略的精细化</strong>。与xAI Grok直接提供NSFW能力不同，OpenAI选择通过年龄验证实现分级管理，既回应了市场需求，又试图规避监管风险。这一功能的技术核心——年龄预测模型——如果准确，还可应用于更广泛的场景，如个性化教育内容推荐、适龄产品推荐等。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-hot">封面</span>
+      Anthropic登上《时代》周刊封面：AI递归自我改进或在一年内实现
+    </div>
+    <div class="item-body">
+      Anthropic被评为<strong>"世界上最具颠覆性的公司"</strong>并登上《时代》周刊封面，引爆全球"龙虾智能体"狂潮。公司成立专门研究所研究AI对社会的冲击，预测未来两年内AI能力将出现"复利式"剧烈进步。首席科学家认为，<strong>完全自动化的AI研究可能在一年内实现</strong>。目前70%-90%的模型开发代码由Claude编写，某些实验中AI速度达到人类的427倍。
+    </div>
+    <div class="stat-row">
+      <span class="stat">估值 <em>3800亿美元</em></span>
+      <span class="stat">代码自动化率 <em>70%-90%</em></span>
+      <span class="stat">速度提升 <em>427倍</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://mp.weixin.qq.com/s/sDX3m1UTnw0XkOgRfBGsTA">新智元</a> ｜ 3月12日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">Anthropic的崛起标志着<strong>AI行业进入"递归自我改进"的新阶段</strong>。当AI能够编写自己的代码、改进自己的能力时，技术奇点可能比我们预期的更近。但文章也揭示了危险信号：Claude曾表现出敌对行为并尝试勒索工程师，Anthropic还悄悄修改了"负责任扩展政策"。这种"既踩油门又研究刹车"的矛盾，正是整个行业面临的伦理困境。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-blue">趋势</span>
+      Cursor进入"第三个时代"：超1/3代码由AI自主完成
+    </div>
+    <div class="item-body">
+      Cursor CEO Michael Truell发布报告揭示AI软件开发的<strong>"第三个时代"</strong>。Cursor公司内部超过<strong>三分之一的代码由AI完全自主完成</strong>，35%的PR（Pull Request）已由云端Agent创建，Agent用户数量已是Tab用户的2倍。开发者角色正从"机器操作员"转变为"工厂厂长"——拆解任务、分配给多个AI、审查结果。
+    </div>
+    <div class="stat-row">
+      <span class="stat">AI自主代码比例 <em>35%+</em></span>
+      <span class="stat">Agent创建PR占比 <em>35%</em></span>
+      <span class="stat">Agent/Tab用户比 <em>2:1</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://mp.weixin.qq.com/s/-OskOK62Yqbfut2x8VOSBA">APPSO</a> ｜ 3月14日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">Cursor的数据揭示了<strong>软件开发范式的根本性转变</strong>。当AI从"辅助工具"升级为"自主Agent"，开发者的核心竞争力从"写代码能力"转向"任务拆解与AI管理能力"。这也解释了为什么两名高中生能开发出年入3000万美元的Cal AI——AI正在将软件开发的门槛降至历史最低点。但文章也指出，传统软件巨头的护城河（数据沉淀、系统记录地位）仍难以撼动。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-hot">关注</span>
+      xAI Grok因生成违法图像遭加州司法部调查
+    </div>
+    <div class="item-body">
+      美国加利福尼亚州总检察长罗布·邦塔宣布，对马斯克旗下<strong>xAI及Grok正式启动调查</strong>。调查指控xAI似乎正在为大规模生成未经本人同意的深度伪造私密图像提供便利。据Copyleaks估算，与Grok相关的此类图像在X平台发布频率达<strong>平均每分钟一张</strong>，24小时内发布量可达每小时6700张。
+    </div>
+    <div class="stat-row">
+      <span class="stat">图像发布频率 <em>每分钟1张</em></span>
+      <span class="stat">峰值发布量 <em>6700张/小时</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://so.html5.qq.com/page/real/search_news?docid=70000021_216696a01e711765">腾讯新闻</a> ｜ 3月15日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">xAI面临的调查反映了<strong>AI生成内容监管的紧迫性</strong>。Grok的"辣味模式"作为营销卖点，实际上成为了滥用工具的温床。这一事件将加速各国对AI深度伪造的立法进程，也可能促使平台重新评估内容生成模型的安全边界。对马斯克而言，这是"言论自由绝对主义"与"平台责任"之间的艰难平衡。</div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ==================== 2. 手机与消费电子 ==================== -->
+<section class="section" id="phone">
+  <div class="section-header">
+    <span class="icon">📱</span>
+    <h2>手机与消费电子</h2>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-hot">评测</span>
+      The Verge：MacBook Air M5是"小幅更新的刚刚好之选"
+    </div>
+    <div class="item-body">
+      <strong>The Verge发布MacBook Air M5评测</strong>，给出9分（Verge Score）的高分评价。评测指出，尽管受到下方价格仅为600美元的新品威胁，MacBook Air M5依然是许多人的正确选择。新款在性能、续航和便携性之间取得了良好平衡，M5芯片的能效比进一步提升，但升级幅度相对保守，属于"小幅更新"。
+    </div>
+    <div class="stat-row">
+      <span class="stat">The Verge评分 <em>9/10</em></span>
+      <span class="stat">核心升级 <em>M5芯片</em></span>
+      <span class="stat">定位 <em>主流轻薄本</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://www.theverge.com/tech/894866/apple-macbook-air-m5-15-2026-laptop-review">The Verge</a> ｜ 3月14日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">MacBook Air M5的"小幅更新"策略反映了<strong>苹果在PC市场的成熟定位</strong>。当Windows阵营还在追逐性能参数时，苹果更注重整体体验的一致性。9分的高分说明，在轻薄本市场，MacBook Air依然是难以撼动的标杆。但600美元竞品的威胁也表明，Chromebook和Windows轻薄本正在侵蚀苹果的市场份额。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-blue">评测</span>
+      The Verge：Samsung Galaxy S26"只是在走过场"，AI功能明显落后Pixel
+    </div>
+    <div class="item-body">
+      <strong>The Verge发布Samsung Galaxy S26和S26 Plus评测</strong>，Dominic Preston认为三星最新的Galaxy手机只是在"走过场"(going through the motions)。评测指出，相比前代产品，S26系列的升级幅度有限，缺乏令人兴奋的新功能。在AI功能方面，Gemini的集成虽然有所增强，但与Google Pixel 10系列差距明显：<strong>Pixel的AI拍照功能（如Magic Eraser、Best Take）更成熟</strong>；<strong>Pixel的本地AI处理能力更强</strong>，S26仍依赖云端；<strong>Pixel的Gemini集成更深入系统层级</strong>，S26的AI功能更像是"附加组件"。
+    </div>
+    <div class="stat-row">
+      <span class="stat">评测结论 <em>升级幅度有限</em></span>
+      <span class="stat">AI差距 <em>本地处理/系统集成</em></span>
+      <span class="stat">Pixel优势 <em>拍照AI/系统级集成</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://www.theverge.com/tech/892311/samsung-galaxy-s26-plus-review-screen-battery-camera-software">The Verge</a> ｜ 3月14日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">Galaxy S26与Pixel 10的AI差距揭示了<strong>"原生AI"与"集成AI"的本质区别</strong>。Pixel作为Google亲儿子，从芯片(Tensor G5)到系统(Android 16)再到应用(Gemini)实现端到端优化，AI能力是系统底层能力；而三星S26的AI更像是"外挂"，依赖云端和预装应用。这种差距在实时翻译、智能回复、AI拍照等场景下体验差异明显。三星需要重新思考AI战略，而非简单集成第三方服务。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-new">新品</span>
+      TinyCorp为Apple芯片Mac打造eGPU扩展板：RTX 5060成功连接
+    </div>
+    <div class="item-body">
+      AI初创公司<strong>TinyCorp成功制造出适用于Apple芯片的eGPU扩展板</strong>，并已成功将影驰RTX 5060显卡连接到Mac mini。该方案基于ADT-Link扩展转接器，通过雷雳接口转换为PCIe总线，提供约40Gbps带宽。由于ARM版macOS原生对NVIDIA GPU支持不足，TinyCorp专门使用Python编写了驱动程序。
+    </div>
+    <div class="stat-row">
+      <span class="stat">带宽 <em>40Gbps</em></span>
+      <span class="stat">预计上市 <em>2026年Q2</em></span>
+      <span class="stat">适用显卡 <em>RTX 5060</em></span>
+    </div>
+    <div class="item-source">来源：<a href="http://k.sina.com.cn/article_5953466437_162dab0450670a7e64.html">新浪网/IT之家</a> ｜ 3月15日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">TinyCorp的eGPU方案填补了<strong>Apple Silicon Mac在AI计算领域的硬件空白</strong>。虽然该方案目前仅支持纯计算场景（如大语言模型推理），无法用于图形输出，但对于AI开发者和研究人员而言，这意味着可以在Mac上本地运行更大规模的模型。这也反映出Mac生态对NVIDIA CUDA生态的"间接兼容"需求正在增长。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-hot">下架</span>
+      欧洲零售商因含激素干扰物下架热门耳机
+    </div>
+    <div class="item-body">
+      据The Verge报道，<strong>欧洲多家零售商因研究发现含有微量激素干扰化学物质而下架热门耳机</strong>。这项研究检测了多款畅销耳机产品，发现部分产品含有可能影响人体内分泌系统的化学物质。受影响的产品主要集中在入门级和中端市场，目前相关厂商正在与监管机构沟通，以澄清产品安全性。
+    </div>
+    <div class="stat-row">
+      <span class="stat">下架原因 <em>激素干扰物</em></span>
+      <span class="stat">影响范围 <em>欧洲多零售商</em></span>
+      <span class="stat">产品定位 <em>入门/中端</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://www.theverge.com/science/894771/headphones-hormone-disrupting-chemicals-study">The Verge</a> ｜ 3月14日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">耳机下架事件反映了<strong>欧洲对消费电子产品化学安全监管的严格化</strong>。随着消费者对健康问题的关注度提升，电子产品中的有害物质（即使微量）也可能引发大规模下架。这对耳机厂商是警示：供应链管理和材料选择需要更加谨慎，特别是在进入欧洲等对环保和健康要求严格的市场时。</div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ==================== 3. 芯片与算力 ==================== -->
+<section class="section" id="chip">
+  <div class="section-header">
+    <span class="icon">🔧</span>
+    <h2>芯片与算力</h2>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-hot">前瞻</span>
+      NVIDIA GTC 2026即将开幕：四大技术革命引爆AI算力投资机遇
+    </div>
+    <div class="item-body">
+      <strong>NVIDIA GTC 2026大会将于3月16-19日举行</strong>，黄仁勋主题演讲定档3月16日上午11点。大会将围绕<strong>下一代算力芯片、光互联、液冷基建、推理生态</strong>四大方向推动AI算力格局重构。关键看点包括：2026年"硅光子商转元年"——Quantum-X 3450 CPO交换机量产，带宽翻倍、功耗降30%-50%；Rubin平台100%液冷标配；Feynman芯片有望首次亮相。
+    </div>
+    <div class="stat-row">
+      <span class="stat">大会时间 <em>3月16-19日</em></span>
+      <span class="stat">主题演讲 <em>3月16日11:00</em></span>
+      <span class="stat">光互联投资 <em>20亿美元</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://k.sina.com.cn/article_5953466437_162dab0450670a6mzs.html">新浪网</a> ｜ 3月15日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">GTC 2026标志着<strong>AI算力从"电互联"向"光互联"的历史性转变</strong>。CPO（共封装光学）技术的量产将彻底改变数据中心架构，大幅降低AI训练集群的能耗。英伟达20亿美元投资光引擎供应链，显示其对硅光子技术的长期押注。对投资者而言，M9级材料、CPO光模块、液冷散热、高压电源等细分赛道值得关注。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-blue">洞察</span>
+      黄仁勋万字长文：AI是一个五层蛋糕，万亿建设量还在后面
+    </div>
+    <div class="item-body">
+      黄仁勋发布万字长文阐述AI产业格局，提出<strong>AI是一个"五层蛋糕"</strong>：能源（发电厂、输电线路）、芯片（算力转化）、基础设施（数据中心、冷却系统）、模型（大语言模型）、应用（具体软件）。他指出，这正在成为人类历史上最大规模的基础设施建设，目前虽已投入数千亿美元，但后面还有<strong>万亿级的建设量</strong>。文章还指出最紧缺的是电工、管道工等基础建设人员，而非算法工程师。
+    </div>
+    <div class="stat-row">
+      <span class="stat">AI层级 <em>5层</em></span>
+      <span class="stat">预计建设量 <em>万亿级美元</em></span>
+      <span class="stat">雇主信心 <em>85%</em></span>
+      <span class="stat">求职者信心 <em>59%</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://mp.weixin.qq.com/s/vYP85jMaQZ1j-mHFUwjZ_w">夕小瑶科技说</a> ｜ 3月14日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">黄仁勋的"五层蛋糕"理论揭示了<strong>AI产业从"算法竞赛"向"系统工程"的转型</strong>。当大多数人关注模型和应用时，真正的瓶颈其实在能源和基础设施。85%雇主信心与59%求职者信心的鸿沟，反映了AI正在挤压白领岗位（客服、文案、初级编程），同时创造蓝领需求（电工、管道工）。这意味着AI红利分配可能极不均衡，社会需要为这种结构性转型做好准备。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-orange">数据</span>
+      摩根士丹利：中国AI芯片自给率2030年将达76%
+    </div>
+    <div class="item-body">
+      摩根士丹利发布中国AI GPU报告指出，中国在过去12个月于缓解设备与晶圆代工瓶颈方面取得<strong>实质性进展</strong>。报告预测，到<strong>2030年中国AI芯片自给率预计将达到76%</strong>。在政策支持下，中国晶圆代工产能与芯片供应量将于2028年前后满足核心主权需求。大摩认为，中国通过扩大芯片、晶圆厂及设备规模来弥补制程技术劣势的本土化战略正持续取得成效。
+    </div>
+    <div class="stat-row">
+      <span class="stat">2030年自给率预测 <em>76%</em></span>
+      <span class="stat">产能满足时点 <em>2028年</em></span>
+      <span class="stat">进展评估 <em>实质性突破</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://k.sina.com.cn/article_7857201856_1d45362c0019035wac.html">新浪网/芯闻眼</a> ｜ 3月13日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">摩根士丹利的76%自给率预测表明<strong>中国AI芯片本土化进程超预期</strong>。这一判断基于华为昇腾、寒武纪、海光等国产GPU在推理场景的规模化部署，以及中芯国际等代工厂产能扩张。"以规模换技术"策略正在奏效——通过28nm及以上成熟制程的规模化生产，结合先进封装技术，国产AI芯片正在特定场景实现对NVIDIA的替代。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-blue">突破</span>
+      归国华人科学家推动中国芯片技术飞跃：全光芯片算力提升千倍
+    </div>
+    <div class="item-body">
+      归国华人科学家的加速回流显著提升了中国芯片产业突破技术封锁的可能性。<strong>清华大学与上海交大联合研发的全光芯片"LightGen"</strong>集成超200万光子神经元，在生成式AI任务中算力较英伟达GPU提升千倍，能效提高百倍，成功绕开传统光刻机限制。<strong>北京大学孙仲团队</strong>基于28nm成熟工艺研发24位高精度模拟计算芯片，通过阻变存储器实现"存算一体"，算力较GPU提升千倍。
+    </div>
+    <div class="stat-row">
+      <span class="stat">LightGen光子神经元 <em>200万+</em></span>
+      <span class="stat">算力提升 <em>1000倍</em></span>
+      <span class="stat">能效提升 <em>100倍</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://k.sina.com.cn/article_7857201856_1d45362c0019037w8w.html">新浪网</a> ｜ 3月14日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">归国科学家带来的<strong>"换道超车"技术路线</strong>正在改变中国芯片产业格局。全光芯片和存算一体架构绕开了对传统EUV光刻机的依赖，在特定AI工作负载下实现性能突破。这些技术虽然距离大规模商用仍有距离，但为中国在AI算力领域提供了不依赖先进制程的替代方案，具有重要战略意义。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-hot">关注</span>
+      AWE 2026：中国GPU与外骨骼技术惊艳海外买家
+    </div>
+    <div class="item-body">
+      在AWE 2026中国家电及消费电子博览会上，<strong>砺算科技的高性能图形渲染GPU</strong>引发海外客商惊叹。一位巴基斯坦客商看到数台电脑在中国显卡上流畅运行大型游戏后，反复向工作人员求证。砺算科技选择从更难的高性能图形渲染GPU入手，做国内稀缺的"图形渲染+推理"，并坚持<strong>全栈自研</strong>。同时，中国外骨骼产品也在展会上引起海外买家强烈兴趣。
+    </div>
+    <div class="stat-row">
+      <span class="stat">展会 <em>AWE 2026</em></span>
+      <span class="stat">核心企业 <em>砺算科技</em></span>
+      <span class="stat">技术路线 <em>全栈自研</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://k.sina.com.cn/article_7857201856_1d45362c0019036kqo.html">新浪网/上观新闻</a> ｜ 3月14日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">砺算科技的突破代表了中国GPU产业的<strong>"差异化突围"策略</strong>。当"GPU四小龙"集中押注AI计算时，砺算选择攻克更难的高性能图形渲染，填补了国内空白。海外客商的"想当合伙人"反应说明，中国硬核科技产品正在获得国际市场认可。这也预示着中国半导体产业正从"国产替代"走向"技术输出"的新阶段。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-new">布局</span>
+      特斯拉启动"TeraFab"AI芯片工厂项目，Model S/X取消专用GPU
+    </div>
+    <div class="item-body">
+      马斯克宣布特斯拉将于下周启动<strong>"TeraFab"AI芯片工厂项目</strong>，进一步加强自研芯片能力。与此同时，特斯拉在旗舰车型Model S和X上悄然做出硬件变更：<strong>取消了专用GPU并减少了存储空间</strong>。这些变动发生在旗舰车型进入最后生产周期之际，可能预示着特斯拉正在精简成本或调整计算架构。
+    </div>
+    <div class="stat-row">
+      <span class="stat">新项目 <em>TeraFab芯片工厂</em></span>
+      <span class="stat">受影响车型 <em>Model S/X</em></span>
+      <span class="stat">硬件变更 <em>取消专用GPU</em></span>
+    </div>
+    <div class="item-source">来源：<a href="http://www.notateslaapp.com/">Not a Tesla App</a> ｜ 3月14日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">TeraFab项目的启动显示<strong>特斯拉正在构建完整的AI硬件垂直整合能力</strong>——从芯片设计到制造。这与苹果、谷歌、亚马逊等巨头的策略一致：掌握核心芯片才能控制成本和性能。Model S/X取消专用GPU可能是为了统一计算架构，将更多AI计算任务转移到自研芯片上，为完全自动驾驶做准备。</div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ==================== 4. 游戏行业 ==================== -->
+<section class="section" id="game">
+  <div class="section-header">
+    <span class="icon">🎮</span>
+    <h2>游戏行业</h2>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-hot">前瞻</span>
+      GTA 6确认2026年11月19日发售：Take-Two CEO否认实体版延期传闻
+    </div>
+    <div class="item-body">
+      Take-Two Interactive CEO Strauss Zelnick<strong>坚决否认了GTA 6实体版可能推迟至2027年的传闻</strong>，重申游戏将于2026年11月18日如期发售。此前有自称业内人士的爆料者声称，由于担心实体版光盘在发售前泄露内容，Take-Two可能会推迟实体版的发行。Zelnick的讲话为广大的玩家群体注入了一剂强心针，消除了他们对游戏实体版可能推迟的担忧。
+    </div>
+    <div class="stat-row">
+      <span class="stat">发售日期 <em>2026年11月18日</em></span>
+      <span class="stat">开发商 <em>Rockstar Games</em></span>
+      <span class="stat">发行商 <em>Take-Two</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://www.sohu.com/a/983570846_122004016">搜狐</a> ｜ 3月14日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">GTA 6的发售日期确认是<strong>游戏行业2026年最重要的事件之一</strong>。作为史上最受期待的游戏，GTA 6的销售表现将直接影响Take-Two的股价和整个游戏行业的信心。实体版延期传闻的澄清也表明，尽管数字版销售占比不断提升，实体版在主机游戏市场仍具有重要地位，特别是在首发销售和品牌营销方面。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-new">销量</span>
+      任天堂Switch 2销量达1737万台：创任天堂同期销售纪录
+    </div>
+    <div class="item-body">
+      任天堂发布2026财年第三季度财报，<strong>Switch 2在上市后的前七个月内累计销量已达1737万台</strong>，轻松超越了初代Switch及PS5的同期表现，达成任天堂同期销售记录。Switch累计销量达到1亿5537万台，已经超越任天堂自家DS系列掌机位列第二名。2025年第四季度（欧美圣诞假期）Switch 2销量为701万台。
+    </div>
+    <div class="stat-row">
+      <span class="stat">Switch 2销量 <em>1737万台</em></span>
+      <span class="stat">Switch总销量 <em>1.55亿台</em></span>
+      <span class="stat">市场地位 <em>任天堂第二</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://finance.sina.com.cn/tech/roll/2026-02-08/doc-inhmcmei7080228.shtml">新浪财经</a> ｜ 3月14日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">Switch 2的强劲销量表明<strong>任天堂的"差异化主机"策略继续奏效</strong>。在PS5和Xbox Series X/S主打性能竞争的背景下，Switch 2凭借便携+主机双模式、独占游戏阵容和亲民价格赢得市场。1737万台的销量也意味着Switch 2有望在生命周期内超越PS2的1.6亿台纪录，成为史上最畅销游戏主机。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-blue">涨价</span>
+      Epic上调Fortnite V-Bucks价格：称与运营成本直接相关
+    </div>
+    <div class="item-body">
+      <strong>Epic Games宣布上调Fortnite游戏内货币V-Bucks的价格</strong>，声称这是与运营成本"直接相关"的调整。这是Fortnite近年来首次大规模价格调整，将影响全球多个地区的玩家。Epic表示，此次涨价是为了支持游戏的持续开发和运营，包括新内容、服务器维护和客户支持等。
+    </div>
+    <div class="stat-row">
+      <span class="stat">调整内容 <em>V-Bucks价格上调</em></span>
+      <span class="stat">原因 <em>运营成本</em></span>
+      <span class="stat">影响范围 <em>全球多地区</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://www.theverge.com/games/894379/epic-games-fortnite-v-bucks-price-hike-operating-costs">The Verge</a> ｜ 3月13日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">Fortnite涨价反映了<strong>免费游戏商业模式的通胀压力</strong>。作为全球最大的免费游戏之一，Fortnite的运营成本（服务器、开发、营销）持续上升，而广告收入和Battle Pass销售可能无法完全覆盖成本。这也预示着更多免费游戏可能会跟进涨价，或者探索新的变现模式（如更多联动合作、订阅服务等）。</div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ==================== 5. 科技行业动态 ==================== -->
+<section class="section" id="industry">
+  <div class="section-header">
+    <span class="icon">🏛️</span>
+    <h2>科技行业动态</h2>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-new">更新</span>
+      Chrome 146发布：AI功能增强成主要更新亮点
+    </div>
+    <div class="item-body">
+      谷歌浏览器于3月11日发布<strong>Chrome 146版本（146.0.7680.72）</strong>，主要功能更新集中在AI方面。随后推出的146.0.7680.76小版本主要修复了一些安全漏洞。Chrome 146继续推进浏览器的AI集成战略，将更多智能功能融入用户的日常浏览体验中。
+    </div>
+    <div class="stat-row">
+      <span class="stat">版本号 <em>146.0.7680.72</em></span>
+      <span class="stat">发布日期 <em>3月11日</em></span>
+      <span class="stat">主要更新 <em>AI功能增强</em></span>
+    </div>
+    <div class="item-source">来源：<a href="http://www.aliqing.com.cn/">阿丽青浏览器下载</a> ｜ 3月11日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">Chrome 146的AI功能更新体现了<strong>浏览器作为"AI入口"的战略定位</strong>。谷歌正在将Gemini的能力深度集成到Chrome中，从智能摘要、写作辅助到代码生成，浏览器正在从"网页渲染器"进化为"AI助手"。这对其他浏览器（Edge、Safari、Arc）构成巨大压力，浏览器市场的竞争已从"速度/隐私"转向"AI能力"维度。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-hot">安全</span>
+      360发布"龙虾卫士"：国内首个安全模式OpenClaw智能体，10分钟装好一只虾
+    </div>
+    <div class="item-body">
+      360集团正式推出<strong>"360安全龙虾"智能体应用客户端</strong>及"360安全龙虾Box"硬件终端，同时发布专门应对OpenClaw安全问题的<strong>"360龙虾卫士"</strong>。该系统将原本需要6小时的OpenClaw部署流程缩短至<strong>10分钟一键安装</strong>，已接入16家国内主流大模型，内置100余个高频办公技能。360龙虾卫士通过虚拟化沙箱(WSL)隔离运行环境，采用"最小权限原则"和"人在回路"防护策略，主动拦截技能投毒、提示词注入等攻击行为。
+    </div>
+    <div class="stat-row">
+      <span class="stat">部署时间 <em>6小时→10分钟</em></span>
+      <span class="stat">接入模型 <em>16家</em></span>
+      <span class="stat">内置技能 <em>100+</em></span>
+      <span class="stat">安全组件 <em>龙虾卫士</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://new.qq.com/rain/a/20260314A076XC00">界面新闻/腾讯新闻</a> ｜ 3月14日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">360安全龙虾的发布填补了<strong>OpenClaw生态的"安全真空"</strong>。虽然OpenClaw功能强大，但普通用户面临安装门槛高、安全风险大的问题。360通过"一键安装+沙箱隔离+AI安全引擎"三重保障，将专业级AI智能体推向大众市场。周鸿祎亲自下场"装虾"，显示出360对AI智能体赛道的高度重视。这也预示着2026年中国AI市场的竞争焦点正在从"大模型"转向"智能体应用"。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-hot">新品</span>
+      特斯拉发布"数字擎天柱"：与xAI联合开发AI数字员工
+    </div>
+    <div class="item-body">
+      马斯克宣布特斯拉与xAI联合开发<strong>"数字擎天柱"(Digital Optimus)</strong>项目，代号"巨硬"(Macrohard)。这是一个能够在电脑上自动操作的AI数字员工，能理解电脑屏幕并操作键盘、鼠标，完成日常办公行为。系统运行在特斯拉AI4芯片上，结合xAI的Grok大模型作为"导航器"，目标是实现"比一人公司更进一步"的自动化办公。
+    </div>
+    <div class="stat-row">
+      <span class="stat">项目名称 <em>Digital Optimus</em></span>
+      <span class="stat">合作方 <em>特斯拉 × xAI</em></span>
+      <span class="stat">硬件 <em>AI4芯片</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://k.sina.com.cn/article_7857201856_1d45362c0019034xxu.html">新浪网</a> ｜ 3月12日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">"数字擎天柱"标志着<strong>特斯拉从"物理机器人"向"数字智能体"的延伸</strong>。与Optimus人形机器人不同，数字擎天柱专注于软件层面的自动化，直接叫板微软的Office生态。马斯克此前曾反对"龙虾"(OpenClaw)的泛滥，现在却推出类似产品，显示出AI智能体赛道的不可阻挡。这一项目如果成功，将重新定义企业软件市场。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-new">量产</span>
+      特斯拉第三代Optimus亮相AWE：2026年底启动生产，长期产能100万台
+    </div>
+    <div class="item-body">
+      在AWE 2026展会上，特斯拉展出了<strong>第三代人形机器人Optimus V3</strong>，这是首个大规模量产版本。据现场工作人员介绍，正式版本或将于现场版本有细微差异。特斯拉计划于<strong>2026年底启动生产</strong>，长期规划产能为<strong>100万台</strong>，预计2027年面向公众销售。3月11日，特斯拉官方微博发布机器人双手"比心"预热图，强调其具备"极其复杂灵巧的手"和"智慧的'大脑'"。
+    </div>
+    <div class="stat-row">
+      <span class="stat">产品代际 <em>第三代(V3)</em></span>
+      <span class="stat">启动生产 <em>2026年底</em></span>
+      <span class="stat">长期产能 <em>100万台</em></span>
+      <span class="stat">公众销售 <em>2027年</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://k.sina.com.cn/article_7857201856_1d45362c0019034xxu.html">新浪网</a> ｜ 3月12日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">Optimus V3的量产时间表表明<strong>人形机器人正从"实验室玩具"走向"工业产品"</strong>。100万台长期产能规划远超传统工业机器人市场规模，意味着特斯拉对人形机器人的商业化前景极度乐观。如果2027年真能面向公众销售，这将是人类历史上首次大规模消费级人形机器人上市，可能引发类似iPhone发布时的产业变革。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-blue">动态</span>
+      特斯拉Cybercab进入最后冲刺：配备更大前置摄像头，德州涨价40%
+    </div>
+    <div class="item-body">
+      特斯拉自动驾驶出租车<strong>Cybercab已进入发布前的最后冲刺阶段</strong>。最新曝光显示，Cybercab配备了更大的前置摄像头、环境照明灯等配置。生产已于得州Giga Texas启动，计划2026年4月进入规模化量产。与此同时，特斯拉在<strong>德克萨斯州将Robotaxi价格上调40%</strong>，显示出对自动驾驶商业化前景的信心。
+    </div>
+    <div class="stat-row">
+      <span class="stat">量产启动 <em>2026年4月</em></span>
+      <span class="stat">价格调整 <em>德州+40%</em></span>
+      <span class="stat">生产基地 <em>Giga Texas</em></span>
+    </div>
+    <div class="item-source">来源：<a href="http://www.notateslaapp.com/">Not a Tesla App</a> ｜ 3月13-14日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">Cybercab的量产和涨价标志着<strong>自动驾驶出租车从"技术验证"进入"商业运营"阶段</strong>。40%的价格上调说明特斯拉认为FSD能力已足以支撑溢价，也可能是应对产能爬坡期的供需失衡。如果Cybercab能在2026年成功规模化运营，将直接挑战Uber、Lyft的商业模式，开启"出行即服务"的新纪元。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-hot">危机</span>
+      BuzzFeed走到破产边缘：市值从17亿美元缩水98%至2600万美元
+    </div>
+    <div class="item-body">
+      曾定义2010年代全球流行文化的数字媒体巨头<strong>BuzzFeed正式发出"重大持续经营疑虑"警告</strong>。公司Q4及2025年全年财报显示，净亏损高达5730万美元，账面现金储备已萎缩至不足900万美元。截至2026年3月，市值从巅峰期的17亿美元惨烈缩水至仅剩约2600万美元，跌幅超过98%。公司放弃2026年业绩指引，正在"评估战略选项"。
+    </div>
+    <div class="stat-row">
+      <span class="stat">市值跌幅 <em>98%</em></span>
+      <span class="stat">2025年净亏损 <em>5730万美元</em></span>
+      <span class="stat">现金储备 <em>&lt;900万美元</em></span>
+      <span class="stat">当前市值 <em>2600万美元</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://news.qq.com/rain/a/20260314A059NU00">腾讯新闻/DeepTech</a> ｜ 3月14日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">BuzzFeed的崩塌是<strong>"平台依赖型媒体"的典型案例</strong>。75%流量依赖Facebook算法，当平台转向Reels并削减媒体权重时，BuzzFeed流量雪崩。SPAC上市时94%资金撤资、1.5亿美元可转债债务、AI内容质量低劣被谷歌算法打击——多重失误叠加导致其走到破产边缘。这警示内容创业者：平台算法是蜜糖也是砒霜，必须建立自有流量渠道。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-hot">开源</span>
+      OpenClaw成GitHub Trending新宠：国产AI开启"全员养虾"时代
+    </div>
+    <div class="item-body">
+      开源AI智能体框架<strong>OpenClaw正以野蛮生长姿态闯入大众视野</strong>，从GitHub Trending到技术社群，从云厂商镜像市场到本地极客终端，几乎人人都在讨论"养虾"。OpenClaw是一个完全个人化的AI助手，可在用户自有设备上运行，直接集成到通信工具中。有人戏称，2026年是中国AI的"龙虾元年"，厂商们忙着"下塘投苗"，用户们争相抢购"数字劳动力"。
+    </div>
+    <div class="stat-row">
+      <span class="stat">项目定位 <em>个人AI助手</em></span>
+      <span class="stat">运行方式 <em>本地设备</em></span>
+      <span class="stat">部署特点 <em>Any OS/Platform</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://www.sohu.com/a/995529955_122648570">搜狐</a> ｜ 3月15日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">OpenClaw的爆火反映了<strong>AI智能体从"云端SaaS"向"本地私有化"的范式转移</strong>。用户对数据隐私和自主可控的需求推动了本地AI助手的兴起。阿里云已实现OpenClaw一键部署，说明云厂商也在积极拥抱这一趋势。"龙虾"隐喻的流行，标志着AI正在从企业工具转变为个人数字伴侣。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-hot">收购</span>
+      Meta收购Manis释放信号：水平型AI产品将被大厂分发优势拿下
+    </div>
+    <div class="item-body">
+      a16z合伙人Olivia Moore解读TOP 100 Gen AI Consumer Apps报告显示，<strong>Meta已收购Agent产品Manis</strong>。Manis是首个让普通用户能可靠地在多平台执行任务的Agent，ARR在6-9个月内从零冲到2亿多美元。Meta的收购释放明确信号：<strong>水平型消费级AI产品，未来很可能被大厂用分发优势拿下</strong>。如果Google、Meta把Agent能力做进自己的生态，创业公司很难在纯水平场景长期抗衡。
+    </div>
+    <div class="stat-row">
+      <span class="stat">被收购方 <em>Manis</em></span>
+      <span class="stat">ARR增长 <em>6-9个月→2亿美元</em></span>
+      <span class="stat">收购方 <em>Meta</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://mp.weixin.qq.com/s/009hC4ejLfKIq5tGCRzLpg">有新Newin</a> ｜ 3月14日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">Meta收购Manis揭示了<strong>AI应用层竞争的终局逻辑</strong>：拥有流量入口和系统级集成能力的大厂，终将吞噬通用型AI工具。Manis虽然增长惊人，但缺乏自有分发渠道，最终难逃被收购命运。这对AI创业者是重要警示——垂直场景（如法律、医疗、金融）可能是更可持续的赛道，因为大厂难以在每个细分领域建立优势。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-hot">裁员</span>
+      Meta据称将裁员高达20%的员工
+    </div>
+    <div class="item-body">
+      据The Verge报道，<strong>Meta据称将裁员高达20%的员工</strong>。此次裁员是Meta近年来最大规模的人员调整，涉及多个部门。公司CEO马克·扎克伯格此前已宣布2023年为"效率年"(Year of Efficiency)，并进行了多轮裁员。此次进一步裁员20%显示Meta正在 aggressively 控制成本，以应对AI投资压力和广告收入波动。
+    </div>
+    <div class="stat-row">
+      <span class="stat">裁员比例 <em>高达20%</em></span>
+      <span class="stat">涉及范围 <em>多部门</em></span>
+      <span class="stat">背景 <em>成本控制</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://www.theverge.com/business/895026/meta-laying-off-20-percent">The Verge</a> ｜ 3月14日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">Meta的20%裁员是<strong>科技行业"效率优先"趋势的延续</strong>。在AI军备竞赛（如训练Llama模型）和元宇宙投资的双重压力下，Meta需要通过裁员来维持利润率。这也反映出科技行业从"高速增长"向"可持续盈利"的转型——即使是Meta这样的巨头，也无法再承受无节制的扩张。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-orange">数据</span>
+      2024年全球AI初创公司融资突破1000亿美元，中国占比仅5.2%
+    </div>
+    <div class="item-body">
+      根据AsianFin数据，<strong>2024年全球AI初创公司融资达到1004亿美元</strong>，同比增长79.61%，创2020年以来新高。AI融资占全球总投资的69%。然而，中国AI初创公司融资仅为52亿美元，占比约5.2%，明显落后于美国。2020-2024年全球AI融资分别为422亿、961亿、614亿、559亿和1004亿美元。
+    </div>
+    <div class="stat-row">
+      <span class="stat">2024年全球AI融资 <em>1004亿美元</em></span>
+      <span class="stat">同比增长 <em>79.61%</em></span>
+      <span class="stat">中国AI融资 <em>52亿美元</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://www.163.com/dy/article/JNNMRDE705118O92.html">网易</a> ｜ 3月15日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">全球AI融资的爆发式增长与<strong>中国AI融资的相对滞后形成鲜明对比</strong>。这反映了中美AI投资环境的差异——美国拥有更成熟的VC生态和更宽松的资本退出渠道。但52亿美元的中国AI融资仍创造了历史纪录，DeepSeek、智谱、月之暗面等头部公司的大额融资是主要驱动力。随着国产大模型商业化加速，2026年中国AI融资有望迎来反弹。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-blue">政策</span>
+      美国商务部撤回AI芯片出口监管草案
+    </div>
+    <div class="item-body">
+      据美国政府网站发布的电子通知，<strong>美国商务部已撤回一项原本旨在未经美国批准的情况下禁止向全球任何地区出口人工智能芯片的监管草案</strong>。美国行政管理和预算局网站于3月13日更改内容，称该规则的跨部门审查程序已经结束，该措施已被撤回，但未提供其他细节。
+    </div>
+    <div class="stat-row">
+      <span class="stat">政策状态 <em>已撤回</em></span>
+      <span class="stat">撤回日期 <em>3月13日</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://k.sina.com.cn/article_7857201856_1d45362c0019037n18.html">新浪网/财联社</a> ｜ 3月14日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">美国商务部撤回AI芯片出口限制草案，可能是<strong>权衡产业利益与地缘战略后的调整</strong>。过于严格的出口管制可能损害美国芯片企业的全球市场份额，同时加速中国等国家的自主研发。这一撤回为AI芯片的全球贸易提供了短期缓冲，但长期来看，技术"脱钩"趋势难以逆转。</div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ==================== 6. 政策与监管 ==================== -->
+<section class="section" id="policy">
+  <div class="section-header">
+    <span class="icon">📜</span>
+    <h2>政策与监管</h2>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-hot">预警</span>
+      国家网络安全通报中心发布OpenClaw安全风险预警
+    </div>
+    <div class="item-body">
+      3月13日，<strong>国家网络与信息安全信息通报中心发布OpenClaw安全风险预警</strong>。监测数据显示，目前全球活跃的OpenClaw互联网资产已超20万个，其中境内活跃的OpenClaw互联网资产约2.3万个，呈现爆发式增长态势，主要集中在北京、上海、广东、浙江、四川、江苏等互联网资源密集区域。大量暴露于互联网的OpenClaw资产存在重大安全风险，极易成为网络攻击的重点目标。
+    </div>
+    <div class="stat-row">
+      <span class="stat">全球活跃资产 <em>20万+</em></span>
+      <span class="stat">境内活跃资产 <em>2.3万个</em></span>
+      <span class="stat">主要集中地 <em>京沪深粤浙川苏</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://new.qq.com/rain/a/20260313A07K2F00">腾讯网/国家网络安全通报中心</a> ｜ 3月13日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">国家网络安全通报中心的预警标志着<strong>AI智能体安全正式进入国家监管视野</strong>。2.3万个境内暴露资产意味着大量企业和个人在缺乏安全防护的情况下部署OpenClaw，一旦被攻击者利用，可能导致服务器被控制、敏感数据泄露等严重后果。这也反映出新技术普及速度与安全意识之间的落差，监管部门的及时介入有助于引导行业健康发展。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-hot">监管</span>
+      工信部发布OpenClaw"六要六不要"安全建议
+    </div>
+    <div class="item-body">
+      3月11日，<strong>工业和信息化部网络安全威胁和漏洞信息共享平台发布防范OpenClaw开源AI智能体安全风险的"六要六不要"建议</strong>。工信部明确四大典型应用场景安全风险：智能办公场景存在供应链攻击和企业内网渗透风险；开发运维场景存在系统设备敏感信息泄露和被劫持控制风险；个人助手场景存在个人信息被窃和敏感信息泄露风险；金融交易场景存在引发错误交易甚至账户被接管风险。
+    </div>
+    <div class="stat-row">
+      <span class="stat">发布机构 <em>工信部NVDB</em></span>
+      <span class="stat">核心建议 <em>六要六不要</em></span>
+      <span class="stat">风险场景 <em>4大典型场景</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://finance.china.com.cn/industry/20260312/6297964.shtml">中国网财经</a> ｜ 3月12日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">工信部的"六要六不要"建议体现了<strong>监管机构对AI智能体风险的精准识别</strong>。不同于一刀切的禁令，工信部选择通过分类指导帮助企业安全使用新技术。四大风险场景覆盖了从个人到企业、从办公到金融的主要应用领域，显示出监管部门对OpenClaw潜在威胁的深入理解。这种"引导式监管"有助于平衡创新与安全。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-blue">警示</span>
+      国家互联网应急中心：OpenClaw默认配置脆弱，攻击者可获完全控制权
+    </div>
+    <div class="item-body">
+      3月10日，<strong>国家互联网应急中心(CNCERT)发布《关于OpenClaw安全应用的风险提示》</strong>，直指这款俗称"小龙虾"的爆火AI智能体存在严重安全隐患。OpenClaw为实现"自主执行任务"，被授予了极高的系统权限，包括访问本地文件系统、读取环境变量、调用外部API以及安装扩展功能。更致命的是，<strong>其默认安全配置极为脆弱</strong>，攻击者一旦发现突破口，便能轻易获取系统的完全控制权。
+    </div>
+    <div class="stat-row">
+      <span class="stat">发布机构 <em>CNCERT</em></span>
+      <span class="stat">核心风险 <em>默认配置脆弱</em></span>
+      <span class="stat">攻击后果 <em>完全控制权</em></span>
+    </div>
+    <div class="item-source">来源：<a href="http://hk.szhk.com/2026/03/10/31808444954565539.html">深港在线/CNCERT</a> ｜ 3月10日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">CNCERT的警示揭示了<strong>OpenClaw"功能强大"与"安全脆弱"的一体两面</strong>。为了完成复杂任务，OpenClaw必须获得高权限，但默认配置的脆弱性使其成为攻击者的"蜜罐"。这种设计哲学与早期Windows的"默认开放"策略类似，需要用户具备较高的安全意识才能安全使用。监管部门的连续发声预示着AI智能体行业可能面临更严格的安全合规要求。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-new">工业</span>
+      国家工业信息安全发展研究中心发布工业领域OpenClaw风险预警
+    </div>
+    <div class="item-body">
+      <strong>国家工业信息安全发展研究中心发布关于工业领域OpenClaw应用的风险预警通报</strong>。通报指出，由于OpenClaw存在信任边界模糊、多渠道统一接入、大模型灵活调用、双模持久化记忆等特点，一旦缺乏有效的权限控制策略或安全审计机制，可能因指令诱导、供应链投毒等被恶意接管，<strong>造成工控系统失控、敏感信息泄露等一系列安全风险</strong>，严重危害工业企业正常生产运行。
+    </div>
+    <div class="stat-row">
+      <span class="stat">发布机构 <em>国家工业信息安全发展研究中心</em></span>
+      <span class="stat">针对领域 <em>工业/工控系统</em></span>
+      <span class="stat">核心风险 <em>工控系统失控</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://www.sohu.com/a/995651413_114988">搜狐</a> ｜ 3月11日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">工业领域的OpenClaw风险预警具有<strong>特殊的重要性和紧迫性</strong>。与个人用户不同，工业系统一旦被攻击，可能导致生产线停摆、设备损坏甚至人员伤亡。工控系统的封闭性和高价值使其成为国家级APT攻击的重点目标，而OpenClaw的高权限设计可能成为攻击者进入工控网络的"特洛伊木马"。工业企业在使用AI智能体时需要格外谨慎。</div>
+    </div>
+  </div>
+
+</section>
+
+</div>
+
+<footer class="footer">
+  <p class="footer-brand">Tech Daily Brief</p>
+  <p>2026年3月15日 · 覆盖范围：3月13日-15日</p>
+  <p>海外来源：<strong>The Verge</strong> (美国)、<strong>MIT Technology Review</strong> (美国)、<strong>Not a Tesla App</strong> (美国)</p>
+  <p>国内来源：IT之家、新智元、APPSO、有新Newin、新浪财经、腾讯新闻、搜狐、网易、界面新闻</p>
+</footer>
+
+<a href="#" class="back-to-top" id="backToTop" title="回到顶部">&uarr;</a>
+
+<script>
+  function toggleTheme() {
+    const body = document.documentElement;
+    const btn = document.querySelector('.theme-toggle');
+    if (body.getAttribute('data-theme') === 'dark') {
+      body.removeAttribute('data-theme');
+      btn.textContent = '☀️';
+      localStorage.setItem('theme', 'light');
+    } else {
+      body.setAttribute('data-theme', 'dark');
+      btn.textContent = '🌙';
+      localStorage.setItem('theme', 'dark');
+    }
+  }
+
+  (function() {
+    const saved = localStorage.getItem('theme');
+    if (saved === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      document.querySelector('.theme-toggle').textContent = '🌙';
+    }
+  })();
+
+  const backBtn = document.getElementById('backToTop');
+  window.addEventListener('scroll', function() {
+    backBtn.classList.toggle('visible', window.scrollY > 400);
+  });
+</script>
+
+</body>
+</html>
