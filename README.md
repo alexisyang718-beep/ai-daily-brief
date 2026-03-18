@@ -348,26 +348,93 @@ node publish-daily.mjs ../tech-daily-brief/brief/YYYY-MM-DD.html
 
 ---
 
-## 六、项目结构
+## 六、快捷工具
+
+### 一键发布（推荐）
+
+```bash
+cd /Users/yangliu/Documents/Claude\ Code/codebuddy/tech-daily-brief
+
+# 完整发布流程：GitHub + 邮件 + 公众号
+python scripts/publish_all.py
+
+# 发布指定日报
+python scripts/publish_all.py brief/2026-03-18.html
+
+# 只发给测试邮箱（验证效果）
+python scripts/publish_all.py --test-email alexisyang@tencent.com
+
+# 只发给新增的收件人
+python scripts/publish_all.py --new-only
+
+# 跳过某些步骤
+python scripts/publish_all.py --skip-github   # 跳过 GitHub
+python scripts/publish_all.py --skip-email    # 跳过邮件
+python scripts/publish_all.py --skip-wechat   # 跳过公众号
+```
+
+### 社交媒体 CLI 工具
+
+```bash
+# Twitter / Weibo 统一入口（自动设置 PATH）
+python scripts/social_cli.py twitter feed -t following -n 100 --json
+python scripts/social_cli.py twitter search "OpenAI" --json -o results.json
+python scripts/social_cli.py weibo search "AI" -n 50
+
+# 或直接调用（需先 export PATH）
+export PATH="/Users/yangliu/.local/bin:$PATH"
+twitter feed -t following -n 100 --json
+weibo ...
+```
+
+### 邮件发送
+
+```bash
+# 发送给全部收件人（23人）
+python scripts/send_email.py
+
+# 发送给指定邮箱（测试用）
+python scripts/send_email.py --to alexisyang@tencent.com
+
+# 发送给新增的收件人（15人）
+python scripts/send_email.py --new-only
+
+# 指定日报文件
+python scripts/send_email.py brief/2026-03-18.html
+```
+
+---
+
+## 七、项目结构
 
 ```
 tech-daily-brief/
 ├── README.md                  ← 本文件（AI 执行入口）
 ├── template.html              ← 日报 HTML 模板（占位符 + CSS + 结构骨架）
+├── index.html                 ← 日报存档首页（自动更新 BRIEFS 数组）
 ├── brief/                     # 日报 HTML 输出
+│   ├── YYYY-MM-DD.html        # 网页版
+│   ├── YYYY-MM-DD-wechat.html # 公众号版（自动生成）
+│   └── YYYY-MM-DD.md          # Markdown 版（自动生成）
 ├── config/
 │   ├── config.yaml            # 邮件/微信/板块配置
 │   ├── search_keywords.yaml   # 搜索关键词（按板块分类）
 │   ├── weibo_users.yaml       # 微博采集用户列表
+│   └── gaming_sources.yaml    # 游戏行业信源配置
 ├── docs/
 │   ├── lessons_learned.md     # 踩坑记录
 │   ├── quality_rules.md       # 红线详细说明与示例
 │   ├── email_guide.md         # 邮件推送指南
-│   └── wechat_guide.md        # 微信公众号推送指南
+│   ├── wechat_guide.md        # 微信公众号推送指南
+│   └── agent-sop.md           # AI 执行 SOP
 ├── scripts/
-│   ├── send_email.py          # 邮件发送脚本（自动检测最新日报）
-│   └── weibo_fetch.py         # 微博采集脚本（采集配置的中文科技博主）
+│   ├── publish_all.py         # ⭐ 一键发布脚本（GitHub+邮件+公众号）
+│   ├── send_email.py          # 邮件发送脚本（支持灵活选择收件人）
+│   ├── social_cli.py          # Twitter/Weibo 统一调用入口
+│   ├── weibo_fetch.py         # 微博采集脚本
+│   ├── bw_twitter.py          # BrowserWing Twitter 采集
+│   ├── filter_tweets.py       # 推文过滤筛选
+│   └── generate_brief.py      # 日报生成辅助
 └── 关联项目
     └── ../raphael-publish/     # 公众号排版引擎
-    └── ../grok-bridge/        # （已删除，改用 XClaw）
 ```

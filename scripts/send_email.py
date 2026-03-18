@@ -2,8 +2,17 @@
 """
 发送科技资讯日报邮件 — 通过 QQ 邮箱 SMTP
 
-自动检测 brief/ 下最新的日报 HTML 文件并发送。
-也可指定文件：python send_email.py brief/2026-03-13.html
+用法:
+    # 发送给全部收件人（默认）
+    python send_email.py
+    python send_email.py brief/2026-03-18.html
+    
+    # 只发送给指定邮箱（测试用）
+    python send_email.py --to alexisyang@tencent.com
+    python send_email.py --to user1@tencent.com,user2@tencent.com brief/2026-03-18.html
+    
+    # 发送给新增的一批收件人
+    python send_email.py --new-only brief/2026-03-18.html
 
 邮件适配：缩减左右边距、CSS变量→硬编码、去JS/暗黑/外部字体/SVG、premailer内联
 """
@@ -12,8 +21,10 @@ import sys
 import smtplib
 import subprocess
 import warnings
+from email.header import Header
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from email.utils import formataddr
 from pathlib import Path
 from premailer import transform
 
@@ -28,7 +39,8 @@ SMTP_SERVER = "smtp.qq.com"
 SMTP_PORT = 465
 QQ_EMAIL = "422548579@qq.com"
 
-TO_LIST = [
+# 原始收件人（8人）
+ORIGINAL_LIST = [
     "fabzeng@tencent.com",
     "ryanpang@tencent.com",
     "yuxiachen@tencent.com",
@@ -38,6 +50,28 @@ TO_LIST = [
     "allenzqwei@tencent.com",
     "alexisyang@tencent.com",
 ]
+
+# 新增收件人（15人）
+NEW_LIST = [
+    "alexyigong@tencent.com",
+    "camiwei@tencent.com",
+    "coraljzhang@tencent.com",
+    "cynthiarong@tencent.com",
+    "zhenhuaran@tencent.com",
+    "aubreyhjli@tencent.com",
+    "ceciyazhang@tencent.com",
+    "miaruan@tencent.com",
+    "michaellhao@tencent.com",
+    "summersheng@tencent.com",
+    "veranma@tencent.com",
+    "bowenyfeng@tencent.com",
+    "allenrlu@tencent.com",
+    "jakobzhou@tencent.com",
+    "jimhanzhang@tencent.com",
+]
+
+# 全部收件人（默认使用）
+TO_LIST = ORIGINAL_LIST + NEW_LIST
 
 ONLINE_BASE_URL = "https://alexisyang718-beep.github.io/ai-archive/brief"
 
@@ -162,10 +196,30 @@ def adapt_for_email(html):
     return html
 
 
+def parse_args():
+    """解析命令行参数"""
+    import argparse
+    parser = argparse.ArgumentParser(description='发送科技资讯日报邮件')
+    parser.add_argument('file', nargs='?', help='日报 HTML 文件路径（默认自动检测最新）')
+    parser.add_argument('--to', help='指定收件人邮箱，多个用逗号分隔')
+    parser.add_argument('--new-only', action='store_true', help='只发送给新增的收件人')
+    return parser.parse_args()
+
+
 def main():
+    args = parse_args()
+    
+    # 确定收件人列表
+    if args.to:
+        to_list = [e.strip() for e in args.to.split(',')]
+    elif args.new_only:
+        to_list = NEW_LIST
+    else:
+        to_list = TO_LIST
+    
     # 确定输入文件
-    if len(sys.argv) > 1:
-        input_html = Path(sys.argv[1])
+    if args.file:
+        input_html = Path(args.file)
         if not input_html.is_absolute():
             input_html = PROJECT_DIR / input_html
     else:
@@ -218,8 +272,8 @@ def main():
     print("4. 构建邮件...")
     msg = MIMEMultipart('alternative')
     msg['Subject'] = subject
-    msg['From'] = QQ_EMAIL
-    msg['To'] = ', '.join(TO_LIST)
+    msg['From'] = formataddr((str(Header('科技资讯日报', 'utf-8')), QQ_EMAIL))
+    msg['To'] = ', '.join(to_list)
 
     text_part = MIMEText(
         f'{subject}\n\n'
@@ -238,9 +292,9 @@ def main():
         with smtplib.SMTP_SSL(SMTP_SERVER, SMTP_PORT) as server:
             server.login(QQ_EMAIL, auth_code)
             print("   登录成功!")
-            server.sendmail(QQ_EMAIL, TO_LIST, msg.as_string())
-            print(f"\n✅ 邮件发送成功！ → {len(TO_LIST)} 位收件人")
-            for addr in TO_LIST:
+            server.sendmail(QQ_EMAIL, to_list, msg.as_string())
+            print(f"\n✅ 邮件发送成功！ → {len(to_list)} 位收件人")
+            for addr in to_list:
                 print(f"   📧 {addr}")
     except Exception as e:
         print(f"\n❌ 发送失败: {e}")
