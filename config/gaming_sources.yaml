@@ -1,0 +1,666 @@
+# PC & Console 游戏行业信源配置
+# 用于 tech-daily-brief 游戏行业板块的信源采集
+# 来源: news-agent.md / unified_rss_sources.json
+# 更新: 2026-03-17
+
+_meta:
+  version: "1.0.0"
+  description: "PC & Console 游戏行业信源 - 130+ 源，四层分级"
+  total_sources: 130
+  last_updated: "2026-03-17"
+
+# === Tier 1: 一手核心信源（可信度⭐⭐⭐⭐⭐）===
+tier1:
+  description: "官方公告、IR页面、数据平台 - 可直接引用"
+  
+  platforms:
+    name: "平台官方"
+    priority: P1
+    sources:
+      - name: "PlayStation Blog"
+        url: "https://blog.playstation.com/feed/"
+        type: rss
+        lang: en
+        category: platform
+      - name: "PlayStation Twitter"
+        url: "https://twitter.com/PlayStation"
+        type: twitter
+        lang: en
+        category: platform
+      - name: "Xbox Wire"
+        url: "https://news.xbox.com/en-us/feed/"
+        type: rss
+        lang: en
+        category: platform
+      - name: "Xbox Twitter"
+        url: "https://twitter.com/Xbox"
+        type: twitter
+        lang: en
+        category: platform
+      - name: "Nintendo Official"
+        url: "https://www.nintendo.com/whatsnew/feed/"
+        type: rss
+        lang: en
+        category: platform
+      - name: "Nintendo Twitter"
+        url: "https://twitter.com/NintendoAmerica"
+        type: twitter
+        lang: en
+        category: platform
+      - name: "Steamworks Blog"
+        url: "https://steamcommunity.com/groups/steamworks/announcements/rss"
+        type: rss
+        lang: en
+        category: platform
+      - name: "Steam Twitter"
+        url: "https://twitter.com/Steam"
+        type: twitter
+        lang: en
+        category: platform
+      - name: "Epic Games Newsroom"
+        url: "https://www.epicgames.com/site/en-US/news/rss"
+        type: rss
+        lang: en
+        category: platform
+      - name: "Epic Games Twitter"
+        url: "https://twitter.com/EpicGames"
+        type: twitter
+        lang: en
+        category: platform
+
+  publishers_global:
+    name: "全球发行商"
+    priority: P1
+    sources:
+      - name: "EA News"
+        url: "https://www.ea.com/news/rss"
+        type: rss
+        lang: en
+        category: publisher
+      - name: "EA IR"
+        url: "https://ir.ea.com/rss/press-releases.aspx"
+        type: rss
+        lang: en
+        category: publisher_ir
+      - name: "Take-Two IR"
+        url: "https://ir.take2games.com/news-events/news-releases"
+        type: web
+        lang: en
+        category: publisher_ir
+      - name: "Ubisoft News"
+        url: "https://news.ubisoft.com/en-us/feed"
+        type: rss
+        lang: en
+        category: publisher
+      - name: "Ubisoft IR"
+        url: "https://www.ubisoft.com/en-us/company/about-us/investors"
+        type: web
+        lang: en
+        category: publisher_ir
+      - name: "Activision Blizzard News"
+        url: "https://www.activision.com/news"
+        type: web
+        lang: en
+        category: publisher
+      - name: "Activision Blizzard IR"
+        url: "https://investor.activision.com/news-events/news-releases"
+        type: web
+        lang: en
+        category: publisher_ir
+      - name: "腾讯游戏"
+        url: "https://game.qq.com/news/"
+        type: web
+        lang: zh
+        category: publisher
+      - name: "腾讯IR"
+        url: "https://www.tencent.com/en-us/investors.html"
+        type: web
+        lang: en
+        category: publisher_ir
+      - name: "网易游戏"
+        url: "https://game.163.com/news/"
+        type: web
+        lang: zh
+        category: publisher
+      - name: "网易IR"
+        url: "https://ir.netease.com/news-releases"
+        type: web
+        lang: en
+        category: publisher_ir
+
+  publishers_japan:
+    name: "日本发行商"
+    priority: P1
+    sources:
+      - name: "任天堂新闻"
+        url: "https://www.nintendo.co.jp/rss/index.xml"
+        type: rss
+        lang: ja
+        category: publisher
+      - name: "任天堂IR"
+        url: "https://www.nintendo.co.jp/ir/en/"
+        type: web
+        lang: en
+        category: publisher_ir
+      - name: "万代南梦宫新闻"
+        url: "https://www.bandainamcoent.co.jp/rss/news.xml"
+        type: rss
+        lang: ja
+        category: publisher
+      - name: "万代南梦宫IR"
+        url: "https://www.bandainamco.co.jp/en/ir/"
+        type: web
+        lang: en
+        category: publisher_ir
+      - name: "卡普空新闻"
+        url: "https://www.capcom.co.jp/rss/news.xml"
+        type: rss
+        lang: ja
+        category: publisher
+      - name: "卡普空IR"
+        url: "https://www.capcom.co.jp/ir/english/"
+        type: web
+        lang: en
+        category: publisher_ir
+      - name: "Square Enix新闻"
+        url: "https://www.jp.square-enix.com/corporate/ja/news/"
+        type: web
+        lang: ja
+        category: publisher
+      - name: "Square Enix IR"
+        url: "https://www.hd.square-enix.com/eng/ir/"
+        type: web
+        lang: en
+        category: publisher_ir
+      - name: "世嘉新闻"
+        url: "https://www.sega.co.jp/rss/news.xml"
+        type: rss
+        lang: ja
+        category: publisher
+      - name: "世嘉IR"
+        url: "https://www.segasammy.co.jp/en/ir/"
+        type: web
+        lang: en
+        category: publisher_ir
+      - name: "科乐美新闻"
+        url: "https://www.konami.com/games/jp/ja/topics/rss.xml"
+        type: rss
+        lang: ja
+        category: publisher
+      - name: "科乐美IR"
+        url: "https://www.konami.com/ir/en/"
+        type: web
+        lang: en
+        category: publisher_ir
+      - name: "光荣特库摩新闻"
+        url: "https://www.gamecity.ne.jp/rss/news.xml"
+        type: rss
+        lang: ja
+        category: publisher
+      - name: "光荣特库摩IR"
+        url: "https://www.koeitecmo.co.jp/ir/"
+        type: web
+        lang: ja
+        category: publisher_ir
+
+  publishers_others:
+    name: "其他发行商"
+    priority: P2
+    sources:
+      - name: "Nexon IR"
+        url: "https://ir.nexon.co.jp/en/"
+        type: web
+        lang: en
+        category: publisher_ir
+      - name: "Krafton IR"
+        url: "https://ir.krafton.com/"
+        type: web
+        lang: en
+        category: publisher_ir
+      - name: "CD Projekt Red"
+        url: "https://www.cdprojekt.com/en/news/"
+        type: web
+        lang: en
+        category: publisher
+      - name: "CD Projekt IR"
+        url: "https://www.cdprojekt.com/en/investors/"
+        type: web
+        lang: en
+        category: publisher_ir
+      - name: "Paradox Interactive IR"
+        url: "https://www.paradoxinteractive.com/investors"
+        type: web
+        lang: en
+        category: publisher_ir
+      - name: "NCSoft IR"
+        url: "https://ir.ncsoft.com/en"
+        type: web
+        lang: en
+        category: publisher_ir
+
+  data_charts:
+    name: "数据榜单"
+    priority: P1
+    sources:
+      - name: "SteamDB"
+        url: "https://steamdb.info/charts/"
+        type: web
+        lang: en
+        category: data
+      - name: "SteamDB Twitter"
+        url: "https://twitter.com/SteamDB"
+        type: twitter
+        lang: en
+        category: data
+      - name: "Famitsu销量榜"
+        url: "https://www.famitsu.com/ranking/game-sales/"
+        type: web
+        lang: ja
+        category: data
+      - name: "VGChartz"
+        url: "http://www.vgchartz.com/"
+        type: web
+        lang: en
+        category: data
+      - name: "Circana"
+        url: "https://www.circana.com/intelligence/games/"
+        type: web
+        lang: en
+        category: data
+      - name: "GameDiscoverCo"
+        url: "https://www.gamediscover.co/"
+        type: web
+        lang: en
+        category: data
+
+# === Tier 2: 专业媒体与分析（可信度⭐⭐⭐⭐）===
+tier2:
+  description: "专业媒体与分析机构 - 可引用，关键数据需交叉验证"
+
+  intl_gaming_media:
+    name: "国际游戏媒体"
+    priority: P1
+    sources:
+      - name: "GamesIndustry.biz"
+        url: "https://www.gamesindustry.biz/rss"
+        type: rss
+        lang: en
+        category: media
+      - name: "IGN"
+        url: "https://www.ign.com/rss/articles"
+        type: rss
+        lang: en
+        category: media
+      - name: "Eurogamer"
+        url: "https://www.eurogamer.net/feed"
+        type: rss
+        lang: en
+        category: media
+      - name: "Video Games Chronicle"
+        url: "https://www.videogameschronicle.com/feed/"
+        type: rss
+        lang: en
+        category: media
+      - name: "PC Gamer"
+        url: "https://www.pcgamer.com/rss/"
+        type: rss
+        lang: en
+        category: media
+      - name: "The Verge Gaming"
+        url: "https://www.theverge.com/gaming/rss/index.xml"
+        type: rss
+        lang: en
+        category: media
+      - name: "Wired Gaming"
+        url: "https://www.wired.com/tag/games/rss"
+        type: rss
+        lang: en
+        category: media
+      - name: "Ars Technica Gaming"
+        url: "https://arstechnica.com/gaming/feed/"
+        type: rss
+        lang: en
+        category: media
+      - name: "GameSpot"
+        url: "https://www.gamespot.com/feeds/news/"
+        type: rss
+        lang: en
+        category: media
+      - name: "Polygon"
+        url: "https://www.polygon.com/rss/index.xml"
+        type: rss
+        lang: en
+        category: media
+      - name: "Kotaku"
+        url: "https://kotaku.com/rss"
+        type: rss
+        lang: en
+        category: media
+      - name: "Rock Paper Shotgun"
+        url: "https://www.rockpapershotgun.com/feed"
+        type: rss
+        lang: en
+        category: media
+      - name: "VG247"
+        url: "https://www.vg247.com/feed"
+        type: rss
+        lang: en
+        category: media
+      - name: "Destructoid"
+        url: "https://www.destructoid.com/feed/"
+        type: rss
+        lang: en
+        category: media
+
+  cn_gaming_media:
+    name: "中文游戏媒体"
+    priority: P2
+    sources:
+      - name: "机核"
+        url: "https://www.gcores.com/rss"
+        type: rss
+        lang: zh
+        category: media
+      - name: "3DM"
+        url: "https://www.3dmgame.com/rss/"
+        type: rss
+        lang: zh
+        category: media
+      - name: "游民星空"
+        url: "https://www.gamersky.com/rss/"
+        type: rss
+        lang: zh
+        category: media
+      - name: "触乐"
+        url: "https://www.chuapp.com/feed"
+        type: rss
+        lang: zh
+        category: media
+      - name: "游戏时光"
+        url: "https://www.vgtime.com/rss.jhtml"
+        type: rss
+        lang: zh
+        category: media
+      - name: "A9VG"
+        url: "https://www.a9vg.com/rss/"
+        type: rss
+        lang: zh
+        category: media
+      - name: "游研社"
+        url: "https://www.yystv.cn/rss/feed"
+        type: rss
+        lang: zh
+        category: media
+      - name: "篝火营地"
+        url: "https://gouhuo.qq.com/feed/"
+        type: rss
+        lang: zh
+        category: media
+
+  industry_analysts:
+    name: "行业分析机构"
+    priority: P2
+    sources:
+      - name: "Newzoo"
+        url: "https://newzoo.com/insights/"
+        type: web
+        lang: en
+        category: analyst
+      - name: "VGInsights"
+        url: "https://vginsights.com/"
+        type: web
+        lang: en
+        category: analyst
+      - name: "Niko Partners"
+        url: "https://nikopartners.com/insights/"
+        type: web
+        lang: en
+        category: analyst
+      - name: "伽马数据"
+        url: "http://www.cngamma.com/"
+        type: web
+        lang: zh
+        category: analyst
+      - name: "Sensor Tower"
+        url: "https://sensortower.com/blog"
+        type: web
+        lang: en
+        category: analyst
+
+  key_people:
+    name: "行业关键人物"
+    priority: P1
+    sources:
+      - name: "Phil Spencer"
+        url: "https://twitter.com/XboxP3"
+        type: twitter
+        lang: en
+        category: person
+      - name: "Jason Schreier"
+        url: "https://twitter.com/jasonschreier"
+        type: twitter
+        lang: en
+        category: person
+      - name: "Geoff Keighley"
+        url: "https://twitter.com/geoffkeighley"
+        type: twitter
+        lang: en
+        category: person
+      - name: "Shuhei Yoshida"
+        url: "https://twitter.com/yosp"
+        type: twitter
+        lang: en
+        category: person
+      - name: "Hideki Kamiya"
+        url: "https://twitter.com/PG_kamiya"
+        type: twitter
+        lang: ja
+        category: person
+      - name: "Hideo Kojima"
+        url: "https://twitter.com/HIDEO_KOJIMA_EN"
+        type: twitter
+        lang: en
+        category: person
+      - name: "Tim Sweeney"
+        url: "https://twitter.com/TimSweeneyEpic"
+        type: twitter
+        lang: en
+        category: person
+      - name: "Mark Cerny"
+        url: "https://twitter.com/MarkCerny"
+        type: twitter
+        lang: en
+        category: person
+
+# === Tier 3: 深度补充（可信度⭐⭐⭐）===
+tier3:
+  description: "社区、投资、硬件 - 需二次确认，标注来源层级"
+
+  community:
+    name: "玩家社区"
+    priority: P3
+    sources:
+      - name: "Reddit r/gaming"
+        url: "https://www.reddit.com/r/gaming/.rss"
+        type: rss
+        lang: en
+        category: community
+      - name: "Reddit r/PS5"
+        url: "https://www.reddit.com/r/PS5/.rss"
+        type: rss
+        lang: en
+        category: community
+      - name: "Reddit r/Xbox"
+        url: "https://www.reddit.com/r/xbox/.rss"
+        type: rss
+        lang: en
+        category: community
+      - name: "Reddit r/NintendoSwitch"
+        url: "https://www.reddit.com/r/NintendoSwitch/.rss"
+        type: rss
+        lang: en
+        category: community
+      - name: "Reddit r/pcgaming"
+        url: "https://www.reddit.com/r/pcgaming/.rss"
+        type: rss
+        lang: en
+        category: community
+      - name: "ResetEra"
+        url: "https://www.resetera.com/forums/gaming-news."
+        type: web
+        lang: en
+        category: community
+      - name: "NGA 论坛"
+        url: "https://bbs.nga.cn/thread.php?fid=414"
+        type: web
+        lang: zh
+        category: community
+      - name: "Steam 社区公告"
+        url: "https://store.steampowered.com/feeds/news/"
+        type: rss
+        lang: en
+        category: community
+
+  investment:
+    name: "投资并购动态"
+    priority: P2
+    sources:
+      - name: "InvestGame"
+        url: "https://investgame.net/"
+        type: web
+        lang: en
+        category: investment
+      - name: "Konvoy"
+        url: "https://www.konvoy.vc/insights"
+        type: web
+        lang: en
+        category: investment
+      - name: "GamesBeat"
+        url: "https://venturebeat.com/games/"
+        type: rss
+        lang: en
+        category: investment
+      - name: "PitchBook Gaming"
+        url: "https://pitchbook.com/news/reports"
+        type: web
+        lang: en
+        category: investment
+
+  hardware:
+    name: "硬件评测"
+    priority: P2
+    sources:
+      - name: "Digital Foundry"
+        url: "https://www.eurogamer.net/digitalfoundry/rss"
+        type: rss
+        lang: en
+        category: hardware
+      - name: "Tom's Hardware"
+        url: "https://www.tomshardware.com/rss.xml"
+        type: rss
+        lang: en
+        category: hardware
+      - name: "VideoCardz"
+        url: "https://videocardz.com/feed"
+        type: rss
+        lang: en
+        category: hardware
+      - name: "AnandTech"
+        url: "https://www.anandtech.com/rss/"
+        type: rss
+        lang: en
+        category: hardware
+      - name: "TechPowerUp"
+        url: "https://www.techpowerup.com/rss/news"
+        type: rss
+        lang: en
+        category: hardware
+
+  policy_events:
+    name: "政策法规与行业活动"
+    priority: P3
+    sources:
+      - name: "国家新闻出版署版号公示"
+        url: "https://www.nppa.gov.cn/"
+        type: web
+        lang: zh
+        category: policy
+      - name: "GDC"
+        url: "https://gdconf.com/news"
+        type: web
+        lang: en
+        category: event
+      - name: "Gamescom"
+        url: "https://www.gamescom.global/"
+        type: web
+        lang: en
+        category: event
+      - name: "ESA"
+        url: "https://www.theesa.com/news/"
+        type: web
+        lang: en
+        category: policy
+      - name: "The Game Awards"
+        url: "https://thegameawards.com/"
+        type: web
+        lang: en
+        category: event
+
+# === Tier 4: 聚合补充（可信度⭐⭐）===
+tier4:
+  description: "聚合站 - 仅作线索，必须找到原始来源"
+  
+  aggregators:
+    name: "聚合站"
+    priority: P3
+    sources:
+      - name: "Metacritic"
+        url: "https://www.metacritic.com/rss"
+        type: rss
+        lang: en
+        category: aggregator
+      - name: "Insider Gaming"
+        url: "https://insider-gaming.com/feed/"
+        type: rss
+        lang: en
+        category: aggregator
+      - name: "Wccftech Gaming"
+        url: "https://wccftech.com/category/gaming/feed/"
+        type: rss
+        lang: en
+        category: aggregator
+      - name: "MP1st"
+        url: "https://mp1st.com/feed"
+        type: rss
+        lang: en
+        category: aggregator
+      - name: "GamingBolt"
+        url: "https://gamingbolt.com/feed"
+        type: rss
+        lang: en
+        category: aggregator
+      - name: "Gematsu"
+        url: "https://www.gematsu.com/feed"
+        type: rss
+        lang: en
+        category: aggregator
+
+# === 使用说明 ===
+usage:
+  credibility_rules:
+    tier1: "⭐⭐⭐⭐⭐ 可直接引用"
+    tier2: "⭐⭐⭐⭐ 可引用，关键数据需交叉验证"
+    tier3: "⭐⭐⭐ 需二次确认，标注来源层级"
+    tier4: "⭐⭐ 仅作线索，必须找到原始来源"
+  
+  cross_validation:
+    high_importance: "≥2个独立信源（至少1个Tier 1-2）"
+    medium_importance: "至少1个Tier 1-2信源"
+    low_importance: "Tier 3-4单源可接受，需标注"
+  
+  category_mapping:
+    platform: "平台动态 - Steam/PS/Xbox/Switch/Epic政策、订阅服务"
+    game: "重点新品 - 3A发售、预告、销量"
+    hardware: "硬件生态 - 主机/PC硬件/VR设备"
+    policy: "政策战略 - 并购/监管/版号"
+    market: "市场数据 - 销量/趋势报告"

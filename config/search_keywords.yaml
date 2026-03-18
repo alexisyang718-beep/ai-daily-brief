@@ -69,19 +69,45 @@ chips:
     - "算力 短缺 OR 智算中心 OR 芯片 出口管制"
 
 # ── 4. 游戏行业 ──
+# 信源配置见 config/gaming_sources.yaml（130+ 源，四层分级）
 gaming:
   en:
-    - "Xbox OR PlayStation OR PS5 OR Nintendo OR Switch 2 OR Steam OR Epic Games"
-    - "Activision Blizzard OR EA Games OR Ubisoft OR Take-Two OR Rockstar"
-    - "Tencent Games OR NetEase Games OR miHoYo OR HoYoverse OR Genshin"
-    - "AI game OR AI NPC OR game release 2026 OR GDC OR cloud gaming"
+    # 平台动态
+    - "PlayStation Blog OR Xbox Wire OR Nintendo Direct OR Steamworks OR Epic Games Store"
+    - "PS Plus OR Game Pass OR Nintendo Switch Online OR Steam Deck"
+    # 发行商动态
+    - "Activision Blizzard OR EA Games OR Ubisoft OR Take-Two OR Rockstar Games"
+    - "Tencent Games OR NetEase OR miHoYo OR HoYoverse OR Genshin Impact"
+    - "Sony Interactive Entertainment OR Microsoft Gaming OR Nintendo IR"
+    # 游戏发售与更新
+    - "GTA 6 OR Grand Theft Auto VI OR game release 2026 OR game launch"
+    - "Switch 2 OR PS5 Pro OR new console announcement OR hardware reveal"
+    # 行业趋势
+    - "AI game OR AI NPC OR generative AI gaming OR cloud gaming"
+    - "GDC 2026 OR Gamescom OR The Game Awards OR game industry report"
+    # 投资并购
+    - "gaming acquisition OR game studio merger OR investment gaming 2026"
+    # 数据榜单
+    - "SteamDB OR VGChartz OR Circana OR GameDiscoverCo OR Famitsu chart"
   zh:
-    - "Xbox OR PS5 OR 任天堂 OR Switch 2 OR Steam OR Epic"
-    - "暴雪 OR EA OR 育碧 OR Rockstar OR GTA"
+    # 平台动态
+    - "PlayStation OR Xbox OR 任天堂 OR Switch 2 OR Steam OR Epic"
+    - "PS Plus OR Game Pass OR 任天堂会员 OR Steam 促销"
+    # 发行商动态
+    - "暴雪 OR 动视暴雪 OR EA OR 育碧 OR Rockstar OR GTA 6"
     - "腾讯游戏 OR 天美 OR 光子 OR 王者荣耀 OR 和平精英"
-    - "网易游戏 OR 米哈游 OR 原神 OR 崩坏 星穹铁道 OR 绝区零"
-    - "叠纸 OR 鹰角 OR 莉莉丝 OR 游戏科学 OR 黑神话"
-    - "AI 游戏 OR AI NPC OR 游戏 裁员 OR 游戏 出海"
+    - "网易游戏 OR 雷火 OR 互娱 OR 梦幻西游 OR 大话西游"
+    - "米哈游 OR 原神 OR 崩坏 星穹铁道 OR 绝区零 OR 崩坏3"
+    - "叠纸游戏 OR 恋与深空 OR 鹰角网络 OR 明日方舟"
+    - "莉莉丝 OR 剑与远征 OR 游戏科学 OR 黑神话 悟空"
+    # 游戏发售
+    - "新游戏 发售 OR 游戏 上线 OR 游戏 预告 OR 游戏 延期"
+    - "Switch 2 发布 OR PS5 Pro OR 新主机 公布"
+    # 行业趋势
+    - "AI 游戏 OR AI NPC OR 云游戏 OR 游戏 AI"
+    - "游戏 裁员 OR 游戏 出海 OR 游戏 版号"
+    # 数据榜单
+    - "Steam 销量 OR 游戏 排行榜 OR 游戏 数据"
 
 # ── 5. 科技行业动态 ──
 # 科技巨头的业务/财务/战略动态（非产品发布），与 AI、手机板块有交叉

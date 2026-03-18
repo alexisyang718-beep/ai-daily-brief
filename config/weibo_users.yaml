@@ -1,0 +1,72 @@
+# 微博采集配置
+# 更新：2026-03-16
+# 策略：每日采集以下科技博主的最新微博，作为中文科技信息来源补充
+
+# 关注的微博博主（按 UID 或用户名配置）
+# 推荐使用用户名搜索，weibo-cli 会自动匹配
+weibo_users:
+  # 数码科技类
+  - name: "数码闲聊站"
+    uid: "6048569942"
+    category: "手机/芯片"
+    description: "知名数码博主，专注手机/芯片等数码产品爆料"
+
+  - name: "科技数码"
+    uid: ""  # 待获取
+    category: "手机/芯片"
+    description: "科技数码资讯"
+
+  - name: "IT之家"
+    uid: ""
+    category: "科技新闻"
+    description: "科技新闻网站"
+
+  - name: "爱范儿"
+    uid: ""
+    category: "科技媒体"
+    description: "科技媒体"
+
+  - name: "钛媒体"
+    uid: ""
+    category: "科技媒体"
+    description: "科技媒体"
+
+  - name: "机器之心"
+    uid: ""
+    category: "AI/科技"
+    description: "AI 科技媒体"
+
+  - name: "量子位"
+    uid: ""
+    category: "AI/科技"
+    description: "AI 科技媒体"
+
+  - name: "新智元"
+    uid: ""
+    category: "AI/科技"
+    description: "AI 科技媒体"
+
+  - name: "36氪"
+    uid: ""
+    category: "科技媒体"
+    description: "科技媒体"
+
+  - name: "虎嗅"
+    uid: ""
+    category: "科技媒体"
+    description: "科技媒体"
+
+# 采集参数
+settings:
+  # 每个用户采集最近多少条微博
+  max_weibos_per_user: 10
+
+  # 是否只采集原创微博（不含转发）
+  original_only: false
+
+  # 关键词过滤（可选）：只保留包含这些关键词的微博
+  # keywords:
+  #   - "AI"
+  #   - "大模型"
+  #   - "手机"
+  #   - "芯片"

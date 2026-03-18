@@ -2,7 +2,7 @@
 
 > **⚠️ AI 执行入口：生成日报前必须读完本文件，并按顺序执行。**
 
-> 🚫 **全局规则：L0 X/Twitter 采集是硬性阻断点。BrowserWing 启动失败或 Cookie 过期 → 必须立刻停止，告知用户，等待修复。绝对禁止跳过 L0 直接执行 L1 或后续步骤。违反此规则 = 整期日报作废。**
+> 🚫 **全局规则：L0 X/Twitter 采集是硬性阻断点。twitter-cli 失败或 Cookie 过期 → 必须立刻停止，告知用户，等待修复。绝对禁止跳过 L0 直接执行 L1 或后续步骤。违反此规则 = 整期日报作废。**
 
 ---
 
@@ -31,120 +31,160 @@
 
 | 级别 | 动作 | 轮次 | 说明 |
 |------|------|------|------|
-| **L0 X/Twitter** | BrowserWing 浏览 Following 时间线 | 持续滚动 | 🚫 **最先执行，失败必须停止整个流程，禁止跳到 L1** |
-| **L1 聚合扫描** | Tavily + web_search + web_fetch | 5-7 轮 | 按板块逐个搜索 `search_keywords.yaml` 中的关键词，详见下方 |
-| **L2 官方校验** | Jina Reader / tavily_extract | 0-2 轮 | 仅多源矛盾时触发，日常跳过 |
+| **L0 X/Twitter** | twitter-cli 获取 Following 时间线 | 1 轮 | 🚫 **最先执行，失败必须停止整个流程，禁止跳到 L1** |
+| **L0.5 微博采集** | weibo-cli 搜索科技博主 | 1-2 轮 | 采集配置的中文科技博主最新微博，作为中文信息来源补充 |
+| **L1 聚合扫描** | twitter-cli 搜索 + XClaw + Tavily | 5-7 轮 | twitter-cli 按板块搜索关键词，XClaw 补充热点扫描，Tavily 补充，详见下方 |
+| **L2 观点聚合** | 手动在 XClaw/Grok 网页搜索 | 1-2 轮 | 对重点话题搜索 X 讨论，汇总多方观点，辅助写洞察 |
 | **L3 深度抓取** | Jina Reader ×1-2 抓全文 | 2-3 轮 | **不可省略**，每期至少 3-5 篇全文 |
 
 产出 30-50 条 → 筛选至 18-22 条。
 
 ### L0 X/Twitter 采集（🚫 硬性阻断点 — 失败必须停止，禁止继续）
 
-> 🚫🚫🚫 **绝对禁止跳过 L0。BrowserWing 启动失败、Cookie 过期、任何错误 → 必须立即停止整个日报流程，告知用户，等用户确认修复后才能继续。绝对不允许"先跳过 L0 继续 L1"。如果你跳过了 L0，整期日报作废。**
+> 🚫🚫🚫 **绝对禁止跳过 L0。twitter-cli 失败、Cookie 过期、任何错误 → 必须立即停止整个日报流程，告知用户，等用户确认修复后才能继续。绝对不允许"先跳过 L0 继续 L1"。如果你跳过了 L0，整期日报作废。**
 
-#### Step 1：确认 BrowserWing 在运行
-
-```bash
-curl -s -o /dev/null -w "%{http_code}" http://localhost:8080/api/v1/mcp/message
-```
-
-- 返回 `200` 或 `405` → ✅ 正常，继续 Step 2
-- **连接拒绝（Connection refused）** → BrowserWing 未启动，执行以下命令启动：
+#### 环境准备
 
 ```bash
-cd ~/.browserwing && nohup ./browserwing > browserwing.stdout.log 2> browserwing.stderr.log &
-sleep 3
-# 再次探活确认
-curl -s -o /dev/null -w "%{http_code}" http://localhost:8080/api/v1/mcp/message
+# 确保 twitter-cli 已安装
+uv tool install twitter-cli
+
+# 设置 PATH
+export PATH="/Users/yangliu/.local/bin:$PATH"
 ```
 
-**🚫 如果启动仍然失败 → 立即执行以下操作，不做任何其他事情：**
-1. 读取错误日志：`cat ~/.browserwing/browserwing.stderr.log | tail -20`
-2. 将错误信息完整展示给用户
-3. 告知用户：「BrowserWing 启动失败，无法采集 X/Twitter。请先解决此问题，我会等待。」
-4. **停止。不继续 L1。不继续任何后续步骤。等待用户回复。**
+#### 配置 Cookie
 
-#### Step 2：初始化 MCP 会话
+Cookie 需要从浏览器手动获取（X 的 Cookie 有效期约 30 天）：
+
+1. 登录 X.com
+2. 浏览器按 F12 → Application → Cookies → x.com
+3. 导出 `auth_token` 和 `ct0` 两个值
+4. 设置环境变量：
 
 ```bash
-curl -s -i -X POST http://localhost:8080/api/v1/mcp/message \
-  -H "Content-Type: application/json" \
-  -d '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2024-11-05","capabilities":{},"clientInfo":{"name":"daily","version":"1.0"}}}'
+export TWITTER_AUTH_TOKEN="你的 auth_token"
+export TWITTER_CT0="你的 ct0"
 ```
 
-从响应头中提取 `Mcp-Session-Id`（如 `mcp-session-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`），后续所有请求都要带上。
+**Cookie 保存在 `~/.twitter-cli/sessions.yaml`**，后续运行会自动读取。
 
-#### Step 3：导航到 X Following 时间线
+#### 采集命令
 
 ```bash
-curl -s -X POST http://localhost:8080/api/v1/mcp/message \
-  -H "Content-Type: application/json" \
-  -H "Mcp-Session-Id: SESSION_ID" \
-  -d '{"jsonrpc":"2.0","id":2,"method":"tools/call","params":{"name":"browser_navigate","arguments":{"url":"https://x.com/home"}}}'
+export PATH="/Users/yangliu/.local/bin:$PATH"
+
+# 获取关注时间线（推荐，产出更精准）
+twitter feed -t following --max 50 --yaml
+
+# 获取推荐时间线
+twitter feed --max 50 --yaml
+
+# 搜索特定关键词
+twitter search "AI news today" --max 20 --yaml
 ```
 
-**检查返回内容**：
-- 包含 "Following"、"For you"、推文内容 → ✅ 登录正常，继续 Step 4
-- 包含 "Sign in"、"Log in"、"Create account" → ❌ **Cookie 缺失或过期**
+**输出格式**：YAML/JSON 结构化输出，直接解析使用。
 
-**🚫 Cookie 过期 → 立即执行以下操作，不做任何其他事情：**
-1. 告知用户：「X/Twitter 的 Cookie 已过期，请访问 http://localhost:8080/cookies 导入最新的 X Cookie」
-2. **停止。不继续 L1。不继续任何后续步骤。等待用户回复确认 Cookie 已导入。**
-3. 用户确认后 → 重新执行 Step 3
+#### 提取字段
 
-#### Step 4：截取页面内容
-
-```bash
-curl -s -X POST http://localhost:8080/api/v1/mcp/message \
-  -H "Content-Type: application/json" \
-  -H "Mcp-Session-Id: SESSION_ID" \
-  -d '{"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"name":"browser_snapshot","arguments":{}}}'
-```
-
-从返回的页面文本中识别 AI/科技相关推文。
-
-**必须遍历 24 小时内的全部内容**，Following 时间线就是你的 KOL 信息流，不需要逐个搜索特定账号。
-
-滚动策略：**不是固定滚动 2-3 次**，而是持续滚动直到看到超过 24 小时前的推文为止。
-
-```bash
-# 滚动加载更多内容
-curl -s -X POST http://localhost:8080/api/v1/mcp/message \
-  -H "Content-Type: application/json" \
-  -H "Mcp-Session-Id: SESSION_ID" \
-  -d '{"jsonrpc":"2.0","id":4,"method":"tools/call","params":{"name":"browser_evaluate","arguments":{"expression":"window.scrollBy(0, 2000)"}}}'
-# 等待 2-3 秒后 snapshot，提取新加载的推文
-```
-
-**循环流程**：
-1. snapshot → 提取推文 → 记录每条推文的发布时间
-2. 如果最旧的一条推文仍在 24 小时内 → 继续滚动 + snapshot
-3. 如果看到了超过 24 小时前的推文 → 停止滚动，24h 内容已全部覆盖
-4. 每次 snapshot 后去重（按推文 ID），避免重复记录
-
-**终止条件**：看到发布时间超过 24 小时前的推文（如 "Yesterday" 或具体日期）。
-
-#### 提取格式
-
-每条推文提取以下字段：
+twitter-cli 返回的每条推文包含以下字段：
 
 | 字段 | 说明 |
 |------|------|
-| **发布者** | 用户名（如 @sama） |
-| **内容摘要** | 推文核心内容中文总结 |
-| **原文链接** | `https://x.com/用户名/status/推文ID` |
-| **发布时间** | 精确到小时 |
+| `id` | 推文 ID |
+| `text` | 推文内容 |
+| `author.screenName` | 用户名（如 @sama） |
+| `author.name` | 显示名 |
+| `createdAtLocal` | 本地时间 |
+| `metrics` | 互动数据（likes/retweets/views） |
+| `media` | 媒体附件 |
 
 #### 故障排查
 
 | 问题 | 解决方案 |
 |------|----------|
-| BrowserWing 未启动（Connection refused） | `cd ~/.browserwing && nohup ./browserwing > browserwing.stdout.log 2> browserwing.stderr.log &` |
-| 数据库初始化失败 | `rm ~/.browserwing/data/browserwing.db` 后重启 |
-| Chrome 连接断开（closed network connection） | 重启 BrowserWing：先 `pkill -f browserwing`（不杀 Chrome Helper），再启动 |
-| Cookie 过期 | 告知用户到 `http://localhost:8080/cookies` 重新导入 |
-| X 页面加载超时 | 重试一次；仍失败则检查网络环境 |
-| snapshot 返回空内容 | 等待 3 秒后重试；检查页面是否加载完成 |
+| `twitter: command not found` | `export PATH="/Users/yangliu/.local/bin:$PATH"` |
+| `authenticated: false` | Cookie 过期，重新获取并设置环境变量 |
+| 请求超时/限流 | 等待 1-2 分钟后重试，控制请求频率 |
+
+---
+
+### L0.5 微博采集（weibo-cli）
+
+> 微博采集作为中文科技信息来源的补充，采集配置的中文科技博主最新微博。
+
+#### 环境准备
+
+```bash
+# 确保 weibo-cli 已安装
+# 参考：https://github.com/ay147git/weibo-cli
+uv tool install weibo-cli
+
+# 设置 PATH
+export PATH="/Users/yangliu/.local/bin:$PATH"
+```
+
+#### 配置 Cookie
+
+微博需要登录 Cookie（有效期约 3 个月）：
+
+1. 登录 weibo.com
+2. 浏览器按 F12 → Application → Cookies → weibo.com
+3. 导出关键 Cookie 值
+4. 运行 `weibo login` 扫码登录
+
+#### 配置文件
+
+微博用户列表在 `config/weibo_users.yaml` 中配置：
+
+```yaml
+weibo_users:
+  - name: "数码闲聊站"
+    uid: "6048569942"
+    category: "手机/芯片"
+  - name: "机器之心"
+    category: "AI/科技"
+  # 添加更多博主...
+```
+
+#### 采集命令
+
+```bash
+cd /Users/yangliu/Documents/Claude\ Code/codebuddy/tech-daily-brief
+
+# 采集配置文件中所有博主的微博
+python3 scripts/weibo_fetch.py
+
+# 只采集指定博主（用于测试）
+python3 scripts/weibo_fetch.py --user "数码闲聊站"
+
+# 输出 JSON 格式
+python3 scripts/weibo_fetch.py --json
+
+# 每个用户采集条数（默认10）
+python3 scripts/weibo_fetch.py --max 20
+```
+
+**输出字段**：
+
+| 字段 | 说明 |
+|------|------|
+| `username` | 微博用户名 |
+| `nickname` | 显示昵称 |
+| `content_raw` | 微博正文（原始 HTML 已去除） |
+| `created_at` | 发布时间 |
+| `reposts_count` | 转发数 |
+| `comments_count` | 评论数 |
+| `attitudes_count` | 点赞数 |
+
+#### 故障排查
+
+| 问题 | 解决方案 |
+|------|----------|
+| `weibo: command not found` | `export PATH="/Users/yangliu/.local/bin:$PATH"` |
+| `home` 返回 500 错误 | Cookie 过期或无效，运行 `weibo login` 重新扫码 |
+| 搜索结果为空 | 检查 Cookie 是否有效，或尝试搜索其他关键词 |
 
 ---
 
@@ -163,11 +203,60 @@ curl -s -X POST http://localhost:8080/api/v1/mcp/message \
 
 | 工具 | 用途 | 轮次 |
 |------|------|------|
-| Tavily（`tavily_search`） | 英文关键词，分 2-3 批搜索 | 2-3 轮 |
-| web_search | 补充搜索，或搜 Tavily 覆盖不到的关键词 | 1-2 轮 |
+| twitter-cli | X 关键词搜索，获取原始推文数据 | 2-3 轮 |
+| Tavily（`tavily_search`） | 英文关键词，综合搜索 | 1-2 轮 |
+| web_search | 补充搜索，或搜 Tavily 覆盖不到的关键词 | 1-轮 |
 | web_fetch（聚合站） | 扫一遍 36氪/虎嗅 等中文聚合站热榜 | 1 轮 |
 
+**twitter-cli 搜索示例**：
+
+```bash
+export PATH="/Users/yangliu/.local/bin:$PATH"
+
+# 按板块搜索 X
+twitter search "AI OR LLM OR GPT" --lang en --since 2026-03-16 --max 20 --yaml
+twitter search "NVIDIA OR AMD OR GPU" --lang en --since 2026-03-16 --max 20 --yaml
+twitter search "iPhone OR Samsung" --lang en --since 2026-03-16 --max 20 --yaml
+
+# 搜索特定用户的讨论
+twitter search "Kimi" --from Kimi_Moonshot --yaml
+```
+
 **注意**：关键词允许跨板块重复（如 Google 同时出现在 AI、手机、科技），搜到的同一条新闻可能匹配多个板块——选最相关的板块放入即可，不要重复。
+
+---
+
+### L2 观点聚合（XClaw + 手动搜索）
+
+> 用于对重点话题搜索 X 上的多方讨论，汇总权威观点，辅助写深度洞察。
+
+#### XClaw（推荐）
+
+**XClaw** (xclaw.info) 是 AI 领域 Twitter/X 内容聚合站，提供：
+- 实时抓取 X 上的 AI 相关推文
+- 中文摘要 + 热度排序
+- 按标签筛选（AI/大模型/算力/具身智能等）
+
+**网址**：
+- 全球 AI 热点：https://xclaw.info/zh/tweets?group=global&tag=ai
+- 大模型动态：https://xclaw.info/zh/tweets?tag=大模型动态
+- 算力与基础设施：https://xclaw.info/zh/tweets?tag=算力与基础设施
+
+#### 手动搜索（备选）
+
+在以下平台手动搜索话题讨论：
+- X.com 搜索
+- Grok.com 搜索
+
+#### 整合到工作流
+
+| 场景 | 用法 |
+|------|------|
+| 快速扫描 | 打开 XClaw 热点页面，快速浏览遗漏的热点 |
+| 获取观点 | 对候选新闻搜索"X 上谁在讨论" |
+| 交叉验证 | 搜索"这个说法对不对" |
+
+**输出**：XClaw 的中文摘要可直接参考，引用来源@XX 作为洞察支撑。
 
 ---
 
@@ -245,12 +334,14 @@ node publish-daily.mjs ../tech-daily-brief/brief/YYYY-MM-DD.html
 ```
 □ 已读取 config/search_keywords.yaml，搜索使用了配置中的关键词（未自行编造）
 □ 已读取 template.html 模板，HTML 基于模板生成（填充占位符）
-□ X/Twitter 已通过 BrowserWing 采集（🚫 硬性阻断点：未完成则整期作废，绝对禁止跳过）
+□ X/Twitter 已通过 twitter-cli 采集（🚫 硬性阻断点：未完成则整期作废，绝对禁止跳过）
+□ 微博已通过 weibo-cli 采集（L0.5：配置文件中博主的最新微博）
+□ 重点话题已通过 XClaw 扫描/手动搜索 X 讨论（用于洞察观点支撑）
 □ 时效性：全部新闻在 48h 内，主体在 24h 内
 □ 信源：官方一手源 ≥ 5 条（海外用英文官方源，国内用中文官方源）
 □ 信源：禁止用二手转载（新浪/搜狐/腾讯科技）作为主要信源
 □ 信源：同一二手源整期引用 ≤ 2 次
-□ 深度：至少 3-5 篇全文抓取，洞察基于全文撰写（禁止仅凭搜索摘要）
+□ 深度：至少 3-5 篇全文抓取 + XClaw 观点搜索，洞察基于全文+权威观点（禁止仅凭搜索摘要）
 □ 数量：每板块 ≥ 5 条新闻
 □ 输出：文件保存到 brief/YYYY-MM-DD.html
 ```
@@ -267,13 +358,16 @@ tech-daily-brief/
 ├── config/
 │   ├── config.yaml            # 邮件/微信/板块配置
 │   ├── search_keywords.yaml   # 搜索关键词（按板块分类）
+│   ├── weibo_users.yaml       # 微博采集用户列表
 ├── docs/
 │   ├── lessons_learned.md     # 踩坑记录
 │   ├── quality_rules.md       # 红线详细说明与示例
 │   ├── email_guide.md         # 邮件推送指南
 │   └── wechat_guide.md        # 微信公众号推送指南
 ├── scripts/
-│   └── send_email.py          # 邮件发送脚本（自动检测最新日报）
+│   ├── send_email.py          # 邮件发送脚本（自动检测最新日报）
+│   └── weibo_fetch.py         # 微博采集脚本（采集配置的中文科技博主）
 └── 关联项目
     └── ../raphael-publish/     # 公众号排版引擎
+    └── ../grok-bridge/        # （已删除，改用 XClaw）
 ```

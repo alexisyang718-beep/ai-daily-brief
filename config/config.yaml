@@ -50,9 +50,14 @@ sections:
     name: "芯片与算力"
   - icon: "🎮"
     name: "游戏行业"
+    sources_config: "config/gaming_sources.yaml"
   - icon: "🏢"
     name: "科技行业动态"
   - icon: "📜"
     name: "政策与监管"
   - icon: "📦"
     name: "GitHub 高增长项目"
+
+# === 信源配置文件 ===
+source_configs:
+  gaming: "config/gaming_sources.yaml"  # 游戏行业信源（130+ 源，四层分级）
