@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tech Daily Brief | 2026年3月22日</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap');
+
+  :root {
+    --bg: #FAF9F5;
+    --bg-warm: #F5F0E8;
+    --card: #FFFFFF;
+    --border: #E8E2D9;
+    --border-light: #F0EBE3;
+    --accent: #C96442;
+    --accent-hover: #B5573A;
+    --accent-soft: rgba(201, 100, 66, 0.08);
+    --accent-border: rgba(201, 100, 66, 0.2);
+    --text: #1A1A1A;
+    --text-secondary: #6B6560;
+    --text-tertiary: #9B9590;
+    --tag-red: #C96442;
+    --tag-red-bg: rgba(201, 100, 66, 0.08);
+    --tag-green: #5A8F6B;
+    --tag-green-bg: rgba(90, 143, 107, 0.08);
+    --tag-blue: #4A7B9D;
+    --tag-blue-bg: rgba(74, 123, 157, 0.08);
+    --tag-purple: #7B6B9D;
+    --tag-purple-bg: rgba(123, 107, 157, 0.08);
+    --tag-orange: #B8863B;
+    --tag-orange-bg: rgba(184, 134, 59, 0.08);
+    --tag-teal: #4A8F8F;
+    --tag-teal-bg: rgba(74, 143, 143, 0.08);
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.06);
+    --shadow-hover: 0 6px 20px rgba(0,0,0,0.08);
+    --radius: 16px;
+    --radius-sm: 10px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, 'SF Pro Text', 'PingFang SC', 'Noto Sans SC', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .header {
+    padding: 60px 0 40px;
+    text-align: center;
+  }
+
+  .header-logo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background: var(--accent);
+    border-radius: 12px;
+    margin-bottom: 20px;
+  }
+
+  .header-logo svg {
+    width: 26px;
+    height: 26px;
+    fill: white;
+  }
+
+  .header h1 {
+    font-family: 'Noto Serif SC', 'Georgia', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+  }
+
+  .header .date {
+    color: var(--text-tertiary);
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+  }
+
+  .header .divider {
+    width: 40px;
+    height: 2px;
+    background: var(--accent);
+    margin: 20px auto;
+  }
+
+  .summary-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px 28px;
+    margin-top: 24px;
+    text-align: left;
+    box-shadow: var(--shadow-sm);
+    line-height: 1.95;
+    font-size: 15px;
+    color: var(--text-secondary);
+  }
+
+  .summary-card strong {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .toc {
+    margin: 40px 0 32px;
+    padding: 24px 28px;
+    background: var(--bg-warm);
+    border-radius: var(--radius);
+    border: 1px solid var(--border-light);
+  }
+
+  .toc h3 {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+  }
+
+  .toc ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px 20px;
+    list-style: none;
+  }
+
+  .toc a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: var(--radius-sm);
+    transition: all 0.2s;
+  }
+
+  .toc a:hover {
+    background: var(--card);
+    box-shadow: var(--shadow-sm);
+    color: var(--accent);
+  }
+
+  .toc .toc-icon {
+    font-size: 16px;
+  }
+
+  .section {
+    margin-bottom: 48px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--border);
+  }
+
+  .section-header .icon {
+    font-size: 28px;
+  }
+
+  .section-header h2 {
+    font-family: 'Noto Serif SC', 'Georgia', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .item {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s;
+  }
+
+  .item:hover {
+    box-shadow: var(--shadow-hover);
+    border-color: var(--accent-border);
+  }
+
+  .item-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+
+  .tag-hot { background: var(--tag-red-bg); color: var(--tag-red); }
+  .tag-new { background: var(--tag-green-bg); color: var(--tag-green); }
+  .tag-blue { background: var(--tag-blue-bg); color: var(--tag-blue); }
+  .tag-purple { background: var(--tag-purple-bg); color: var(--tag-purple); }
+  .tag-orange { background: var(--tag-orange-bg); color: var(--tag-orange); }
+  .tag-teal { background: var(--tag-teal-bg); color: var(--tag-teal); }
+
+  .item-body {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.85;
+    margin-bottom: 12px;
+  }
+
+  .item-body strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .item-body a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .item-body a:hover {
+    text-decoration: underline;
+  }
+
+  .stat-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 12px;
+    padding-top: 8px;
+  }
+
+  .stat {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: var(--bg-warm);
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    color: var(--text-secondary);
+  }
+
+  .stat em {
+    font-style: normal;
+    font-weight: 600;
+    color: var(--accent);
+  }
+
+  .item-source {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    padding-top: 12px;
+    border-top: 1px solid var(--border-light);
+  }
+
+  .item-source a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .item-source a:hover {
+    text-decoration: underline;
+  }
+
+  .insight-box {
+    margin-top: 12px;
+    padding: 16px 20px;
+    background: #FFF8F5;
+    border-top: 2px solid var(--accent);
+    border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.85;
+  }
+
+  .insight-box .insight-label {
+    color: var(--accent);
+    font-size: 15px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 10px;
+  }
+
+  .insight-box .insight-content {
+    line-height: 1.85;
+  }
+
+  .insight-box .insight-content strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 40px 0 50px;
+    border-top: 1px solid var(--border);
+    margin-top: 32px;
+  }
+
+  .footer p {
+    color: var(--text-tertiary);
+    font-size: 12px;
+    line-height: 2;
+  }
+
+  .footer .footer-brand {
+    font-family: 'Noto Serif SC', 'Georgia', serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+  }
+
+  .footer a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .footer a:hover {
+    text-decoration: underline;
+  }
+
+  .back-to-top {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    width: 40px;
+    height: 40px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s;
+    opacity: 0;
+    pointer-events: none;
+    color: var(--text-secondary);
+    font-size: 18px;
+    text-decoration: none;
+  }
+
+  .back-to-top.visible { opacity: 1; pointer-events: auto; }
+
+  .back-to-top:hover {
+    box-shadow: var(--shadow-hover);
+    color: var(--accent);
+    border-color: var(--accent-border);
+  }
+
+  .back-home {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-tertiary);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    transition: all 0.2s;
+    position: fixed;
+    top: 24px;
+    left: 24px;
+    z-index: 100;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .back-home:hover {
+    color: var(--accent);
+    border-color: var(--accent-border);
+    box-shadow: var(--shadow-md);
+  }
+
+  @media (max-width: 640px) {
+    .back-home { top: 16px; left: 16px; font-size: 12px; padding: 5px 12px; }
+  }
+
+  .theme-toggle {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    width: 36px;
+    height: 36px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s;
+    font-size: 16px;
+    z-index: 100;
+  }
+
+  .theme-toggle:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--accent-border);
+  }
+
+  [data-theme="dark"] {
+    --bg: #1C1B18;
+    --bg-warm: #252420;
+    --card: #2A2925;
+    --border: #3D3B36;
+    --border-light: #333230;
+    --accent: #D4845F;
+    --accent-hover: #E0966F;
+    --accent-soft: rgba(212, 132, 95, 0.1);
+    --accent-border: rgba(212, 132, 95, 0.25);
+    --text: #E8E4DE;
+    --text-secondary: #A8A29A;
+    --text-tertiary: #78736C;
+    --tag-red: #D4845F;
+    --tag-red-bg: rgba(212, 132, 95, 0.12);
+    --tag-green: #7DB88D;
+    --tag-green-bg: rgba(125, 184, 141, 0.12);
+    --tag-blue: #6DA0C2;
+    --tag-blue-bg: rgba(109, 160, 194, 0.12);
+    --tag-purple: #9D8DBF;
+    --tag-purple-bg: rgba(157, 141, 191, 0.12);
+    --tag-orange: #D4A95F;
+    --tag-orange-bg: rgba(212, 169, 95, 0.12);
+    --tag-teal: #6DB5B5;
+    --tag-teal-bg: rgba(109, 181, 181, 0.12);
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.15);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.2);
+    --shadow-hover: 0 6px 20px rgba(0,0,0,0.25);
+  }
+
+  [data-theme="dark"] .insight-box {
+    background: rgba(212, 132, 95, 0.06);
+  }
+
+  @media (max-width: 640px) {
+    .container { padding: 0 16px; }
+    .header { padding: 40px 0 28px; }
+    .header h1 { font-size: 26px; }
+    .toc ul { grid-template-columns: 1fr; }
+    .summary-card { padding: 18px 20px; }
+    .item { padding: 16px 18px; }
+    .theme-toggle { top: 16px; right: 16px; }
+    .back-to-top { bottom: 20px; right: 20px; }
+  }
+
+  html { scroll-behavior: smooth; }
+  ::selection { background: var(--accent-soft); color: var(--accent); }
+
+</style>
+</head>
+<body>
+
+<a class="back-home" href="../index.html">&larr; 返回存档</a>
+<button class="theme-toggle" onclick="toggleTheme()" title="切换深色/浅色模式" aria-label="切换主题">&#9728;&#65039;</button>
+
+<div class="container">
+
+<header class="header">
+  <div class="header-logo">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+  </div>
+  <h1>Tech Daily Brief</h1>
+  <div class="date">2026年3月22日 · 周日</div>
+  <div class="divider"></div>
+  <div class="summary-card">
+    ❶ <strong>微信推出官方ClawBot插件</strong>，用户可通过聊天直接连接龙虾，腾讯云/WorkBuddy/QClaw同步接入企微生态<br>
+    ❷ <strong>Google AI Studio发布Antigravity全栈氛围编码</strong>，从原型工具升级为全栈开发平台，支持Firebase集成<br>
+    ❸ <strong>OpenAI打造桌面"超级应用"</strong>整合ChatGPT+Codex+浏览器，同时大扩招至8000人<br>
+    ❹ <strong>马斯克宣布TERAFAB项目</strong>，特斯拉与SpaceX联合打造年产超1太瓦算力基础设施<br>
+    ❺ <strong>《王者荣耀世界》定档4月10日</strong>，五年研发PC端率先上线，全网预约超300万<br>
+    ❻ <strong>美国暂解伊朗石油制裁</strong>，30天豁免令释放约1.4亿桶原油供给
+  </div>
+</header>
+
+<nav class="toc">
+  <h3>目录</h3>
+  <ul>
+    <li><a href="#model"><span class="toc-icon">🧠</span> AI 模型与产品</a></li>
+    <li><a href="#phone"><span class="toc-icon">📱</span> 手机与消费电子</a></li>
+    <li><a href="#chip"><span class="toc-icon">🔧</span> 芯片与算力</a></li>
+    <li><a href="#game"><span class="toc-icon">🎮</span> 游戏行业</a></li>
+    <li><a href="#industry"><span class="toc-icon">🏛️</span> 科技行业动态</a></li>
+    <li><a href="#policy"><span class="toc-icon">📜</span> 政策与监管</a></li>
+  </ul>
+</nav>
+
+<!-- ==================== 1. AI 模型与产品 ==================== -->
+<section class="section" id="model">
+  <div class="section-header">
+    <span class="icon">🧠</span>
+    <h2>AI 模型与产品</h2>
+  </div>
+
+  <!-- 1. 微信 ClawBot -->
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-new">新品</span>
+      微信推出官方 ClawBot 插件：聊天即可连接龙虾，腾讯全生态接入
+    </div>
+    <div class="item-body">
+      微信正式推出<strong>「ClawBot」插件</strong>，用户更新至最新版本后，可直接在聊天中连接自己的龙虾，实现高效对话式交互。同时腾讯旗下<strong>QClaw、WorkBuddy、腾讯云</strong>三款产品同步支持接入企业微信，形成覆盖个人到企业的完整龙虾生态。微信公开课发布详细接入教程，从安装到扫码连接全程引导。
+    </div>
+    <div class="item-source">来源：<a href="https://mp.weixin.qq.com/s/o_FPvJ0tY6aGqGn4Ea7Rpw">腾讯 (微信公众号)</a> ｜ <a href="https://mp.weixin.qq.com/s/fh1Xw5Mxl_ertT4Avy3AvA">微信公开课 (微信公众号)</a> ｜ 2026-03-22</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">微信将龙虾接入聊天界面，本质是把AI从独立App拉入<strong>12亿用户的社交场景</strong>。相比独立AI产品需要用户主动打开，嵌入微信意味着使用频次和粘性将指数级提升。更关键的是QClaw+WorkBuddy+腾讯云同步接入企微——腾讯正在构建<strong>"个人用微信、企业用企微"的双轨AI入口</strong>，直接对标微软Copilot的Office嵌入策略。</div>
+    </div>
+  </div>
+
+  <!-- 2. 宇树科技IPO -->
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-orange">投资</span>
+      宇树科技冲刺科创板具身智能第一股，拟融资42亿元
+    </div>
+    <div class="item-body">
+      宇树科技正式披露IPO申报材料，已完成上交所预先审阅，冲刺<strong>科创板"具身智能第一股"</strong>。公司拟融资<strong>42.02亿元</strong>，招股书公开了其在全球四足与人形机器人领域的龙头地位。产品已覆盖科研、工业巡检、特种作业等多个场景，是继智元机器人之后又一家具身智能公司冲刺资本市场。
+    </div>
+    <div class="stat-row">
+      <span class="stat">拟融资 <em>42.02亿元</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://weibo.com/3996876140/5278605047502030">@机器之心Pro (微博)</a> ｜ 2026-03-20</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">宇树科技冲刺IPO标志着<strong>人形机器人赛道正式进入资本化阶段</strong>。42亿元融资规模说明市场对具身智能商业化抱有高预期。但IPO后的关键挑战在于能否从"卖硬件"转向"卖服务+软件"，因为<strong>机器人的长期价值在于持续迭代的AI能力</strong>，而非一次性硬件交付。</div>
+    </div>
+  </div>
+
+  <!-- 3. OpenAI 超级应用 -->
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-hot">热点</span>
+      OpenAI 打造桌面"超级应用"：整合 ChatGPT、Codex 与浏览器
+    </div>
+    <div class="item-body">
+      OpenAI应用业务负责人推动将编程平台<strong>Codex与ChatGPT及浏览器整合</strong>为桌面"超级应用"。CEO奥尔特曼发"红色警报"要求团队重新聚焦核心产品。同时OpenAI计划年底前将员工从4500人增至<strong>8000人</strong>，引入"技术大使"岗位借鉴Palantir模式，旧金山新租28万平方英尺办公空间。ChatGPT 9亿用户付费率不足10%，正探索广告模式。
+    </div>
+    <div class="stat-row">
+      <span class="stat">ChatGPT用户 <em>9亿</em></span>
+      <span class="stat">付费率 <em>&lt;10%</em></span>
+      <span class="stat">扩招至 <em>8000人</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://mp.weixin.qq.com/s/L9v3LwrQfQbJSMqQyBy1Qg">财联社AI daily (微信公众号)</a> ｜ 2026-03-21</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">"超级应用"战略暴露了OpenAI的<strong>流量焦虑</strong>：9亿用户但付费率不足10%，说明多数用户只把ChatGPT当搜索替代品。整合Codex和浏览器是要把AI从"对话工具"变成<strong>"操作系统级入口"</strong>——用户在一个界面完成搜索、编程、浏览全流程，才能真正提升粘性和付费意愿。这也是对Google和微软"AI嵌入一切"策略的正面回应。</div>
+    </div>
+  </div>
+
+  <!-- 4. DeepMind AGI 框架 -->
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-blue">技术</span>
+      DeepMind 发布 AGI 认知框架：重新定义通用人工智能评估标准
+    </div>
+    <div class="item-body">
+      Google DeepMind发布全新<strong>AGI认知框架</strong>，系统性地重新定义通用人工智能的评估标准与发展路线图。该框架不再以单一基准测试分数衡量AI智能水平，而是从<strong>感知、推理、规划、学习、交互</strong>五大认知维度构建多层评估体系，试图回答"什么才算真正的AGI"这一核心问题。
+    </div>
+    <div class="item-source">来源：<a href="https://deepmind.google/blog/">DeepMind Blog</a> ｜ 2026-03-17</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">DeepMind发布AGI框架的战略意图是<strong>争夺"AGI定义权"</strong>。当前AI行业对AGI缺乏共识——OpenAI用"经济价值"定义，Anthropic强调"安全对齐"，DeepMind用认知科学框架。谁定义了AGI的评估标准，谁就掌握了<strong>行业话语权和资本叙事</strong>。这也意味着AGI竞赛正在从技术层面扩展到标准制定层面。</div>
+    </div>
+  </div>
+
+  <!-- 5. Google AI Studio -->
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-new">新品</span>
+      Google AI Studio 推出 Antigravity 全栈氛围编码，升级为开发平台
+    </div>
+    <div class="item-body">
+      Google AI Studio引入<strong>"Antigravity"引擎</strong>，支持全栈Vibe Coding，用户可通过文本提示直接生成可运行的全栈应用。新增<strong>身份验证层、Firebase集成、Next.js</strong>等框架支持，并提供实时预览和一键部署能力。AI Studio从原型工具正式升级为全栈开发平台，直接对标Vercel v0、Bolt等AI编程产品。
+    </div>
+    <div class="item-source">来源：<a href="https://www.cloudorian.net/google-ai-studio-launches-full-stack-vibe-coding-with-antigravity/">Cloudorian</a> ｜ <a href="https://www.testingcatalog.com/google-ai-studio-will-be-able-to-generate-full-stack-applications/">TestingCatalog</a> ｜ 2026-03-20</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">Google把AI Studio从"模型试玩场"升级为全栈开发平台，背后是<strong>"Vibe Coding"范式的快速主流化</strong>。当用户只需描述需求就能生成完整应用时，传统的"学框架→写代码→调试部署"流程将被大幅压缩。Firebase集成意味着Google正在用<strong>AI编码+云服务的组合拳</strong>锁定开发者——代码由AI写，基础设施跑在Google Cloud上。</div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ==================== 2. 手机与消费电子 ==================== -->
+<section class="section" id="phone">
+  <div class="section-header">
+    <span class="icon">📱</span>
+    <h2>手机与消费电子</h2>
+  </div>
+
+  <!-- 1. iPhone 17e -->
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-orange">数据</span>
+      iPhone 17e 首销数据出炉：5日销量约23K，同期腰斩
+    </div>
+    <div class="item-body">
+      iPhone 17e首销5日数据出炉，销量约<strong>23K台</strong>，而同期iPhone 16e约<strong>45K台</strong>，同比下跌近一半。尽管苹果在中端市场持续发力，17e的市场表现明显不及预期。分析认为国内安卓阵营的激烈竞争和消费者换机周期延长是主要原因。
+    </div>
+    <div class="stat-row">
+      <span class="stat">17e首销5日 <em>~23K台</em></span>
+      <span class="stat">同期16e <em>~45K台</em></span>
+      <span class="stat">同比 <em>-49%</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://weibo.com/7928198622/5278309275665462">@RD观测 (微博)</a> ｜ 2026-03-20</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">iPhone 17e销量腰斩说明苹果的"中端策略"在中国正在失效。<strong>国产安卓旗舰在2000-4000元价位段</strong>已形成极强的产品矩阵（小米15、OPPO Find X8、荣耀Magic7），而17e在AI功能和影像方面的差异化不足以支撑品牌溢价。苹果需要在Apple Intelligence上拿出真正的杀手级应用。</div>
+    </div>
+  </div>
+
+  <!-- 2. NVIDIA RTX + Vision Pro -->
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-blue">技术</span>
+      NVIDIA RTX 加速电脑直连 Apple Vision Pro，CloudXR 6.0发布
+    </div>
+    <div class="item-body">
+      NVIDIA与Apple达成合作，<strong>CloudXR 6.0</strong>原生集成visionOS，RTX专业3D图形应用可直接串流至<strong>Apple Vision Pro</strong>。设计师、工程师无需离开Vision Pro即可调用NVIDIA RTX GPU的全部算力，实现高保真3D渲染和实时协作。这是两大科技巨头在空间计算领域的首次深度技术联动。
+    </div>
+    <div class="item-source">来源：<a href="https://blogs.nvidia.com/blog/nvidia-cloudxr-apple-vision-pro/">NVIDIA AI Blog</a> ｜ 2026-03-17</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">NVIDIA和Apple的联手打破了"空间计算只能娱乐"的刻板印象。CloudXR 6.0让Vision Pro从<strong>消费级头显升级为专业工作站</strong>——建筑师可以在混合现实中实时渲染建筑模型，工程师可以在3D空间中进行CAD设计。这也暗示Apple正在为Vision Pro开辟<strong>企业级市场</strong>，而非仅靠消费者买单。</div>
+    </div>
+  </div>
+
+  <!-- 3. Switch 2可换电池 -->
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-teal">手机</span>
+      任天堂考虑推出可换电池 Switch 2，应对欧盟电池法规
+    </div>
+    <div class="item-body">
+      据日经新闻报道，任天堂正考虑为欧洲市场推出支持<strong>更换电池的Switch 2</strong>版本，以应对欧盟新电池法规。欧盟要求2027年起消费电子产品必须支持用户自行更换电池。这意味着Switch 2可能在不同地区推出<strong>差异化硬件版本</strong>，增加了供应链管理的复杂性。
+    </div>
+    <div class="item-source">来源：<a href="https://weibo.com/1642720480/5278670281510657">@爱范儿 (微博)</a> ｜ 日经新闻 ｜ 2026-03-21</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">欧盟电池法规正在<strong>重塑全球消费电子的硬件设计</strong>。任天堂若为欧洲推出可换电池版本，意味着全球统一SKU的时代正在终结。这对苹果影响更大——iPhone至今未支持用户换电池，2027年大限将迫使苹果在<strong>工业设计美学与合规要求</strong>之间做出艰难取舍。</div>
+    </div>
+  </div>
+
+  <!-- 4. 亚马逊手机 -->
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-hot">热点</span>
+      亚马逊秘密打造智能手机，代号"Transformer"深度整合AI
+    </div>
+    <div class="item-body">
+      据科创板日报报道，亚马逊计划时隔十几年再次推出智能手机，内部代号<strong>"Transformer"</strong>。新手机将深度整合<strong>AI与Alexa语音助手</strong>，可能消除对传统应用商店的依赖，转而由AI自动完成用户需求。此前亚马逊2014年推出的Fire Phone因定位失误惨遭失败，此次卷土重来显示其对AI手机时代的战略押注。
+    </div>
+    <div class="item-source">来源：<a href="https://mp.weixin.qq.com/s/-Ni0W2pxXdnOFj_2a0A_CA">科创板日报 (微信公众号)</a> ｜ 2026-03-21</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">"消除对应用商店依赖"是这款手机最颠覆性的理念。如果AI能直接理解用户意图并完成操作，App Store和Google Play的<strong>分发垄断地位将被动摇</strong>。亚马逊的电商+物流+Alexa生态是天然的AI Agent应用场景——用户说一句话就能完成购物、预约、支付全流程。这可能定义<strong>"后App时代"</strong>的手机形态。</div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ==================== 3. 芯片与算力 ==================== -->
+<section class="section" id="chip">
+  <div class="section-header">
+    <span class="icon">🔧</span>
+    <h2>芯片与算力</h2>
+  </div>
+
+  <!-- 1. DLSS 5 -->
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-hot">热点</span>
+      英伟达 DLSS 5 遭玩家强烈抨击，黄仁勋强硬回应
+    </div>
+    <div class="item-body">
+      英伟达DLSS 5发布后遭遇玩家社区强烈抨击，被怒斥<strong>把游戏角色变成"统一AI脸"</strong>，破坏游戏原本的美术风格和角色辨识度。玩家制作大量对比视频展示DLSS 5对游戏画面的"AI美颜"效果。黄仁勋对此争议做出<strong>强硬回应</strong>，坚持AI超分辨率是未来方向，表示后续版本将进一步优化风格保持能力。
+    </div>
+    <div class="item-source">来源：<a href="https://weibo.com/3996876140/5278609873046519">@机器之心Pro (微博)</a> ｜ <a href="https://weibo.com/1642720480/5278257013851985">@爱范儿 (微博)</a> ｜ 2026-03-20</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">DLSS 5争议揭示了<strong>AI增强与艺术创作之间的根本张力</strong>。AI超分辨率技术倾向于"收敛到平均审美"，而游戏美术追求的恰恰是独特风格。这不仅是技术问题，更是哲学问题：当AI开始"改写"创作者的视觉表达时，<strong>谁拥有最终的审美决定权？</strong>预计NVIDIA将不得不推出"风格保真模式"来平衡性能与艺术完整性。</div>
+    </div>
+  </div>
+
+  <!-- 2. Token预算 -->
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-hot">热点</span>
+      黄仁勋：Token 将成为企业预算标配，智能体时代算力消耗爆发
+    </div>
+    <div class="item-body">
+      黄仁勋在GTC大会期间接受《商业内幕》采访，做出<strong>"Token将成为企业预算标配"</strong>的重磅判断。他指出智能体时代的算力消耗将出现爆发式增长——每个AI Agent执行任务时都在持续消耗Token，企业需要像管理电费和人力成本一样<strong>把Token纳入年度预算</strong>。
+    </div>
+    <div class="item-source">来源：<a href="https://weibo.com/1642720480/5278257013851985">@爱范儿 (微博)</a> ｜ 据《商业内幕》 ｜ 2026-03-20</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">"Token预算化"是黄仁勋为NVIDIA构建的<strong>最强商业叙事</strong>。如果每家企业都需要像采购电力一样采购Token，那GPU就是"AI时代的发电机"。这个类比巧妙地把AI算力从"一次性采购"变成<strong>"持续性消费"</strong>——NVIDIA从卖硬件变成卖"算力公用事业"，估值逻辑将从制造业切换到公用事业。</div>
+    </div>
+  </div>
+
+  <!-- 3. PCB -->
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-orange">数据</span>
+      GTC 大会"隐形赢家"：PCB 行业迎来扩产升级潮
+    </div>
+    <div class="item-body">
+      英伟达Groq 3 LPU单机柜集成<strong>256张芯片</strong>，托盘数量显著提升推动PCB需求；Rubin Ultra正交背板方案进一步加大PCB用量。国内外PCB厂商<strong>订单满载、大力扩产</strong>，AI驱动PCB产业价量齐升。GTC大会上LPU推理芯片的发布，使得高端PCB成为AI算力基础设施的核心瓶颈之一。
+    </div>
+    <div class="item-source">来源：<a href="https://api3.cls.cn/share/article/2319597?os=ios&sv=221&app=stib">科创板日报 / 财联社</a> ｜ 2026-03-21</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">GTC大会聚光灯打在GPU上，但<strong>真正的产业链受益者是PCB厂商</strong>。单机柜256张芯片意味着PCB的层数、面积和精度要求全面升级——从传统的6-8层跃升至16-20层，单价翻倍以上。A股沪电股份、深南电路等PCB龙头已成为AI概念最确定性受益标的，<strong>"卖铲子"逻辑再次被验证</strong>。</div>
+    </div>
+  </div>
+
+  <!-- 4. 半导体超级周期 -->
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-orange">数据</span>
+      全球半导体市场迈入"AI 驱动超级周期"，2025年突破8300亿美元
+    </div>
+    <div class="item-body">
+      半导体行业分析师数据显示，2025年全球半导体市场规模突破<strong>8300亿美元</strong>，AI芯片贡献了主要增量。数据中心GPU、AI加速器和HBM高带宽内存成为增长最快的三大品类。分析师认为半导体行业已进入<strong>"AI驱动超级周期"</strong>，预计2026年将突破万亿美元大关。
+    </div>
+    <div class="stat-row">
+      <span class="stat">2025年市场规模 <em>$8300亿+</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://x.com/Compute_King/status/2034607399177502971">@Compute_King (X)</a> ｜ 2026-03-20</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">8300亿美元的市场规模距离万亿仅一步之遥，AI正在成为半导体行业<strong>有史以来最强的增长引擎</strong>。但"超级周期"也意味着周期性风险：当前GPU产能扩张速度极快，如果AI应用落地速度跟不上算力供给增长，<strong>库存调整将在2027-2028年到来</strong>。投资者需要警惕"超级周期"叙事下的估值泡沫。</div>
+    </div>
+  </div>
+
+  <!-- 5. SEMICON China -->
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-blue">技术</span>
+      SEMICON China 2026 即将开幕：先进封装与国产替代聚焦
+    </div>
+    <div class="item-body">
+      SEMICON China 2026即将在上海开幕，<strong>AI算力重构全产业链</strong>成为核心议题。先进封装技术（CoWoS、Fan-out）和国产半导体设备替代是今年两大焦点。在美国出口管制持续收紧背景下，国产半导体设备和EDA工具的进展备受关注，多家国内厂商将展示最新成果。
+    </div>
+    <div class="item-source">来源：<a href="https://x.com/Compute_King/status/2035137862157647880">@Compute_King (X)</a> ｜ 2026-03-21</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">SEMICON China已从单纯的行业展会升级为<strong>中国半导体自主化的年度成果展</strong>。先进封装是当前国产替代最有希望突破的环节——相比光刻机的代际差距，封装技术的追赶周期更短。如果国内CoWoS产能能在2026年实现规模化，将为<strong>国产AI芯片的算力密度提升</strong>打开关键瓶颈。</div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ==================== 4. 游戏行业 ==================== -->
+<section class="section" id="game">
+  <div class="section-header">
+    <span class="icon">🎮</span>
+    <h2>游戏行业</h2>
+  </div>
+
+  <!-- 1. 洛克王国 -->
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-hot">热点</span>
+      洛克王国手游预约破5000万，腾讯魔方重磅出击
+    </div>
+    <div class="item-body">
+      腾讯魔方工作室开发的<strong>《洛克王国：世界》</strong>全网预约量突破<strong>5000万</strong>。这款基于经典IP的全新手游采用3D开放世界玩法，保留了原作的宠物收集和养成核心机制。洛克王国IP在国内拥有庞大的童年玩家群体，手游化是腾讯将经典端游IP移动化的又一重要布局。
+    </div>
+    <div class="stat-row">
+      <span class="stat">全网预约 <em>5000万+</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://weibo.com/2648435521/5278144319982678">@竞核 (微博)</a> ｜ 2026-03-20</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">5000万预约量证明了<strong>经典IP在移动端的巨大转化潜力</strong>。洛克王国的核心用户群是95后和00后，正处于消费力上升期。腾讯魔方此前成功运营了《火影忍者》手游，具备IP改编经验。但《王者荣耀世界》同期定档也意味着腾讯内部将面临<strong>资源分配和用户注意力的自我竞争</strong>。</div>
+    </div>
+  </div>
+
+  <!-- 2. R星下架巴西 -->
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-hot">热点</span>
+      R星下架巴西商店GTA系列游戏，与政府争议升级
+    </div>
+    <div class="item-body">
+      Rockstar Games正式停止在巴西境内所有项目销售，<strong>GTA系列全线下架</strong>巴西数字商店。此举与巴西政府关于游戏暴力内容的持续争议直接相关。巴西是全球第七大游戏市场，R星的强硬退出可能引发其他3A厂商对巴西市场监管政策的重新评估。
+    </div>
+    <div class="item-source">来源：<a href="https://weibo.com/2648435521/5277879565028652">@竞核 (微博)</a> ｜ 2026-03-19</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">R星退出巴西是<strong>游戏厂商对过度监管"用脚投票"</strong>的典型案例。GTA系列全球年收入数十亿美元，巴西市场占比有限，退出的经济损失可控但政治信号极强。这可能倒逼巴西政府调整监管尺度，也给其他考虑类似限制的国家<strong>敲响了"内容监管反噬"的警钟</strong>。</div>
+    </div>
+  </div>
+
+  <!-- 3. 生化危机安魂曲 -->
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-new">新品</span>
+      生化危机安魂曲全球销量突破600万份，系列最快达成
+    </div>
+    <div class="item-body">
+      卡普空宣布<strong>《生化危机：安魂曲》</strong>全球销量突破<strong>600万份</strong>，成为系列历史上最快达成该里程碑的作品。游戏在次世代主机和PC平台均表现强劲，RE引擎的画面表现和恐怖氛围营造获得玩家高度评价。卡普空正在用生化危机IP验证"经典恐怖+现代技术"的成功公式。
+    </div>
+    <div class="stat-row">
+      <span class="stat">全球销量 <em>600万份</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://weibo.com/2648435521/5277549307627348">@竞核 (微博)</a> ｜ 2026-03-19</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">600万份的"系列最快"记录说明<strong>经典IP重制/续作仍是3A游戏最稳健的商业模式</strong>。卡普空的RE引擎+生化危机IP组合已成为"印钞机"，每部新作都能稳定收获数百万销量。但这也反映出3A行业的保守趋势——<strong>创新IP越来越少，续作和重制越来越多</strong>。</div>
+    </div>
+  </div>
+
+  <!-- 4. GeForce NOW VR -->
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-blue">技术</span>
+      GeForce NOW 支持90FPS VR串流，云游戏进入空间计算时代
+    </div>
+    <div class="item-body">
+      NVIDIA GeForce NOW新增<strong>90FPS VR串流</strong>支持，云游戏体验全面升级。玩家无需本地高端GPU即可通过VR头显体验高画质3D游戏，延迟优化后达到VR舒适度阈值。这标志着云游戏从传统屏幕扩展到<strong>VR/空间计算</strong>领域，降低了VR游戏的硬件门槛。
+    </div>
+    <div class="item-source">来源：<a href="https://blogs.nvidia.com/blog/geforce-now-thursday-virtual-reality-update/">NVIDIA AI Blog</a> ｜ 2026-03-19</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">90FPS是VR体验的"舒适红线"，GeForce NOW能在云端达到这个标准，说明<strong>网络延迟和编解码效率已取得质的飞跃</strong>。这对VR游戏市场是重大利好：过去用户需要$2000+的PC才能玩VR大作，现在只需一个VR头显+GeForce NOW订阅。<strong>云VR可能成为VR普及的真正破局点</strong>。</div>
+    </div>
+  </div>
+
+  <!-- 5. 王者荣耀世界 -->
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-hot">热点</span>
+      《王者荣耀世界》定档4月10日：五年长跑，PC端率先上线
+    </div>
+    <div class="item-body">
+      《王者荣耀世界》官方宣布PC端将于<strong>4月10日正式上线</strong>，移动端预计4月内跟进。项目研发周期超过五年，是王者荣耀IP向MOBA外拓展的开放世界多人冒险新作。TapTap和好游快爆累计预约超<strong>300万</strong>，均列预约榜TOP 2。首发包括元流之子、伽罗等英雄及原创角色"冷春"，采用赛季制运营并承诺<strong>"不卖数值"</strong>。
+    </div>
+    <div class="stat-row">
+      <span class="stat">预约量 <em>300万+</em></span>
+      <span class="stat">研发周期 <em>5年+</em></span>
+      <span class="stat">PC端定档 <em>4月10日</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://mp.weixin.qq.com/s/Fnk2PYnYfmwJBfnXkVXoiA">游戏葡萄 (微信公众号)</a> ｜ 2026-03-20</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">王者荣耀世界是腾讯<strong>近年来最大的自研赌注</strong>——五年研发、跨平台开发、开放世界品类。PC端先行的策略耐人寻味：一方面是PC端更适合展示开放世界的画面品质，另一方面也是<strong>规避与移动端王者荣耀自我蚕食</strong>的缓冲。"不卖数值"的承诺若能兑现，将为国产游戏的商业化模式树立新标杆。</div>
+    </div>
+  </div>
+
+  <!-- 6. 日本手游TOP25 -->
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-orange">数据</span>
+      2月日本手游收入TOP25：国产二次元全面爆发，鸣潮环比飙升140%
+    </div>
+    <div class="item-body">
+      Sensor Tower数据显示，2月日本手游市场国产二次元扎堆入榜：<strong>《鸣潮》</strong>排名第8，受3.1版本及新角色带动收入环比增长<strong>139.6%</strong>；<strong>《原神》</strong>第11位，环比增长20.7%；<strong>《明日方舟：终末地》</strong>空降第16，公测第二月热度不减。FunFly《Last War》断层领跑，点点互动《无尽冬日》进入前五。
+    </div>
+    <div class="stat-row">
+      <span class="stat">鸣潮排名 <em>#8</em></span>
+      <span class="stat">鸣潮环比 <em>+139.6%</em></span>
+      <span class="stat">原神排名 <em>#11</em></span>
+      <span class="stat">终末地排名 <em>#16</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://mp.weixin.qq.com/s/7TgUUBFVmDXslbJyZ8qVnA">GameQuest (微信公众号)</a> ｜ Sensor Tower ｜ 2026-03-21</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">国产二次元在日本市场的"集团军作战"已从量变转为质变。鸣潮139.6%的环比增长证明<strong>版本更新驱动的收入弹性</strong>在日本市场同样有效。更值得关注的是终末地——鹰角网络首款3D产品公测次月仍保持上升势头，说明<strong>中国二次元开发商已掌握日本市场的运营节奏</strong>。国产游戏出海正在从"偶有爆款"走向"系统性占领"。</div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ==================== 5. 科技行业动态 ==================== -->
+<section class="section" id="industry">
+  <div class="section-header">
+    <span class="icon">🏛️</span>
+    <h2>科技行业动态</h2>
+  </div>
+
+  <!-- 1. TERAFAB -->
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-hot">热点</span>
+      马斯克宣布 TERAFAB 项目：特斯拉联合SpaceX打造年产超1太瓦算力
+    </div>
+    <div class="item-body">
+      马斯克在X上高调宣布<strong>TERAFAB项目</strong>，特斯拉与SpaceX联合打造年产超<strong>1太瓦</strong>算力的超级工厂。项目旨在将算力基础设施的建设效率提升至前所未有的水平，结合特斯拉的能源管理技术和SpaceX的工程能力，构建从芯片封装到数据中心的全栈算力制造体系。
+    </div>
+    <div class="item-source">来源：<a href="https://x.com/elonmusk/status/2035506574182199757">@elonmusk (X)</a> ｜ <a href="https://x.com/SawyerMerritt">@SawyerMerritt (X)</a> ｜ 2026-03-21</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">TERAFAB的野心在于<strong>把算力生产"工厂化"</strong>——像造汽车一样造数据中心。特斯拉的Megapack储能+太阳能解决电力问题，SpaceX的快速迭代工程能力解决建设速度问题。如果成功，xAI将拥有自给自足的算力供应链，<strong>不再受NVIDIA产能和AWS/Azure定价的制约</strong>。这是马斯克"垂直整合一切"哲学的极致体现。</div>
+    </div>
+  </div>
+
+  <!-- 2. 马斯克败诉 -->
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-hot">热点</span>
+      马斯克误导Twitter投资者：陪审团裁定败诉，需承担赔偿
+    </div>
+    <div class="item-body">
+      美国陪审团裁定马斯克的"愚蠢推文"<strong>误导了Twitter投资者</strong>，需承担赔偿责任。案件涉及马斯克在收购Twitter过程中发布的多条具有误导性的社交媒体言论，导致投资者基于错误信息做出交易决策。The Verge、TechCrunch、Engadget三家海外主流科技媒体同步报道此判决。
+    </div>
+    <div class="item-source">来源：<a href="https://x.com/verge/status/2035141690198200325">@verge (X)</a> ｜ <a href="https://x.com/TechCrunch">@TechCrunch (X)</a> ｜ <a href="https://x.com/engadget">@engadget (X)</a> ｜ 2026-03-21</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">这一判决为<strong>科技巨头的社交媒体言论设定了法律边界</strong>。马斯克在X上的发言频繁影响股价和市场情绪，此案确认了企业高管在社交媒体上的言论与正式公告同样受证券法约束。对整个科技行业的警示是：<strong>CEO的每一条推文都可能成为法庭证据</strong>。</div>
+    </div>
+  </div>
+
+  <!-- 3. 库克回应龙虾 -->
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-hot">热点</span>
+      库克回应龙虾带动Mac Mini大卖：苹果十年前已布局AI
+    </div>
+    <div class="item-body">
+      苹果CEO库克访华期间回应<strong>OpenClaw带火Mac Mini</strong>现象，称苹果十年前已在Mac中加入神经网络引擎，Mac Mini是最适合做AI任务的电脑。界面新闻独家采访披露库克对AI硬件生态的布局思路：<strong>Apple Silicon+Neural Engine</strong>是苹果AI战略的硬件底座，Mac Mini的高性价比使其成为开发者运行龙虾的首选设备。
+    </div>
+    <div class="item-source">来源：<a href="https://weibo.com/1750070171/5278927947829575">@36氪 (微博)</a> ｜ 据界面新闻 ｜ 2026-03-21</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">库克"十年布局"的说法虽有营销成分，但Apple Silicon确实让Mac Mini成为<strong>本地AI推理的最佳性价比选择</strong>。当大模型开始在端侧运行时，统一内存架构（UMA）的优势凸显——M4芯片可以把全部内存当显存用，这是x86+独显架构难以匹敌的。<strong>苹果正在从"AI消费者"转型为"AI基础设施提供者"</strong>。</div>
+    </div>
+  </div>
+
+  <!-- 4. OpenAI扩招 -->
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-orange">投资</span>
+      OpenAI 开启大扩招：员工规模年底翻倍至8000人
+    </div>
+    <div class="item-body">
+      OpenAI计划年底前将员工从<strong>4500人增至8000人</strong>，引入"技术大使"岗位借鉴Palantir模式，负责直接驻场客户企业推动AI落地。公司在旧金山新租<strong>28万平方英尺</strong>办公空间。ChatGPT虽坐拥9亿用户但付费率不足10%，OpenAI正在探索包括广告在内的多元化商业模式。
+    </div>
+    <div class="stat-row">
+      <span class="stat">目标员工数 <em>8000人</em></span>
+      <span class="stat">新增办公 <em>28万sqft</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://mp.weixin.qq.com/s/L9v3LwrQfQbJSMqQyBy1Qg">财联社AI daily (微信公众号)</a> ｜ 2026-03-21</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">"技术大使"岗位是OpenAI从Palantir学到的<strong>最有价值的商业模式创新</strong>。Palantir靠驻场工程师把产品嵌入客户工作流从而实现超高续约率。OpenAI引入同一模式，说明纯API和SaaS订阅不足以支撑增长——<strong>AI的企业级落地需要"人+AI"的混合交付</strong>，这将大幅提升客单价和壁垒。</div>
+    </div>
+  </div>
+
+  <!-- 5. 马斯克光伏 -->
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-orange">投资</span>
+      马斯克拟采购200亿中国光伏设备，特斯拉发力太阳能
+    </div>
+    <div class="item-body">
+      据路透社报道，特斯拉正与中国光伏设备厂商洽谈，拟采购<strong>200亿元</strong>设备发力太阳能发电业务。此举与TERAFAB项目的能源自给需求密切相关——大规模算力基础设施需要海量清洁能源支撑。中国光伏设备在全球占据<strong>80%以上市场份额</strong>，是特斯拉的最优供应链选择。
+    </div>
+    <div class="stat-row">
+      <span class="stat">采购金额 <em>200亿元</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://weibo.com/1750070171/5278549189067600">@36氪 (微博)</a> ｜ 据路透社 ｜ 2026-03-21</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div name="insight-content" class="insight-content">200亿元光伏采购直接服务于TERAFAB项目的<strong>"能源自给"战略</strong>。马斯克的算盘很清楚：与其每年向电网支付数十亿电费，不如一次性投资光伏+Megapack实现数据中心<strong>零碳零电费运营</strong>。这也揭示了AI产业的下一个竞争维度——<strong>谁掌握最廉价的清洁能源，谁就拥有最低的推理成本</strong>。</div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ==================== 6. 政策与监管 ==================== -->
+<section class="section" id="policy">
+  <div class="section-header">
+    <span class="icon">📜</span>
+    <h2>政策与监管</h2>
+  </div>
+
+  <!-- 1. 伊朗制裁 -->
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-hot">热点</span>
+      美国暂时解除对伊朗石油制裁，30天豁免令释放1.4亿桶原油
+    </div>
+    <div class="item-body">
+      美国暂时取消对伊朗石油制裁令，美财政部批准<strong>30天授权</strong>。财政部长贝森特称将向全球供应约<strong>1.4亿桶原油</strong>，印度炼油商立即恢复购油。此举旨在压低国际油价、缓解通胀压力，同时也被视为中东外交策略的组成部分。国际油价应声回落。
+    </div>
+    <div class="item-source">来源：<a href="https://weibo.com/2868676035/5278979566601765">@财联社APP (微博)</a> ｜ <a href="https://x.com/Polymarket">@Polymarket (X)</a> ｜ 2026-03-21</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">30天豁免令的直接受益者包括<strong>AI数据中心运营商</strong>——此前油价飙升已推高电力成本，影响训练和推理的经济性。1.4亿桶原油入市将为全球能源市场提供短期缓冲，但<strong>30天后制裁是否恢复存在巨大不确定性</strong>。科技行业应利用这一窗口期加速布局清洁能源自给方案。</div>
+    </div>
+  </div>
+
+  <!-- 2. FTC非竞争条款 -->
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-blue">政策</span>
+      第五巡回上诉法院推翻FTC非竞争条款禁令
+    </div>
+    <div class="item-body">
+      美国第五巡回上诉法院推翻了2024年<strong>FTC非竞争条款禁令</strong>，这意味着企业仍可在雇佣合同中设置竞业限制条款。该裁决对AI人才市场影响深远——科技巨头可以继续通过非竞争条款<strong>锁定核心AI研究员</strong>，限制其跳槽至竞争对手或创办竞品公司。
+    </div>
+    <div class="item-source">来源：<a href="https://x.com/Techmeme/status/2035134534816350471">@Techmeme (X)</a> ｜ 2026-03-21</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">非竞争条款的存续对<strong>AI创业生态是一把双刃剑</strong>。短期内有利于大公司留住人才、保护商业秘密；但长期看，限制人才流动将抑制创新——硅谷之所以成为创新中心，加州禁止非竞争条款是关键因素之一。此裁决可能导致<strong>更多AI创业者选择在加州而非德克萨斯注册公司</strong>。</div>
+    </div>
+  </div>
+
+</section>
+
+</div>
+
+<footer class="footer">
+  <p class="footer-brand">Tech Daily Brief</p>
+  <p>2026年3月22日 · 覆盖范围：3月19日-22日</p>
+  <p>数据来源：<strong>DeepMind Blog</strong> · <strong>NVIDIA AI Blog</strong> · <strong>Cloudorian</strong> · <strong>TestingCatalog</strong> · <strong>The Verge</strong> · <strong>TechCrunch</strong> · <strong>Engadget</strong> · <strong>Sensor Tower</strong> · <strong>Techmeme</strong> · <strong>Reuters</strong> · <strong>Polymarket</strong> · 机器之心Pro · 爱范儿 · 36氪 · 财联社 · 竞核 · 游戏葡萄 · 科创板日报 · 微信公开课</p>
+</footer>
+
+<a href="#" class="back-to-top" id="backToTop" title="回到顶部">&uarr;</a>
+
+<script>
+  function toggleTheme() {
+    const body = document.documentElement;
+    const btn = document.querySelector('.theme-toggle');
+    if (body.getAttribute('data-theme') === 'dark') {
+      body.removeAttribute('data-theme');
+      btn.textContent = '☀️';
+      localStorage.setItem('theme', 'light');
+    } else {
+      body.setAttribute('data-theme', 'dark');
+      btn.textContent = '🌙';
+      localStorage.setItem('theme', 'dark');
+    }
+  }
+
+  (function() {
+    const saved = localStorage.getItem('theme');
+    if (saved === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      document.querySelector('.theme-toggle').textContent = '🌙';
+    }
+  })();
+
+  const backBtn = document.getElementById('backToTop');
+  window.addEventListener('scroll', function() {
+    backBtn.classList.toggle('visible', window.scrollY > 400);
+  });
+</script>
+
+</body>
+</html>
