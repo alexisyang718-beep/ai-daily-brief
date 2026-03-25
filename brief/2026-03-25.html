@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tech Daily Brief | 2026年3月25日</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap');
+
+  :root {
+    --bg: #FAF9F5;
+    --bg-warm: #F5F0E8;
+    --card: #FFFFFF;
+    --border: #E8E2D9;
+    --border-light: #F0EBE3;
+    --accent: #C96442;
+    --accent-hover: #B5573A;
+    --accent-soft: rgba(201, 100, 66, 0.08);
+    --accent-border: rgba(201, 100, 66, 0.2);
+    --text: #1A1A1A;
+    --text-secondary: #6B6560;
+    --text-tertiary: #9B9590;
+    --tag-red: #C96442;
+    --tag-red-bg: rgba(201, 100, 66, 0.08);
+    --tag-green: #5A8F6B;
+    --tag-green-bg: rgba(90, 143, 107, 0.08);
+    --tag-blue: #4A7B9D;
+    --tag-blue-bg: rgba(74, 123, 157, 0.08);
+    --tag-purple: #7B6B9D;
+    --tag-purple-bg: rgba(123, 107, 157, 0.08);
+    --tag-orange: #B8863B;
+    --tag-orange-bg: rgba(184, 134, 59, 0.08);
+    --tag-teal: #4A8F8F;
+    --tag-teal-bg: rgba(74, 143, 143, 0.08);
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.06);
+    --shadow-hover: 0 6px 20px rgba(0,0,0,0.08);
+    --radius: 16px;
+    --radius-sm: 10px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, 'SF Pro Text', 'PingFang SC', 'Noto Sans SC', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .header {
+    padding: 60px 0 40px;
+    text-align: center;
+  }
+
+  .header-logo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background: var(--accent);
+    border-radius: 12px;
+    margin-bottom: 20px;
+  }
+
+  .header-logo svg {
+    width: 26px;
+    height: 26px;
+    fill: white;
+  }
+
+  .header h1 {
+    font-family: 'Noto Serif SC', 'Georgia', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+  }
+
+  .header .date {
+    color: var(--text-tertiary);
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+  }
+
+  .header .divider {
+    width: 40px;
+    height: 2px;
+    background: var(--accent);
+    margin: 20px auto;
+  }
+
+  .summary-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px 28px;
+    margin-top: 24px;
+    text-align: left;
+    box-shadow: var(--shadow-sm);
+    line-height: 1.95;
+    font-size: 15px;
+    color: var(--text-secondary);
+  }
+
+  .summary-card strong {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .section {
+    margin-bottom: 48px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--border);
+  }
+
+  .section-header .icon {
+    font-size: 28px;
+  }
+
+  .section-header h2 {
+    font-family: 'Noto Serif SC', 'Georgia', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .item {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s;
+  }
+
+  .item:hover {
+    box-shadow: var(--shadow-hover);
+    border-color: var(--accent-border);
+  }
+
+  .item-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+
+  .tag-hot { background: var(--tag-red-bg); color: var(--tag-red); }
+  .tag-new { background: var(--tag-green-bg); color: var(--tag-green); }
+  .tag-blue { background: var(--tag-blue-bg); color: var(--tag-blue); }
+  .tag-purple { background: var(--tag-purple-bg); color: var(--tag-purple); }
+  .tag-orange { background: var(--tag-orange-bg); color: var(--tag-orange); }
+  .tag-teal { background: var(--tag-teal-bg); color: var(--tag-teal); }
+
+  .item-body {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.85;
+    margin-bottom: 12px;
+  }
+
+  .item-body strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .stat-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 12px;
+    padding-top: 8px;
+  }
+
+  .stat {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: var(--bg-warm);
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    color: var(--text-secondary);
+  }
+
+  .stat em {
+    font-style: normal;
+    font-weight: 600;
+    color: var(--accent);
+  }
+
+  .item-source {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    padding-top: 12px;
+    border-top: 1px solid var(--border-light);
+  }
+
+  .item-source a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .item-source a:hover {
+    text-decoration: underline;
+  }
+
+  .insight-box {
+    margin-top: 12px;
+    padding: 16px 20px;
+    background: #FFF8F5;
+    border-top: 2px solid var(--accent);
+    border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.85;
+  }
+
+  .insight-box .insight-label {
+    color: var(--accent);
+    font-size: 15px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 10px;
+  }
+
+  .insight-box .insight-content {
+    line-height: 1.85;
+  }
+
+  .insight-box .insight-content strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 40px 0 60px;
+    border-top: 1px solid var(--border);
+    margin-top: 20px;
+  }
+
+  .footer-brand {
+    font-family: 'Noto Serif SC', 'Georgia', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+
+  .footer p {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    line-height: 1.6;
+  }
+
+  .back-to-top {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 44px;
+    height: 44px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-size: 18px;
+    box-shadow: var(--shadow-md);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .back-to-top:hover {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+  }
+
+  @media (max-width: 640px) {
+    .container {
+      padding: 0 16px;
+    }
+
+    .header {
+      padding: 40px 0 30px;
+    }
+
+    .header h1 {
+      font-size: 26px;
+    }
+
+    .summary-card {
+      padding: 20px;
+    }
+
+    .item {
+      padding: 16px 20px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<header class="header">
+  <div class="header-logo">
+    <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+  </div>
+  <h1>Tech Daily Brief</h1>
+  <div class="date">2026年3月25日 · 星期三</div>
+  <div class="divider"></div>
+  
+  <div class="summary-card">
+    <strong>核心洞察：</strong>❶ <strong>OpenAI</strong>关闭Sora引发连锁反应，迪士尼撤回10亿美元投资，战略转向Agentic AI ❷ <strong>国家数据局</strong>正式将Token中文定名为"词元"，中国日均调用量突破140万亿 ❸ <strong>OpenAI Pre-IPO文件</strong>泄露，称微软是业务风险，硅谷最大AI联盟裂痕浮现 ❹ <strong>阿里达摩院</strong>发布玄铁C950，SPECint2006突破70分，登顶全球RISC-V性能榜首 ❺ <strong>Epic Games</strong>裁员超1000人，《Fortnite》收入下滑暴露游戏行业困境 ❻ <strong>2026中关村论坛</strong>年会开幕，百余场活动聚焦科技创新与产业创新深度融合
+  </div>
+</header>
+
+<!-- AI模型与产品 -->
+<section class="section">
+  <div class="section-header">
+    <span class="icon">🧠</span>
+    <h2>AI模型与产品</h2>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-hot">重磅</span>
+      OpenAI关闭Sora引发连锁反应：迪士尼撤回10亿美元投资，战略转向Agentic AI
+    </div>
+    <div class="item-body">
+      OpenAI官方宣布关闭Sora应用（移动端App、API和ChatGPT视频功能），官方表示："We're saying goodbye to the Sora app."此举引发连锁反应——<strong>迪士尼撤回了2025年12月达成的10亿美元投资和合作伙伴关系</strong>，该协议原本将授权漫威、皮克斯和星球大战等200多个角色用于Sora视频。OpenAI计划将视频技术整合到其他工具中，重新专注于面向商业和生产力的Agentic AI。
+    </div>
+    <div class="stat-row">
+      <span class="stat">撤回投资 <em>10亿美元</em></span>
+      <span class="stat">授权角色 <em>200+</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://x.com/soraofficialapp/status/2036546752535470382" target="_blank">@soraofficialapp (X)</a> ｜ 2026-03-24</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">OpenAI关闭Sora是AI视频赛道格局突变的标志性事件。<strong>迪士尼撤回10亿美元投资意味着科技-娱乐行业的AI合作遭遇重大挫折</strong>。OpenAI的战略转向"Agentic AI"反映了当前AI行业的共识——从"炫技式"的生成内容（视频/图像）转向"实用型"的生产力工具（代码/办公/自动化）。这一决策可能加速AI视频领域的洗牌，Runway、Pika等竞争对手或将迎来机会窗口。但对OpenAI而言，失去迪士尼这样的顶级IP合作伙伴，意味着其在内容生态建设上的重大损失。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-hot">独家</span>
+      OpenAI Pre-IPO文件泄露：称微软是业务风险，正寻求多元化
+    </div>
+    <div class="item-body">
+      OpenAI在Pre-IPO文件中告诉投资者，<strong>微软是其业务风险，正在寻求多元化合作伙伴</strong>。目前微软持有OpenAI 27%股权（约1350亿美元），是其最大股东和主要算力提供商。但OpenAI刚与亚马逊签署500亿美元协议，违反Azure独家协议，微软正威胁法律行动。
+    </div>
+    <div class="stat-row">
+      <span class="stat">微软持股 <em>27%</em></span>
+      <span class="stat">股权价值 <em>1350亿美元</em></span>
+      <span class="stat">亚马逊协议 <em>500亿美元</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://x.com/ns123abc/status/2036262552867307604" target="_blank">@ns123abc (X)</a> ｜ 2026-03-24</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">这是OpenAI上市前最重磅的内部文件泄露，揭示了硅谷最大AI联盟的裂痕。<strong>微软与OpenAI的"蜜月期"已经结束</strong>——OpenAI需要摆脱对微软Azure的算力依赖以实现供应链多元化，而微软则希望通过股权和独家协议锁定这个"下金蛋的鹅"。500亿美元的亚马逊协议是OpenAI的"破釜沉舟"之举，即便面临微软的法律威胁也要推进。这种紧张关系将在OpenAI IPO后进一步公开化，投资者需要密切关注两家公司的博弈。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-orange">数据</span>
+      火山引擎日均大模型调用量破百万亿Tokens，全球仅三家
+    </div>
+    <div class="item-body">
+      自今年春节以来，字节跳动火山引擎日均云端大模型调用量已超<strong>100万亿Tokens</strong>，不到两个月上涨超60%。全球目前只有三家公司Token消耗量超100万亿：OpenAI、Google与字节跳动。火山引擎此前定下2026年MaaS收入超百亿元目标，现已上调。
+    </div>
+    <div class="stat-row">
+      <span class="stat">日均调用量 <em>100万亿+</em></span>
+      <span class="stat">涨幅 <em>60%</em></span>
+      <span class="stat">全球仅 <em>3家</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://mp.weixin.qq.com/s/sHL6k9vf8UNgYkfaj2qmbA" target="_blank">晚点LatePost（独家）</a> ｜ 2026-03-24</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">晚点LatePost的独家数据揭示了中国AI算力消耗量已跻身全球第一梯队。<strong>100万亿Tokens/日是什么概念？相当于每天处理数万亿次AI交互</strong>。字节跳动凭借抖音、今日头条等超级App的海量用户场景，在AI应用落地上形成了独特优势。这一数据也印证了"中国AI在应用层领先"的判断——虽然基础模型可能仍落后OpenAI，但在规模化应用和商业化上，中国公司正在快速追赶。火山引擎上调MaaS收入目标，反映出企业对AI基础设施的强劲需求。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-hot">安全</span>
+      litellm PyPI供应链攻击：pip install即可窃取所有密钥
+    </div>
+    <div class="item-body">
+      Karpathy警示一起严重的AI工具链供应链攻击——简单执行<strong>pip install litellm</strong>就足以窃取SSH密钥、AWS/GCP/Azure凭据、Kubernetes配置、git凭据和环境变量中的所有API密钥。litellm是连接多个大模型API的流行Python包。
+    </div>
+    <div class="item-source">来源：<a href="https://x.com/karpathy/status/2036487306585268612" target="_blank">@karpathy (X)</a> ｜ 2026-03-24</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">这是AI开发工具链的"核弹级"安全事件。<strong>Karpathy亲自预警，说明问题的严重性</strong>。litellm作为连接多个大模型API的"胶水"库，被广泛用于AI应用开发。供应链攻击的可怕之处在于——开发者信任PyPI官方仓库，却可能在安装依赖时不知不觉泄露所有密钥。这一事件再次敲响警钟：AI时代，开发工具链的安全审计必须成为标准流程，企业需要建立私有PyPI镜像或严格的依赖扫描机制。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-new">产品</span>
+      Claude Code推出Auto Mode：自动权限决策模式
+    </div>
+    <div class="item-body">
+      Claude Code推出自动模式，无需批准每个文件写入和bash命令，也无需完全跳过权限检查，<strong>自动模式让Claude代表用户做出权限决策</strong>。每个动作在执行前都会经过安全检查。
+    </div>
+    <div class="item-source">来源：<a href="https://x.com/claudeai/status/2036503582166393240" target="_blank">@claudeai (X)</a> ｜ 2026-03-24</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">Claude Code的Auto Mode是AI编程工具的重要进化。<strong>在"完全手动批准"和"完全自动执行"之间找到平衡点</strong>，是AI Agent落地的关键挑战。Auto Mode的设计理念——"Claude代表用户做出权限决策，但每个动作都经过安全检查"——体现了Anthropic对AI安全性的重视。这一功能将显著提升开发效率，特别是对于熟悉Claude的资深用户。与Cursor、GitHub Copilot等竞品相比，Claude Code在权限管理上的创新可能成为差异化优势。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-blue">技术</span>
+      Anthropic工程博客：多智能体系统推动Claude前端设计与自主工程能力
+    </div>
+    <div class="item-body">
+      Anthropic工程团队分享了如何使用<strong>多智能体系统（multi-agent harness）</strong>推动Claude在前端设计和长时间自主软件工程任务中的能力边界。
+    </div>
+    <div class="item-source">来源：<a href="https://x.com/AnthropicAI/status/2036481033621623056" target="_blank">@AnthropicAI (X)</a> ｜ 2026-03-24</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">Anthropic公开其内部工程实践，揭示了多智能体架构在复杂软件开发中的潜力。<strong>"Multi-agent harness"是一种让多个AI Agent协作完成复杂任务的技术框架</strong>——不同Agent负责设计、编码、测试、审查等不同环节，通过协作提升整体输出质量。这是AI软件工程的前沿方向，也是实现"AI程序员"愿景的关键技术路径。Anthropic的分享为行业提供了宝贵的实践经验。</div>
+    </div>
+  </div>
+
+</section>
+
+<!-- 手机与消费电子 -->
+<section class="section">
+  <div class="section-header">
+    <span class="icon">📱</span>
+    <h2>手机与消费电子</h2>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-hot">独家</span>
+      苹果AI重启计划曝光：iOS 27将推Siri独立应用与全新界面
+    </div>
+    <div class="item-body">
+      据Bloomberg报道，苹果计划在iOS 27中进行AI重启：<strong>推出独立的Siri应用直接对标ChatGPT</strong>；彻底改造Dynamic Island中的Siri界面并加入聊天机器人功能；统一Siri和Spotlight搜索；新增"Ask Siri"和"Write with Siri"功能按钮。
+    </div>
+    <div class="item-source">来源：<a href="https://www.bloomberg.com/news/articles/2026-03-24/ios-27-features-apple-ai-reboot-with-siri-app-new-interface-ask-siri-button" target="_blank">Bloomberg / Mark Gurman</a> ｜ 2026-03-24</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">这是苹果AI战略最重要的产品调整。Gurman的独家报道揭示了苹果对Siri的"彻底重启"——<strong>从"语音助手"升级为"AI应用"</strong>，直接对标ChatGPT。独立Siri App意味着苹果终于承认，Siri需要脱离系统束缚才能与ChatGPT竞争。Dynamic Island的改造和"Ask Siri"按钮的加入，显示出苹果在AI交互体验上的创新尝试。但问题是：iOS 27预计2027年发布，届时ChatGPT会进化到什么程度？苹果的"重启"是否来得太晚？</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-new">发布</span>
+      Apple推出Apple Business一体化企业平台
+    </div>
+    <div class="item-body">
+      Apple发布全新<strong>"Apple Business"</strong>一体化平台，整合企业设备管理(MDM)、客户触达、员工工具和专家支持。内置零接触部署、企业邮件/日历/目录服务、Apple Maps本地广告。<strong>4月14日上线，基础服务免费</strong>。
+    </div>
+    <div class="stat-row">
+      <span class="stat">上线时间 <em>4月14日</em></span>
+      <span class="stat">基础服务 <em>免费</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://www.apple.com/newsroom/2026/03/introducing-apple-business-a-new-all-in-one-platform-for-businesses-of-all-sizes/" target="_blank">Apple Newsroom（官方）</a> ｜ 2026-03-24</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">Apple Business是苹果企业服务战略的重大布局。<strong>基础服务免费</strong>意味着苹果将采用"免费+增值"模式快速获取企业用户，与Microsoft 365、Google Workspace直接竞争。整合MDM、客户触达、员工工具于一体，苹果希望成为企业数字化转型的"一站式平台"。Apple Maps本地广告的加入，显示出苹果在B端广告业务上的野心。对于中小企业而言，免费的基础服务具有强大吸引力，可能加速苹果设备在企业市场的渗透。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-purple">发布</span>
+      华为春季全场景新品发布：Mate80 Pro Max风驰版、畅享90系列
+    </div>
+    <div class="item-body">
+      华为春季全场景新品发布会价格公布，包括<strong>Mate80 Pro Max风驰版、畅享90系列（全系麒麟8系芯片+鸿蒙6+WiFi 7）</strong>、MateView GT 27英寸柔光屏显示器、MatePad Pro 12.2幻影紫等新品。
+    </div>
+    <div class="item-source">来源：<a href="https://weibo.com/1839167003/5279667416204776" target="_blank">华为终端 / 华为何刚（微博）</a> ｜ 2026-03-24</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">华为生态产品线全面更新，<strong>畅享系列麒麟芯片回归</strong>是重要信号。畅享系列定位中低端市场，此前因芯片供应问题曾改用高通4G芯片。此次全系搭载麒麟8系芯片+鸿蒙6+WiFi 7，意味着华为中端芯片产能已恢复。Mate80 Pro Max风驰版作为旗舰，进一步巩固华为在高端市场的地位。全场景战略（手机+平板+显示器+汽车）持续推进，华为正在构建完整的自主可控生态系统。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-new">产品</span>
+      小米首款手机端AI智能体miclaw启动封测
+    </div>
+    <div class="item-body">
+      小米首款手机AI智能体<strong>Xiaomi miclaw</strong>已启动封测，搭载MiMo大模型，深度融合OS与人车家全生态，AI自主寻求更优方案并安全执行，被称为<strong>"未来AIOS雏形"</strong>。
+    </div>
+    <div class="item-source">来源：<a href="https://weibo.com/1892653244/5279199937955757" target="_blank">@数码闲聊站（微博）</a> ｜ 2026-03-24</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">小米手机端AI Agent产品落地，AIOS赛道竞争加剧。<strong>"人车家全生态"是小米AI战略的核心差异化</strong>——miclaw不仅能控制手机，还能联动汽车（小米SU7）和智能家居设备，形成跨设备的无缝体验。这与苹果Siri、三星Bixby形成差异化竞争。被称为"未来AIOS雏形"，显示出小米对miclaw的高期望。随着AI Agent成为手机厂商的必争之地，2026年将是"AIOS元年"。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-teal">营销</span>
+      一加Nord 6火影忍者限定版曝光，印度即将发布
+    </div>
+    <div class="item-body">
+      一加Nord 6火影忍者限定版曝光，预计将在<strong>印度市场</strong>发布。这款手机将与热门动漫IP《火影忍者》联名，采用定制主题设计和专属配色。一加近年来频繁与流行文化IP合作推出限定版手机，此次火影忍者联名版将进一步扩大其在印度年轻用户群体中的影响力。
+    </div>
+    <div class="item-source">来源：<a href="https://www.androidheadlines.com/2026/03/oneplus-nord-6-naruto-limited-edition-leak-hints-at-india-launch-soon.html" target="_blank">AndroidHeadlines</a> ｜ 2026-03-24</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">手机厂商IP联名营销新案例。<strong>印度是全球第二大智能手机市场，也是竞争最激烈的市场之一</strong>。一加选择火影忍者这一在亚洲尤其是印度拥有庞大粉丝基础的IP，显示出其对印度年轻用户群体的精准洞察。IP联名不仅能提升产品差异化，还能借助粉丝经济提升品牌忠诚度。在印度市场，一加面临小米、三星、realme的激烈竞争，火影忍者限定版可能成为差异化突围的利器。</div>
+    </div>
+  </div>
+
+</section>
+
+<!-- 芯片与算力 -->
+<section class="section">
+  <div class="section-header">
+    <span class="icon">🔧</span>
+    <h2>芯片与算力</h2>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-hot">重磅</span>
+      阿里达摩院发布玄铁C950，登顶全球RISC-V架构CPU性能榜首
+    </div>
+    <div class="item-body">
+      3月24日，在2026玄铁RISC-V生态大会上，阿里达摩院正式发布新一代旗舰RISC-V CPU——<strong>玄铁C950</strong>。单核通用性能在SPECint2006基准测试中<strong>突破70分</strong>，刷新全球RISC-V CPU性能纪录，综合性能较玄铁C920提升3倍以上。<strong>首次原生支持Qwen3、DeepSeek V3等千亿参数大模型</strong>，适用于云计算、生成式AI、高端机器人等领域。
+    </div>
+    <div class="stat-row">
+      <span class="stat">SPECint2006 <em>70分+</em></span>
+      <span class="stat">性能提升 <em>3倍</em></span>
+      <span class="stat">支持大模型 <em>千亿参数</em></span>
+    </div>
+    <div class="item-source">来源：<a href="http://finance.sina.com.cn/tech/roll/2026-03-24/doc-inhsavww4224223.shtml" target="_blank">阿里达摩院 / 2026玄铁RISC-V生态大会（官方）</a> ｜ 2026-03-24</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">国产RISC-V CPU性能里程碑！<strong>SPECint2006突破70分意味着玄铁C950已达到服务器级CPU性能水平</strong>，可与ARM Neoverse、Intel Xeon等主流数据中心CPU竞争。更值得关注的是"首次原生支持千亿参数大模型"——这意味着RISC-V架构正式迈入AI算力主战场。在中美科技脱钩背景下，RISC-V作为开源指令集架构，成为中国芯片产业"换道超车"的关键路径。阿里玄铁C950的发布，将加速RISC-V在云计算和AI基础设施中的商业化落地。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-blue">合作</span>
+      Meta与Arm合作开发新型数据中心CPU
+    </div>
+    <div class="item-body">
+      Meta宣布与Arm建立合作伙伴关系，共同开发新型数据中心CPU以满足AI工作负载需求。<strong>首款合作产品为Arm AGI CPU</strong>，是Arm首款专为AI时代设计的数据中心CPU，性能提升超过2倍，将通过开放计算项目(OCP)发布主板和机架设计。
+    </div>
+    <div class="stat-row">
+      <span class="stat">性能提升 <em>2倍+</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://about.fb.com/news/2026/03/meta-partners-with-arm-to-develop-new-class-of-data-center-silicon/" target="_blank">Meta Newsroom / Engineering at Meta（官方）</a> ｜ 2026-03-24</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">科技巨头联合自研AI芯片，挑战x86在数据中心的主导地位。<strong>Meta+Arm的组合意味着ARM架构在数据中心市场的份额将进一步扩大</strong>。Arm AGI CPU是Arm首款"专为AI时代设计"的数据中心CPU，显示出ARM对AI算力市场的野心。通过OCP开放设计，Meta和Arm希望建立新的行业标准，与Intel、AMD的x86生态竞争。对于云服务商和企业数据中心而言，更多选择意味着更好的性价比和供应链安全。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-orange">数据</span>
+      野村证券：Q2内存价格涨幅大幅超预期，DRAM涨51%/NAND涨50%
+    </div>
+    <div class="item-body">
+      野村最新半导体评论：第二季度内存价格涨幅预计大幅超过此前预测，<strong>DRAM环比涨51%（此前预期+6%）、NAND环比涨50%（此前预期+20%）</strong>，远超市场预期。
+    </div>
+    <div class="stat-row">
+      <span class="stat">DRAM涨幅 <em>51%</em></span>
+      <span class="stat">NAND涨幅 <em>50%</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://x.com/jukan05/status/2036341266410299511" target="_blank">@jukan05 (X) / 野村证券</a> ｜ 2026-03-24</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">内存价格暴涨8-10倍超预期，AI需求驱动半导体供应链剧变。<strong>DRAM和NAND是AI服务器和数据中心的核心组件</strong>，价格飙升直接推高AI基础设施建设成本。野村证券大幅上调价格预测，反映出AI算力需求的强劲程度远超市场预期。对于AI公司而言，内存成本上升将压缩利润空间；对于三星、SK海力士、美光等内存厂商而言，这是难得的"超级周期"。但价格上涨也可能促使下游客户加速寻找替代方案（如CXL内存扩展技术）。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-purple">投资</span>
+      SK海力士将购买80亿美元ASML EUV设备
+    </div>
+    <div class="item-body">
+      SK海力士将购买<strong>价值80亿美元的ASML EUV光刻设备</strong>，为未来先进工艺量产做准备。
+    </div>
+    <div class="stat-row">
+      <span class="stat">订单金额 <em>80亿美元</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://x.com/jukan05/status/2036303653389344904" target="_blank">@jukan05 (X)</a> ｜ 2026-03-24</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">半导体设备领域重大订单，反映AI驱动的芯片产能扩张需求。<strong>80亿美元是ASML历史上最大的单笔订单之一</strong>，显示出SK海力士对AI内存（HBM3E/HBM4）市场的强烈信心。EUV光刻机是生产先进制程芯片的核心设备，全球仅有ASML能够供应。SK海力士作为HBM（高带宽内存）市场的领导者，正在大规模扩产以满足NVIDIA、AMD等AI芯片厂商的需求。这笔订单也预示着AI芯片产能竞赛进入白热化阶段。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-hot">项目</span>
+      马斯克发布TERAFAB项目：SpaceX+Tesla联手年产1太瓦算力
+    </div>
+    <div class="item-body">
+      马斯克预告将正式发布<strong>TERAFAB项目</strong>，由SpaceX和Tesla共同完成。目标<strong>每年生产超过1太瓦算力</strong>，包括逻辑、内存和封装，其中约80%用于太空，约20%用于地面。这是史上最大规模的芯片生产计划。
+    </div>
+    <div class="stat-row">
+      <span class="stat">年产算力 <em>1太瓦</em></span>
+      <span class="stat">太空用途 <em>80%</em></span>
+      <span class="stat">地面用途 <em>20%</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://weibo.com/3996876140/5279587220849327" target="_blank">机器之心Pro / 量子位（微博）</a> ｜ 2026-03-24</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">马斯克芯片野心升级，太空算力概念首次大规模亮相。<strong>1太瓦算力是什么概念？相当于100万个高性能GPU的算力总和</strong>。TERAFAB的"80%用于太空"尤其引人注目——这意味着SpaceX可能在规划太空数据中心或星间计算网络。马斯克正在构建一个横跨地球和太空的算力帝国：Tesla提供地面AI算力（Dojo），SpaceX提供太空算力（TERAFAB），xAI提供模型能力。这一计划如果实现，将彻底改变全球算力格局。</div>
+    </div>
+  </div>
+
+</section>
+
+<!-- 游戏行业 -->
+<section class="section">
+  <div class="section-header">
+    <span class="icon">🎮</span>
+    <h2>游戏行业</h2>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-hot">重磅</span>
+      Epic Games裁员超1000人，因Fortnite收入下滑
+    </div>
+    <div class="item-body">
+      Epic Games宣布<strong>裁员超过1000名员工（约16%）</strong>，原因是Fortnite收入下滑。CEO Tim Sweeney在内部邮件中表示公司支出超过收入，需调整成本结构。这是Epic历史上最大规模裁员。
+    </div>
+    <div class="stat-row">
+      <span class="stat">裁员人数 <em>1000+</em></span>
+      <span class="stat">占比 <em>16%</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://gamesbeat.com/epic-games-lays-off-over-1000-employees-citing-fortnite-downturn/" target="_blank">GamesBeat</a> ｜ 2026-03-24</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">游戏行业最重磅的裁员事件，《Fortnite》商业模式面临挑战。<strong>Epic曾是"元宇宙"概念的旗手，Unreal Engine和Fortnite是其两大支柱</strong>。但Fortnite收入下滑暴露出"免费游戏+Battle Pass"模式的瓶颈——用户增长见顶，付费意愿下降。16%的裁员比例在游戏行业属于"地震级"，反映出Epic在元宇宙投入（如虚拟演唱会、创意模式）与商业回报之间的失衡。对于游戏行业而言，这是一个警示信号：即便是顶级IP也难以持续增长，多元化收入结构至关重要。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-orange">数据</span>
+      Switch 2美国销量数据：较Wii U高302%、较PS5高29%
+    </div>
+    <div class="item-body">
+      Circana数据显示Switch 2在美国上市9个月后销量超越几乎所有前代主机：<strong>较Wii U高302%、GameCube高139%、Xbox 360高120%、PS5高29%</strong>。唯一未超越的是GBA。
+    </div>
+    <div class="stat-row">
+      <span class="stat">vs Wii U <em>+302%</em></span>
+      <span class="stat">vs PS5 <em>+29%</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://x.com/Stealth40k/status/2036452737861226520" target="_blank">@Stealth40k (X) / Circana</a> ｜ 2026-03-24</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">权威数据机构一手数据，Switch 2商业表现全景画像。<strong>超越PS5 29%是一个惊人的成就</strong>——PS5是索尼历史上销售最快的主机之一。Switch 2的成功验证了任天堂"混合主机"策略的延续性：既满足家用主机需求，又满足便携游戏需求。与Wii U的302%对比更是 stark——Wii U是任天堂历史上最失败的主机之一，Switch 2彻底洗刷了这一耻辱。唯一未超越的GBA是掌上游戏机的传奇，Switch 2能否在生命周期内超越，值得持续关注。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-blue">动态</span>
+      《代号：致金庸》项目被砍，团队转做3A动作游戏《剑来》
+    </div>
+    <div class="item-body">
+      腾讯光子工作室<strong>《代号：致金庸》B站官方账号清空、官网下线，项目确认被砍</strong>。团队转做3A动作游戏《剑来》，制作人武江留任，深圳团队未裁员。
+    </div>
+    <div class="item-source">来源：<a href="https://weibo.com/2648435521/5279962522978603" target="_blank">竞核（微博）</a> ｜ 2026-03-24</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">腾讯3A游戏战略调整信号，金庸IP游戏化再次折戟。<strong>《代号：致金庸》曾是腾讯光子工作室的旗舰项目</strong>，采用虚幻引擎5开发，目标是打造开放世界武侠游戏。项目被砍可能与技术难题、成本超支或方向调整有关。转做《剑来》（基于烽火戏诸侯的同名小说）显示出腾讯对"网文IP+3A游戏"模式的信心。未裁员的消息安抚了市场担忧，但金庸IP的再次失败令人惋惜——这一华语世界最具影响力的武侠IP，至今未能诞生一款真正意义上的3A游戏。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-purple">报告</span>
+      AppMagic 2025休闲游戏报告：IAP收入停滞，留存率下滑
+    </div>
+    <div class="item-body">
+      2025年休闲游戏下载量增长8%，但<strong>IAP收入持平约210亿美元</strong>。益智和博彩类占总收入72%以上，头部游戏留存率下滑3.5%-13%。Hybridcasual Puzzles可能成为2026年关键竞争领域。
+    </div>
+    <div class="stat-row">
+      <span class="stat">下载增长 <em>8%</em></span>
+      <span class="stat">IAP收入 <em>210亿美元</em></span>
+      <span class="stat">留存下滑 <em>3.5%-13%</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://appmagic.rocks/research/casual-report-2025" target="_blank">AppMagic（行业报告）</a> ｜ 2026-03-24</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">权威行业报告，揭示休闲游戏市场增长困境。<strong>"下载量增长但收入停滞"是休闲游戏行业的典型困境</strong>——用户获取成本上升，但付费转化率没有同步提升。留存率下滑3.5%-13%更是警示信号，意味着用户对产品的新鲜感在消退。Hybridcasual（混合休闲）模式——结合超休闲的获客成本和中重度的变现深度——被视为破局方向。对于游戏开发者而言，2026年需要在玩法创新和商业模式上寻求突破。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-red">翻车</span>
+      《红色沙漠》PS5版严重问题，索尼破例开放退款
+    </div>
+    <div class="item-body">
+      Pearl Abyss的《红色沙漠》PS5版因<strong>画面模糊、性能下降、地图卡顿30秒甚至崩溃</strong>等严重技术问题，索尼破例开放退款通道。此前该游戏因AI素材争议Steam好评率已降至68%。
+    </div>
+    <div class="item-source">来源：<a href="https://weibo.com/2648435521/5280050683315886" target="_blank">竞核（微博）</a> ｜ 2026-03-24</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">高关注度新作接连翻车（AI素材+技术问题），行业警示案例。<strong>《红色沙漠》是《黑色沙漠》开发商Pearl Abyss的野心之作</strong>，开发多年、投入巨大，却陷入"AI素材争议+技术灾难"的双重困境。索尼破例开放退款是极为罕见的举措，通常只有《赛博朋克2077》级别的灾难才会触发。这一事件再次警示游戏行业：过度依赖AI生成内容可能引发玩家反感，而技术优化不足则会直接毁掉产品口碑。在"AI辅助开发"和"品质保障"之间找到平衡，是游戏公司面临的共同挑战。</div>
+    </div>
+  </div>
+
+</section>
+
+<!-- 科技行业动态 -->
+<section class="section">
+  <div class="section-header">
+    <span class="icon">🏛️</span>
+    <h2>科技行业动态</h2>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-new">政策</span>
+      国家数据局：AI术语Token中文定名为"词元"，中国日均调用量突破140万亿
+    </div>
+    <div class="item-body">
+      3月23日，在中国发展高层论坛2026年年会上，<strong>国家数据局局长刘烈宏正式给出Token的中文名——"词元"</strong>。刘烈宏表示，Token"词元"不仅是智能时代的价值锚点，更是连接技术供给与商业需求的"结算单位"。同时公布数据：中国日均词元(Token)调用量3月已突破140万亿。
+    </div>
+    <div class="stat-row">
+      <span class="stat">中文定名 <em>词元</em></span>
+      <span class="stat">日均调用量 <em>140万亿</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://k.sina.com.cn/article_7857201856_1d45362c001903k8hy.html" target="_blank">中国发展高层论坛2026 / 国家数据局（官方）</a> ｜ 2026-03-23</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">AI核心术语首次官方定名，标志着智能时代价值计量体系正式确立。<strong>"词元"这个译名简洁准确，既保留了Token的"代币"含义，又体现了NLP中"词汇单元"的技术内涵</strong>。国家数据局亲自定名，显示出中国对AI基础设施建设的重视。140万亿日均调用量更是惊人数据——这意味着中国已成为全球AI应用最活跃的市场之一。"词元"作为"价值锚点"和"结算单位"的定位，预示着未来可能出现基于Token计量的新型商业模式和监管框架。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-blue">布局</span>
+      小鹏汽车正式成立Robotaxi业务部，计划下半年开启载客示范运营
+    </div>
+    <div class="item-body">
+      3月23日，<strong>小鹏汽车宣布正式成立Robotaxi业务部</strong>，由袁婷婷担任负责人。该部门将全面统筹Robotaxi业务的产品定义、项目集成、研发测试及全流程运营，采用轻量化组织模式运作。小鹏计划于今年下半年正式开启Robotaxi载客示范运营，2027年初目标实现无安全员运营。
+    </div>
+    <div class="stat-row">
+      <span class="stat">负责人 <em>袁婷婷</em></span>
+      <span class="stat">示范运营 <em>2026下半年</em></span>
+      <span class="stat">无安全员 <em>2027年初</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://finance.sina.com.cn/roll/2026-03-23/doc-inhrxvtt5404471.shtml" target="_blank">小鹏汽车官方公告 / 财联社</a> ｜ 2026-03-23</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">自动驾驶商业化落地加速，小鹏Robotaxi业务组织架构正式确立。<strong>成立独立业务部意味着Robotaxi从小鹏的"技术探索"升级为"战略业务"</strong>。袁婷婷的任命值得关注——她在自动驾驶和出行领域有丰富经验。2026下半年开启载客示范运营、2027年初无安全员运营的时间表，显示出小鹏对技术成熟度的信心。但Robotaxi市场竞争激烈，特斯拉、百度、小马智行等都在加速布局，小鹏能否后来居上，取决于技术实力和运营效率。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-orange">数据</span>
+      OpenAI：9亿用户、8400亿估值，但财务前景不确定
+    </div>
+    <div class="item-body">
+      OpenAI拥有<strong>9亿用户和8400亿美元估值</strong>，但财务前景仍不确定。Reuters播客中，科技分析师Benedict Evans讨论了为何规模并不等于盈利确定性。
+    </div>
+    <div class="stat-row">
+      <span class="stat">用户数 <em>9亿</em></span>
+      <span class="stat">估值 <em>8400亿美元</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://x.com/Reuters/status/2036337239249039718" target="_blank">Reuters</a> ｜ 2026-03-24</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">OpenAI的"高估值、高用户、高不确定性"困境，是整个AI行业的缩影。<strong>9亿用户看似庞大，但免费用户占比高，付费转化率是关键问题</strong>。8400亿美元估值意味着市场对其未来盈利能力的极高预期，但Pre-IPO文件泄露显示其仍在亏损，且与微软的关系存在变数。Benedict Evans的观点切中要害：在AI领域，规模效应是否成立仍待验证——更多的用户是否带来更低的边际成本？更强的网络效应？OpenAI的IPO将是检验AI商业模式的关键时刻。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-red">安全</span>
+      Crunchyroll被黑客攻破，用户数据泄露
+    </div>
+    <div class="item-body">
+      动漫流媒体平台<strong>Crunchyroll正在调查数据泄露事件</strong>，黑客窃取了用户数据。
+    </div>
+    <div class="item-source">来源：<a href="https://x.com/Reuters/status/2036254275274232074" target="_blank">Reuters / BleepingComputer</a> ｜ 2026-03-24</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">娱乐平台安全事件，与litellm供应链攻击呼应今日"网络安全"主题。<strong>Crunchyroll是全球最大的动漫流媒体平台之一，拥有超过1亿注册用户</strong>。数据泄露事件再次敲响警钟：即便是大型平台也难以完全防范黑客攻击。对于用户而言，这意味着需要加强密码管理和多因素认证；对于平台而言，安全投入必须持续加大。在AI时代，数据安全不仅是技术问题，更是信任问题。</div>
+    </div>
+  </div>
+
+</section>
+
+<!-- 政策与监管 -->
+<section class="section">
+  <div class="section-header">
+    <span class="icon">📜</span>
+    <h2>政策与监管</h2>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-hot">盛会</span>
+      2026中关村论坛年会在北京开幕，百余场活动聚焦科技创新与产业创新深度融合
+    </div>
+    <div class="item-body">
+      3月25日，<strong>2026中关村论坛年会在北京开幕</strong>，由科技部、国家发展改革委、工信部、国务院国资委、中国科学院、中国工程院、中国科协、北京市政府共同主办。年会以"科技创新与产业创新深度融合"为主题，设置论坛会议、成果发布、技术交易、前沿大赛、配套活动五大板块，共百余场活动，来自100多个国家和地区的上千名嘉宾参与。将围绕<strong>6G、脑机接口、细胞与基因治疗</strong>等前沿领域举办60场平行论坛。
+    </div>
+    <div class="stat-row">
+      <span class="stat">主办单位 <em>8个</em></span>
+      <span class="stat">参与国家/地区 <em>100+</em></span>
+      <span class="stat">平行论坛 <em>60场</em></span>
+    </div>
+    <div class="item-source">来源：<a href="http://finance.people.com.cn/n1/2026/0325/c1004-40688607.html" target="_blank">科技部 / 北京市政府 / 新华社（官方）</a> ｜ 2026-03-25</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">国家级科技创新盛会开幕，全球科技合作与产业创新重要平台。<strong>中关村论坛是中国最高规格的科技盛会之一</strong>，8个部委联合主办显示出国家层面对科技创新的高度重视。"科技创新与产业创新深度融合"的主题，反映出中国科技政策从"论文导向"向"产业导向"的转变。6G、脑机接口、细胞与基因治疗等前沿领域的60场平行论坛，将汇聚全球顶尖科学家和产业领袖。在全球科技脱钩背景下，中关村论坛作为开放合作平台的价值愈发重要。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-new">标准</span>
+      我国首个人形机器人与具身智能标准体系发布
+    </div>
+    <div class="item-body">
+      人形机器人与具身智能标准化年会在北京召开，会上发布<strong>《人形机器人与具身智能标准体系(2026版)》</strong>。这是我国首个覆盖人形机器人与具身智能全产业链、全生命周期的标准顶层设计，由工信部人形机器人与具身智能标委会组织120余家单位编制，包括基础共性、类脑与智算、肢体与部组件、整机与系统、应用、安全伦理等6个部分。
+    </div>
+    <div class="stat-row">
+      <span class="stat">编制单位 <em>120+</em></span>
+      <span class="stat">标准部分 <em>6个</em></span>
+    </div>
+    <div class="item-source">来源：<a href="http://jjckb.xinhuanet.com/20260302/12ed82bb867f4bd88caba863277d77b3/c.html" target="_blank">工信部 / 人形机器人与具身智能标准化技术委员会（官方）</a> ｜ 2026-03-24</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">我国人形机器人产业进入规范化发展新阶段，具身智能标准顶层设计确立。<strong>120余家单位参与编制，显示出产业链的广泛参与</strong>。6个部分覆盖从基础技术到安全伦理的全链条，为产业发展提供了清晰的路线图。"安全伦理"单独成章尤其值得关注——随着人形机器人进入家庭和社会，伦理和安全问题将成为监管重点。这一标准体系的发布，将加速中国人形机器人产业的标准化和规模化发展。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-blue">通知</span>
+      工信部部署2026年信息通信业安全生产和网络运行安全工作
+    </div>
+    <div class="item-body">
+      工信部办公厅印发<strong>《关于做好2026年信息通信业安全生产和网络运行安全工作的通知》</strong>（工信厅信管函〔2026〕110号），从强化思想政治引领、完善制度规范体系、实施精细化管理、紧盯关键核心环节、遏制生产安全事故、增强应急处置能力、加强日常巡查检查等七个方面明确24项主要任务，构建涵盖事前、事中、事后的全链条防护体系。
+    </div>
+    <div class="stat-row">
+      <span class="stat">主要任务 <em>24项</em></span>
+      <span class="stat">方面数 <em>7个</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://www.sohu.com/a/1000375888_120658388" target="_blank">工信部办公厅 / 工信微报（官方）</a> ｜ 2026-03-23</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">信息通信业安全生产年度工作部署，卫星互联网运行安全管理制度将健全。<strong>24项任务覆盖规划、设计、建设、运营全生命周期</strong>，显示出监管的系统性和前瞻性。值得注意的是，通知特别提到"健全卫星互联网运行安全管理制度"——随着星链、中国星网等低轨卫星星座的部署，卫星互联网正从"试验"走向"商用"，其运行安全关乎国家通信基础设施安全。对于运营商和互联网企业而言，这意味着安全合规成本将上升，但也将推动行业整体安全能力的提升。</div>
+    </div>
+  </div>
+
+</section>
+
+</div>
+
+<footer class="footer">
+  <p class="footer-brand">Tech Daily Brief</p>
+  <p>2026年3月25日 · 覆盖范围：3月23日-25日</p>
+  <p>数据来源：<strong>OpenAI</strong>、<strong>Meta</strong>、<strong>Apple</strong>、<strong>Anthropic</strong>、国家数据局、工信部、科技部、阿里达摩院、晚点LatePost、Bloomberg、Reuters、TechCrunch、GamesBeat、AppMagic、Circana</p>
+</footer>
+
+<a href="#" class="back-to-top" id="backToTop" title="回到顶部">&uarr;</a>
+
+<script>
+  const backBtn = document.getElementById('backToTop');
+  window.addEventListener('scroll', function() {
+    backBtn.classList.toggle('visible', window.scrollY > 400);
+  });
+</script>
+
+</body>
+</html>
