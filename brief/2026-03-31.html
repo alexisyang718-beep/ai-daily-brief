@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tech Daily Brief | 2026年3月31日</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap');
+
+  :root {
+    --bg: #FAF9F5;
+    --bg-warm: #F5F0E8;
+    --card: #FFFFFF;
+    --border: #E8E2D9;
+    --border-light: #F0EBE3;
+    --accent: #C96442;
+    --accent-hover: #B5573A;
+    --accent-soft: rgba(201, 100, 66, 0.08);
+    --accent-border: rgba(201, 100, 66, 0.2);
+    --text: #1A1A1A;
+    --text-secondary: #6B6560;
+    --text-tertiary: #9B9590;
+    --tag-red: #C96442;
+    --tag-red-bg: rgba(201, 100, 66, 0.08);
+    --tag-green: #5A8F6B;
+    --tag-green-bg: rgba(90, 143, 107, 0.08);
+    --tag-blue: #4A7B9D;
+    --tag-blue-bg: rgba(74, 123, 157, 0.08);
+    --tag-purple: #7B6B9D;
+    --tag-purple-bg: rgba(123, 107, 157, 0.08);
+    --tag-orange: #B8863B;
+    --tag-orange-bg: rgba(184, 134, 59, 0.08);
+    --tag-teal: #4A8F8F;
+    --tag-teal-bg: rgba(74, 143, 143, 0.08);
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.06);
+    --shadow-hover: 0 6px 20px rgba(0,0,0,0.08);
+    --radius: 16px;
+    --radius-sm: 10px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, 'SF Pro Text', 'PingFang SC', 'Noto Sans SC', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .container { max-width: 780px; margin: 0 auto; padding: 0 24px; }
+
+  .header { padding: 60px 0 40px; text-align: center; }
+
+  .header-logo {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 48px; height: 48px; background: var(--accent); border-radius: 12px; margin-bottom: 20px;
+  }
+
+  .header-logo svg { width: 26px; height: 26px; fill: white; }
+
+  .header h1 {
+    font-family: 'Noto Serif SC', 'Georgia', serif;
+    font-size: 32px; font-weight: 700; color: var(--text); letter-spacing: -0.5px; margin-bottom: 8px;
+  }
+
+  .header .date { color: var(--text-tertiary); font-size: 14px; font-weight: 400; letter-spacing: 0.3px; }
+
+  .header .divider { width: 40px; height: 2px; background: var(--accent); margin: 20px auto; }
+
+  .summary-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 24px 28px; margin-top: 24px; text-align: left;
+    box-shadow: var(--shadow-sm); line-height: 1.95; font-size: 15px; color: var(--text-secondary);
+  }
+
+  .summary-card strong { color: var(--accent); font-weight: 600; }
+
+  .toc {
+    margin: 40px 0 32px; padding: 24px 28px;
+    background: var(--bg-warm); border-radius: var(--radius); border: 1px solid var(--border-light);
+  }
+
+  .toc h3 { font-size: 13px; font-weight: 600; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
+
+  .toc ul { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px 20px; list-style: none; }
+
+  .toc a {
+    display: flex; align-items: center; gap: 8px; color: var(--text); text-decoration: none;
+    font-size: 14px; font-weight: 500; padding: 8px 12px; border-radius: var(--radius-sm); transition: all 0.2s;
+  }
+
+  .toc a:hover { background: var(--card); box-shadow: var(--shadow-sm); color: var(--accent); }
+  .toc .toc-icon { font-size: 16px; }
+
+  .section { margin-bottom: 48px; }
+
+  .section-header {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 24px;
+    padding-bottom: 12px; border-bottom: 2px solid var(--border);
+  }
+
+  .section-header .icon { font-size: 28px; }
+
+  .section-header h2 {
+    font-family: 'Noto Serif SC', 'Georgia', serif; font-size: 22px; font-weight: 700; color: var(--text);
+  }
+
+  .item {
+    background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 20px 24px; margin-bottom: 20px; box-shadow: var(--shadow-sm); transition: all 0.3s;
+  }
+
+  .item:hover { box-shadow: var(--shadow-hover); border-color: var(--accent-border); }
+
+  .item-title { font-size: 16px; font-weight: 600; color: var(--text); line-height: 1.6; margin-bottom: 12px; }
+
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.5px; padding: 3px 8px; border-radius: 4px; margin-right: 8px; vertical-align: middle;
+  }
+
+  .tag-hot { background: var(--tag-red-bg); color: var(--tag-red); }
+  .tag-new { background: var(--tag-green-bg); color: var(--tag-green); }
+  .tag-blue { background: var(--tag-blue-bg); color: var(--tag-blue); }
+  .tag-purple { background: var(--tag-purple-bg); color: var(--tag-purple); }
+  .tag-orange { background: var(--tag-orange-bg); color: var(--tag-orange); }
+  .tag-teal { background: var(--tag-teal-bg); color: var(--tag-teal); }
+
+  .item-body { font-size: 14px; color: var(--text-secondary); line-height: 1.85; margin-bottom: 12px; }
+  .item-body strong { color: var(--text); font-weight: 600; }
+  .item-body a { color: var(--accent); text-decoration: none; }
+  .item-body a:hover { text-decoration: underline; }
+
+  .stat-row { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 12px; padding-top: 8px; }
+
+  .stat {
+    display: inline-flex; align-items: center; gap: 4px;
+    background: var(--bg-warm); padding: 4px 10px; border-radius: 6px; font-size: 12px; color: var(--text-secondary);
+  }
+
+  .stat em { font-style: normal; font-weight: 600; color: var(--accent); }
+
+  .item-source { font-size: 12px; color: var(--text-tertiary); padding-top: 12px; border-top: 1px solid var(--border-light); }
+  .item-source a { color: var(--accent); text-decoration: none; }
+  .item-source a:hover { text-decoration: underline; }
+
+  .insight-box {
+    margin-top: 12px; padding: 16px 20px; background: #FFF8F5;
+    border-top: 2px solid var(--accent); border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+    font-size: 14px; color: var(--text-secondary); line-height: 1.85;
+  }
+
+  .insight-box .insight-label { color: var(--accent); font-size: 15px; font-weight: bold; display: flex; align-items: center; gap: 6px; margin-bottom: 10px; }
+  .insight-box .insight-content { line-height: 1.85; }
+  .insight-box .insight-content strong { color: var(--text); font-weight: 600; }
+
+  .footer { text-align: center; padding: 40px 0 50px; border-top: 1px solid var(--border); margin-top: 32px; }
+  .footer p { color: var(--text-tertiary); font-size: 12px; line-height: 2; }
+  .footer .footer-brand { font-family: 'Noto Serif SC', 'Georgia', serif; font-size: 14px; font-weight: 600; color: var(--text-secondary); margin-bottom: 4px; }
+  .footer a { color: var(--accent); text-decoration: none; }
+  .footer a:hover { text-decoration: underline; }
+
+  .back-to-top {
+    position: fixed; bottom: 32px; right: 32px; width: 40px; height: 40px;
+    background: var(--card); border: 1px solid var(--border); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; cursor: pointer;
+    box-shadow: var(--shadow-md); transition: all 0.3s; opacity: 0; pointer-events: none;
+    color: var(--text-secondary); font-size: 18px; text-decoration: none;
+  }
+
+  .back-to-top.visible { opacity: 1; pointer-events: auto; }
+  .back-to-top:hover { box-shadow: var(--shadow-hover); color: var(--accent); border-color: var(--accent-border); }
+
+  .back-home {
+    display: inline-flex; align-items: center; gap: 6px; color: var(--text-tertiary);
+    text-decoration: none; font-size: 13px; font-weight: 500; padding: 6px 14px;
+    border-radius: 20px; border: 1px solid var(--border); background: var(--card);
+    transition: all 0.2s; position: fixed; top: 24px; left: 24px; z-index: 100; box-shadow: var(--shadow-sm);
+  }
+
+  .back-home:hover { color: var(--accent); border-color: var(--accent-border); box-shadow: var(--shadow-md); }
+
+  .theme-toggle {
+    position: fixed; top: 24px; right: 24px; width: 36px; height: 36px;
+    background: var(--card); border: 1px solid var(--border); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; cursor: pointer;
+    box-shadow: var(--shadow-sm); transition: all 0.3s; font-size: 16px; z-index: 100;
+  }
+
+  .theme-toggle:hover { box-shadow: var(--shadow-md); border-color: var(--accent-border); }
+
+  [data-theme="dark"] {
+    --bg: #1C1B18; --bg-warm: #252420; --card: #2A2925; --border: #3D3B36; --border-light: #333230;
+    --accent: #D4845F; --accent-hover: #E0966F; --accent-soft: rgba(212, 132, 95, 0.1);
+    --accent-border: rgba(212, 132, 95, 0.25); --text: #E8E4DE; --text-secondary: #A8A29A;
+    --text-tertiary: #78736C; --tag-red: #D4845F; --tag-red-bg: rgba(212, 132, 95, 0.12);
+    --tag-green: #7DB88D; --tag-green-bg: rgba(125, 184, 141, 0.12);
+    --tag-blue: #6DA0C2; --tag-blue-bg: rgba(109, 160, 194, 0.12);
+    --tag-purple: #9D8DBF; --tag-purple-bg: rgba(157, 141, 191, 0.12);
+    --tag-orange: #D4A95F; --tag-orange-bg: rgba(212, 169, 95, 0.12);
+    --tag-teal: #6DB5B5; --tag-teal-bg: rgba(109, 181, 181, 0.12);
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.15); --shadow-md: 0 4px 12px rgba(0,0,0,0.2); --shadow-hover: 0 6px 20px rgba(0,0,0,0.25);
+  }
+
+  [data-theme="dark"] .insight-box { background: rgba(212, 132, 95, 0.06); }
+
+  @media (max-width: 640px) {
+    .container { padding: 0 16px; }
+    .header { padding: 40px 0 28px; }
+    .header h1 { font-size: 26px; }
+    .toc ul { grid-template-columns: 1fr; }
+    .summary-card { padding: 18px 20px; }
+    .item { padding: 16px 18px; }
+    .theme-toggle { top: 16px; right: 16px; }
+    .back-to-top { bottom: 20px; right: 20px; }
+    .back-home { top: 16px; left: 16px; font-size: 12px; padding: 5px 12px; }
+  }
+
+  html { scroll-behavior: smooth; }
+  ::selection { background: var(--accent-soft); color: var(--accent); }
+</style>
+</head>
+<body>
+
+<a class="back-home" href="../index.html">&larr; 返回存档</a>
+<button class="theme-toggle" onclick="toggleTheme()" title="切换深色/浅色模式" aria-label="切换主题">&#9728;&#65039;</button>
+
+<div class="container">
+
+<header class="header">
+  <div class="header-logo">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+  </div>
+  <h1>Tech Daily Brief</h1>
+  <div class="date">2026年3月31日 · 周二</div>
+  <div class="divider"></div>
+  <div class="summary-card">
+    ❶ <strong>OpenAI 关停 Sora</strong>：日烧百万美元、用户骤降过半，Altman 果断止血将算力转投核心业务<br>
+    ❷ <strong>AI 基建军备赛升温</strong>：Mistral $8.3亿巴黎建数据中心、Rebellions $4亿冲击推理芯片IPO、Starcloud $1.7亿建太空数据中心<br>
+    ❸ <strong>开源生态里程碑</strong>：llama.cpp 突破 10 万 GitHub Stars，Qwen3.5-27B 蝉联 HuggingFace 趋势榜首三周<br>
+    ❹ <strong>GLM-5.1 实测称全球 SOTA</strong>，vector-db-bench 登顶第一，国产大模型与 GPT-5 正面交锋<br>
+    ❺ <strong>手机市场</strong>：苹果华为 17.1% 并列第一，Pixel 11 / iPhone 18 Pro 设计泄露<br>
+    ❻ <strong>游戏 IP 寒冬</strong>：PUBG 衍生作 54 天关服 + 上古卷轴衍生作关停，大 IP 衍生模式遇冷<br>
+    ❼ <strong>AI 信任悖论</strong>：美国 AI 采用率上升但信任度反降，15% 的人愿为 AI 老板打工
+  </div>
+</header>
+
+<nav class="toc">
+  <h3>目录</h3>
+  <ul>
+    <li><a href="#model"><span class="toc-icon">🧠</span> AI 模型与产品</a></li>
+    <li><a href="#phone"><span class="toc-icon">📱</span> 手机与消费电子</a></li>
+    <li><a href="#chip"><span class="toc-icon">🔧</span> 芯片与算力</a></li>
+    <li><a href="#game"><span class="toc-icon">🎮</span> 游戏行业</a></li>
+    <li><a href="#industry"><span class="toc-icon">🏛️</span> 科技行业动态</a></li>
+    <li><a href="#policy"><span class="toc-icon">📜</span> 政策与监管</a></li>
+  </ul>
+</nav>
+
+<!-- ==================== 1. AI 模型与产品 ==================== -->
+<section class="section" id="model">
+  <div class="section-header">
+    <span class="icon">🧠</span>
+    <h2>AI 模型与产品</h2>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-hot">头条</span>
+      OpenAI 关停 Sora：日烧百万美元，用户暴跌过半
+    </div>
+    <div class="item-body">
+      OpenAI 上周关停了上线仅 6 个月的视频生成工具 Sora。《华尔街日报》调查揭示真实原因：<strong>日均运营成本约 100 万美元</strong>，用户数从 100 万暴跌至不足 50 万。CEO Altman 决定止血，释放计算资源重新聚焦核心 AI 竞争。迪士尼 10 亿美元合作协议也随之告吹。
+    </div>
+    <div class="stat-row">
+      <span class="stat">日均烧钱 <em>$100万</em></span>
+      <span class="stat">用户骤降 <em>>50%</em></span>
+      <span class="stat">迪士尼合作 <em>$10亿告吹</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://techcrunch.com/2026/03/29/why-openai-really-shut-down-sora/">TechCrunch</a> ｜ 一手媒体 ｜ 3月29日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">Sora 关停的深层逻辑是<strong>算力资源的战略再分配</strong>。Anthropic 的 Claude Code 正在侵蚀 OpenAI 的开发者市场份额，Altman 不得不将宝贵的 GPU 资源从视频生成赛道撤出，集中火力对抗。这预示着 AI 公司正从"全线出击"转向"聚焦核心"——未来 AI 视频可能成为独立赛道而非大模型公司的标配功能。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-orange">融资</span>
+      Mistral AI 8.3 亿美元债务融资，巴黎建自有数据中心
+    </div>
+    <div class="item-body">
+      欧洲 AI 领军企业 Mistral AI 完成 <strong>8.3 亿美元债务融资</strong>，在巴黎近郊 Bruyères-le-Châtel 建设自有数据中心，预计 <strong>2026 年 Q2 投产</strong>。CEO Mensch 表示目标是 2027 年前在欧洲部署 200MW 算力。此前该公司已在瑞典投入 14 亿美元建设 AI 基础设施。
+    </div>
+    <div class="stat-row">
+      <span class="stat">融资额 <em>$8.3亿</em></span>
+      <span class="stat">目标算力 <em>200MW</em></span>
+      <span class="stat">累计融资 <em>$31亿</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://techcrunch.com/2026/03/30/mistral-ai-raises-830m-in-debt-to-set-up-a-data-center-near-paris/">TechCrunch</a> ｜ 一手媒体 ｜ 3月30日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">Mistral 正从"轻资产模型公司"转向<strong>"全栈 AI 基础设施"</strong>。选择债务融资而非股权稀释，说明管理层对现金流有信心。数据中心由 NVIDIA 芯片驱动，投资方包括 a16z 和 General Catalyst——欧洲 AI 自主权叙事正在吸引全球顶级资本。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-new">开源</span>
+      Qwen3.5-27B 蝉联 HuggingFace 趋势榜首三周
+    </div>
+    <div class="item-body">
+      Qwen3.5-27B 经 fine-tune 后，在 HuggingFace 趋势排行榜<strong>连续 3 周占据第一</strong>。Unsloth 团队分享了该模型在 Claude/GPT 级别任务上的表现对比，性价比优势显著，引发开源社区热议。
+    </div>
+    <div class="stat-row">
+      <span class="stat">蝉联 <em>3周第一</em></span>
+      <span class="stat">参数量 <em>27B</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://x.com/UnslothAI/status/2038625148354679270">@UnslothAI</a> ｜ 𝕏 一手技术信源 ｜ 3月30日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">27B 参数量模型连续霸榜，说明<strong>中型开源模型的性价比甜蜜点已经找到</strong>。对比动辄数百B参数的闭源模型，开发者社区正用实际下载量投票——在推理成本高企的今天，"够用就好"才是王道。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-blue">实测</span>
+      GLM-5.1 实测：vector-db-bench 全球第一，叫板 GPT-5
+    </div>
+    <div class="item-body">
+      博主实测智谱 GLM-5.1，在 vector-db-bench 基准上<strong>直接登顶第一</strong>，评价"从国产模型 SOTA 跃升到全球 SOTA"。同时吐槽 GPT-5.4-Pro(xhigh) 单次测试花了 150 美元——"当模型价格比工资贵，它就没太多竞争力了"。
+    </div>
+    <div class="stat-row">
+      <span class="stat">基准排名 <em>全球#1</em></span>
+      <span class="stat">GPT-5.4-Pro 单测 <em>$150</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://weibo.com/2169039837/5282088750419554">微博科技博主</a> ｜ 社区实测 ｜ 3月30日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">GLM-5.1 在向量检索基准上登顶，反映国产模型在<strong>RAG/Embedding 场景的实用性</strong>已接近甚至超越闭源模型。GPT-5 系列的高定价策略正在为国产模型打开市场窗口。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-teal">产品</span>
+      Musk 分享 Grok Imagine 视频制作教程
+    </div>
+    <div class="item-body">
+      Elon Musk 亲自发推介绍 <strong>Grok Imagine 视频生成功能</strong>的使用技巧，展示 xAI 在多模态生成领域的最新进展。在 OpenAI 关停 Sora 的同一周，xAI 加速推广自家视频生成能力。
+    </div>
+    <div class="item-source">来源：<a href="https://x.com/elonmusk/status/2038644909738275252">@elonmusk</a> ｜ 𝕏 官方一手 ｜ 3月30日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">OpenAI 刚关停 Sora，Musk 立即高调推广 Grok 视频功能——<strong>AI 视频赛道正在从"大厂标配"变为差异化竞争武器</strong>。xAI 能否填补 Sora 留下的市场空白值得关注。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-hot">人事</span>
+      华为盘古大模型负责人官宣离职
+    </div>
+    <div class="item-body">
+      91 年生、北大博士、华为工龄 9 年的<strong>盘古大模型核心负责人</strong>在朋友圈官宣离职。去年 GitHub 上曾曝出盘古 Pro MoE 72B 模型争议，如今核心人物出走，华为大模型团队面临新一轮调整。
+    </div>
+    <div class="item-source">来源：<a href="https://weibo.com/1725941200/5281530641388473">微博科技博主</a> ｜ 独家信息 ｜ 3月30日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">华为大模型团队核心人才流失，叠加此前盘古模型的开源争议，反映出<strong>国内大模型人才竞争进入白热化阶段</strong>。华为能否在芯片+模型双线作战中稳住阵脚，考验管理层智慧。</div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ==================== 2. 手机与消费电子 ==================== -->
+<section class="section" id="phone">
+  <div class="section-header">
+    <span class="icon">📱</span>
+    <h2>手机与消费电子</h2>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-new">泄露</span>
+      Google Pixel 11 设计泄露：更窄边框、全黑相机模组
+    </div>
+    <div class="item-body">
+      Pixel 11 最新泄露渲染图显示<strong>边框进一步收窄</strong>，相机模组改为全黑一体化设计。相比 Pixel 10 属于"渐进式进化"，但屏占比提升明显，设计语言更加统一。
+    </div>
+    <div class="item-source">来源：<a href="https://x.com/9to5Google/status/2038632627930865769">@9to5Google</a> ｜ 𝕏 一手科技媒体 ｜ 3月30日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">Pixel 系列正在从"实验性"向<strong>主流高端机型</strong>过渡。窄边框设计追赶 iPhone/Galaxy 水准，但差异化仍需依赖 Google AI 软件生态。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-teal">泄露</span>
+      iPhone 18 Pro 将缩小灵动岛
+    </div>
+    <div class="item-body">
+      泄露信息显示 <strong>iPhone 18 Pro 的 Dynamic Island 面积将显著缩小</strong>，前置摄像头和 Face ID 组件进一步小型化，为更大的显示面积让路。
+    </div>
+    <div class="item-source">来源：<a href="https://x.com/MacRumors/status/2038631932838240269">@MacRumors</a> ｜ 𝕏 一手科技媒体 ｜ 3月30日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">灵动岛缩小意味着 Apple 在<strong>前置传感器微型化</strong>上取得突破。作为 iPhone 最显眼的设计元素之一，这将是 iPhone 18 系列的核心卖点之一。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-orange">数据</span>
+      国内手机周榜：苹果华为 17.1% 并列第一
+    </div>
+    <div class="item-body">
+      2026 年第 12 周国内手机市场份额（Sell out）：<strong>苹果 17.1%、华为 17.1%</strong> 并列第一，OPPO 16.8%（含一加 2.4%），小米 16.2%，vivo 14.8%（含 iQOO 3.2%）。本周大盘下降约 8%。
+    </div>
+    <div class="stat-row">
+      <span class="stat">苹果 <em>17.1%</em></span>
+      <span class="stat">华为 <em>17.1%</em></span>
+      <span class="stat">OPPO <em>16.8%</em></span>
+      <span class="stat">大盘 <em>↓8%</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://weibo.com/7928198622/5281052423885491">微博数码博主</a> ｜ 社区数据 ｜ 3月30日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">苹果华为<strong>首次战平</strong>，格局高度分散——前五名差距仅 2.3 个百分点。OPPO 凭借 Find N6 折叠屏发力追赶，国内高端市场进入"五强混战"阶段。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-new">新品</span>
+      一加 15T 发布：6.32 英寸小屏旗舰
+    </div>
+    <div class="item-body">
+      一加 15T 正式发布，主打<strong>小屏旗舰</strong>定位。6.32 英寸机身、更大 R 角、单手友好设计，影像/屏幕/续航全面升级，瞄准小屏党的细分市场。
+    </div>
+    <div class="item-source">来源：<a href="https://weibo.com/1906286443/5280101682119482">微博科技博主</a> ｜ 社区报道 ｜ 3月29日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">在"大屏即正义"的市场趋势下，一加逆向押注小屏旗舰，瞄准被主流厂商忽视的<strong>单手操作人群</strong>。差异化策略能否转化为销量，首周数据将给出答案。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-blue">更新</span>
+      iOS 26.4 新增 iCloud 便捷同步功能
+    </div>
+    <div class="item-body">
+      Apple 在 iOS 26.4 中<strong>新增 iCloud 便捷功能</strong>，简化跨设备数据同步流程，降低用户管理多设备数据的摩擦。
+    </div>
+    <div class="item-source">来源：<a href="https://x.com/9to5mac/status/2038634285729509376">@9to5Mac</a> ｜ 𝕏 一手科技媒体 ｜ 3月30日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">iCloud 功能强化是 Apple <strong>服务收入增长策略</strong>的一环。每次降低使用门槛都会带动订阅转化，iCloud+ 已成为 Apple 增长最快的服务板块之一。</div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ==================== 3. 芯片与算力 ==================== -->
+<section class="section" id="chip">
+  <div class="section-header">
+    <span class="icon">🔧</span>
+    <h2>芯片与算力</h2>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-orange">融资</span>
+      Rebellions $4 亿融资冲击 IPO，挑战 NVIDIA 推理芯片霸权
+    </div>
+    <div class="item-body">
+      韩国 AI 推理芯片创企 Rebellions 完成 <strong>4 亿美元 pre-IPO 轮</strong>，估值 23 亿美元，计划年内上市。由未来资产和韩国国家成长基金领投。公司发布 <strong>RebelPOD 和 RebelRack</strong> 两款新产品，过去 6 个月融资达 6.5 亿美元。
+    </div>
+    <div class="stat-row">
+      <span class="stat">估值 <em>$23亿</em></span>
+      <span class="stat">本轮 <em>$4亿</em></span>
+      <span class="stat">累计 <em>$8.5亿</em></span>
+      <span class="stat">IPO <em>2026年内</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://techcrunch.com/2026/03/30/ai-chip-startup-rebellions-raises-400-million-at-2-3b-valuation-in-pre-ipo-round/">TechCrunch</a> ｜ 一手媒体 ｜ 3月30日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">Rebellions 专攻<strong>推理芯片</strong>而非训练芯片，精准卡位 LLM 商业化部署的增量需求。AWS、Meta、Google 都在自研芯片对抗 NVIDIA，而 Rebellions 则代表了"专业化第三方推理芯片"的新赛道。年内 IPO 若成功，将成为亚洲 AI 芯片第一股。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-purple">太空</span>
+      Starcloud $1.7 亿建太空数据中心，17 个月成 YC 最快独角兽
+    </div>
+    <div class="item-body">
+      Starcloud 完成 <strong>1.7 亿美元 A 轮</strong>（Benchmark、EQT 领投），估值 11 亿美元，成为 YC 史上最快独角兽。已在轨运行 H100 GPU 训练 AI 模型，下一代产品将搭载 <strong>NVIDIA Blackwell 芯片</strong>和 AWS 服务器刀片。
+    </div>
+    <div class="stat-row">
+      <span class="stat">估值 <em>$11亿</em></span>
+      <span class="stat">YC 到独角兽 <em>17个月</em></span>
+      <span class="stat">下一代 <em>Blackwell 芯片</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://techcrunch.com/2026/03/30/starcloud-raises-170-million-series-ato-build-data-centers-in-space/">TechCrunch</a> ｜ 一手媒体 ｜ 3月30日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">太空数据中心听起来科幻，但逻辑很实际：<strong>太阳能发电成本趋近于零</strong>，散热通过辐射解决。关键瓶颈在于 SpaceX Starship 的发射成本何时降到 $500/kg 以下。2030 年代才可能具备对地面的成本竞争力，但在轨计算（服务卫星/太空探索）已有真实需求。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-hot">国产</span>
+      昇腾 950PR 售价 7 万：中国 AI 芯片进入新发展期
+    </div>
+    <div class="item-body">
+      华为昇腾 950PR 芯片定价 <strong>7 万元人民币</strong>。博主指出中国已是全球 Token 消耗量最大的国家，AI 加速芯片正进入需求爆发期。
+    </div>
+    <div class="stat-row">
+      <span class="stat">售价 <em>¥7万</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://weibo.com/5932872950/5281452821580288">微博科技博主</a> ｜ 社区信源 ｜ 3月30日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">昇腾 950PR 的定价策略直接<strong>对标 NVIDIA A100 级别</strong>。在美国出口管制持续收紧的背景下，国产 AI 芯片的量产和定价能力将决定中国 AI 产业的自主化进程。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-hot">地缘</span>
+      美国 ITC 对日韩存储芯片巨头启动 337 调查
+    </div>
+    <div class="item-body">
+      美国 ITC 对日本铠侠和韩国 SK 海力士启动 <strong>337 知识产权调查</strong>，调查范围涵盖大量关联公司。这是继关税之后，美国对全球半导体供应链的又一次重大干预。
+    </div>
+    <div class="item-source">来源：<a href="https://weibo.com/1725941200/5281051015905569">微博科技博主</a> ｜ 社区深度解读 ｜ 3月30日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">337 调查比关税更具杀伤力——<strong>可直接禁止产品进入美国市场</strong>。对铠侠和 SK 海力士的调查将直接影响 HBM/NAND 供应链，间接推高 AI 训练的存储成本。三星可能成为短期受益者。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-blue">战略</span>
+      Arm 转向自研芯片销售，业界称"重要转折"
+    </div>
+    <div class="item-body">
+      Arm 不再仅做 IP 授权，开始<strong>转向自研芯片销售</strong>。业界评价这是"非常重要的战略转向"，将直接改变移动芯片市场格局。
+    </div>
+    <div class="item-source">来源：<a href="https://x.com/tbpn/status/2038753131178443175">@tbpn</a> ｜ 𝕏 行业分析 ｜ 3月31日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">Arm 从"卖图纸"到"卖芯片"，本质是<strong>向下游要利润</strong>。这将直接冲击高通、联发科等客户的利益，未来 Arm 架构生态可能面临分裂风险。</div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ==================== 4. 游戏行业 ==================== -->
+<section class="section" id="game">
+  <div class="section-header">
+    <span class="icon">🎮</span>
+    <h2>游戏行业</h2>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-new">订阅</span>
+      生化危机 7 登陆 Xbox Game Pass
+    </div>
+    <div class="item-body">
+      RESIDENT EVIL 7 biohazard <strong>正式上线 Xbox Game Pass</strong>，支持主机、PC 和云游戏三端。Capcom 经典恐怖游戏加入订阅库，进一步充实 Game Pass 内容矩阵。
+    </div>
+    <div class="item-source">来源：<a href="https://x.com/IdleSloth84_/status/2038771539160482191">@IdleSloth84_</a> ｜ 𝕏 游戏信源 ｜ 3月31日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">微软持续向 Game Pass 注入<strong>第三方 AAA 大作</strong>，压注订阅制模式。RE7 加入可能预示 Capcom 更多经典作品入库，利好 Game Pass 用户留存。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-teal">IP</span>
+      马力欧银河系电影确认星际火狐角色，任天堂加速 IP 联动
+    </div>
+    <div class="item-body">
+      超级马力欧银河系电影中出现<strong>星际火狐角色</strong>，任天堂官方账号发布确认信息。任天堂正加速 IP 矩阵跨界联动，为 Switch 2 时代的内容生态铺路。
+    </div>
+    <div class="item-source">来源：<a href="https://x.com/Genki_JPN/status/2038635595334099303">@Genki_JPN</a> + <a href="https://x.com/IGN/status/2038793810608566598">@IGN</a> ｜ 𝕏 ｜ 3月30日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">任天堂的<strong>电影宇宙战略</strong>正在复刻漫威模式——先用电影建立 IP 认知，再通过 Switch 2 游戏变现。星际火狐出现在马力欧电影中，可能预示新游戏开发计划。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-hot">关停</span>
+      PUBG 衍生作《盲点》仅 54 天关服
+    </div>
+    <div class="item-body">
+      《绝地求生：盲点》从上线 Steam 抢先体验到关停<strong>仅运营 54 天</strong>。5v5 俯视角战术射击新作因在线人数严重不足、匹配困难，官方承认"无法维持基础体验"。
+    </div>
+    <div class="stat-row">
+      <span class="stat">存活时间 <em>54天</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://weibo.com/2648435521/5282212661692418">微博游戏博主</a> ｜ 社区报道 ｜ 3月30日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">54 天关服刷新了<strong>"大 IP 衍生作"的最短寿命记录</strong>。PUBG IP 在战术射击之外的品类拓展连续失败，说明 IP 溢价不能替代品类适配和用户需求验证。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-hot">关停</span>
+      上古卷轴衍生游戏宣布关停
+    </div>
+    <div class="item-body">
+      Bethesda 宣布旗下<strong>上古卷轴衍生游戏将关停服务</strong>。与 PUBG 盲点同一周宣布，两大 IP 衍生作的连续失败标志着"大 IP 衍生模式"正面临严峻挑战。
+    </div>
+    <div class="item-source">来源：<a href="https://weibo.com/2648435521/5282319246033375">微博游戏博主</a> ｜ 社区报道 ｜ 3月30日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">PUBG + 上古卷轴同周关停，释放明确信号：<strong>玩家对"换皮衍生作"的容忍度已降至冰点</strong>。未来 IP 变现需要更高品质的原创玩法，而非靠品牌吃老本。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-blue">AI争议</span>
+      红色沙漠移除全部 AI 生成美术，回应玩家反弹
+    </div>
+    <div class="item-body">
+      《红色沙漠》开发商 Pearl Abyss 宣布<strong>已移除游戏中所有 AI 生成的美术素材</strong>，全部替换为人工创作内容，回应玩家对 AI 素材的强烈反弹。
+    </div>
+    <div class="item-source">来源：<a href="https://x.com/AndroidPolice/status/2038631960856326302">@AndroidPolice</a> ｜ 𝕏 ｜ 3月30日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">这是游戏行业<strong>第一个公开"去AI化"的 AAA 项目</strong>。玩家社区对 AI 素材的排斥情绪正在从舆论转化为商业压力，未来 AI 在游戏美术中的应用可能需要更隐蔽或更高品质才能被接受。</div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ==================== 5. 科技行业动态 ==================== -->
+<section class="section" id="industry">
+  <div class="section-header">
+    <span class="icon">🏛️</span>
+    <h2>科技行业动态</h2>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-hot">里程碑</span>
+      llama.cpp 突破 10 万 GitHub Stars
+    </div>
+    <div class="item-body">
+      llama.cpp 项目达到 <strong>100,000 GitHub Stars</strong> 里程碑。作者 Georgi Gerganov 感叹"现在全球 90% 的代码都是 AI 写的"，本地推理生态已全面成熟。
+    </div>
+    <div class="stat-row">
+      <span class="stat">GitHub Stars <em>100K</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://x.com/ggerganov/status/2038632534414680223">@ggerganov</a> ｜ 𝕏 项目作者一手 ｜ 3月30日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">llama.cpp 是<strong>本地 AI 推理的基石项目</strong>，让任何人在消费级硬件上运行大模型。10 万 Stars 的意义不仅是数字，更代表一个完整的"去云化 AI 推理"生态已经建立。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-new">发布</span>
+      Transformers.js v4：SOTA 机器学习进入浏览器端
+    </div>
+    <div class="item-body">
+      HuggingFace 团队发布 <strong>Transformers.js v4</strong>，支持在浏览器端直接运行最新的机器学习模型，无需 GPU 服务器。Web 端 AI 推理的重大进步。
+    </div>
+    <div class="item-source">来源：<a href="https://x.com/xenovacom/status/2038610331417608691">@xenovacom</a> ｜ 𝕏 一手开发者工具 ｜ 3月30日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">AI 推理正在从"云端集中式"向<strong>"端侧分布式"</strong>演进。浏览器端 AI 意味着隐私保护、零延迟、零服务器成本——对个人开发者和隐私敏感型应用是革命性突破。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-teal">产品</span>
+      Bluesky 发布 AI 助手，自然语言构建自定义 Feed
+    </div>
+    <div class="item-body">
+      去中心化社交平台 Bluesky 推出 <strong>AI 助手功能</strong>，用户可通过自然语言描述构建个性化社交媒体 Feed，无需编写代码。
+    </div>
+    <div class="item-source">来源：<a href="https://www.engadget.com/bluesky-ai-assistant-custom-feeds/">Engadget</a> ｜ 一手媒体 ｜ 3月29日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">Bluesky 用 AI 降低了算法定制的门槛——用户终于可以<strong>自己决定看什么</strong>而非被平台算法投喂。如果这一功能被验证成功，可能迫使 X/Twitter 和 Meta 跟进。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-hot">安全</span>
+      LiteLLM 遭 PyPI 供应链攻击，切换安全合规供应商
+    </div>
+    <div class="item-body">
+      百万开发者使用的 AI 网关 LiteLLM 遭遇<strong>严重 PyPI 包投毒攻击</strong>（凭据窃取恶意软件）。同时发现其合规供应商 Delve 被指伪造审计报告，LiteLLM 决定切换至 Vanta 重新认证。
+    </div>
+    <div class="item-source">来源：<a href="https://techcrunch.com/2026/03/30/popular-ai-gateway-startup-litellm-ditches-controversial-startup-delve/">TechCrunch</a> + <a href="https://go.theregister.com/feed/www.theregister.com/2026/03/30/telnyx_pypi_supply_chain_attack_litellm/">The Register</a> ｜ 一手媒体 ｜ 3月30日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">双重打击：<strong>开源代码被投毒 + 安全审计商造假</strong>。这暴露了 AI 基础设施的两个薄弱环节——供应链安全和合规认证的可信度。开发者需要重新审视依赖链中每一个环节的安全性。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-orange">观点</span>
+      a16z Andreessen：AI 正沦为裁员的"银弹借口"
+    </div>
+    <div class="item-body">
+      a16z 创始人 Marc Andreessen 公开表示，<strong>AI 正成为企业裁员的"完美借口"</strong>，实际上很多裁员与 AI 无关。这一观点在科技圈引发广泛讨论。
+    </div>
+    <div class="item-source">来源：<a href="https://x.com/Polymarket/status/2038781392201335168">@Polymarket</a> ｜ 𝕏 ｜ 3月31日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">Andreessen 的批评切中要害：<strong>AI 裁员叙事正在被滥用</strong>。企业用"AI 替代"作为裁员的公关话术，实际原因往往是业绩压力。这种现象可能反过来加剧公众对 AI 的恐惧和抵触。</div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ==================== 6. 政策与监管 ==================== -->
+<section class="section" id="policy">
+  <div class="section-header">
+    <span class="icon">📜</span>
+    <h2>政策与监管</h2>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-hot">民调</span>
+      AI 信任悖论：采用率上升，信任度反降
+    </div>
+    <div class="item-body">
+      Quinnipiac 最新民调显示，美国 <strong>AI 采用率持续上升，但公众信任度反而下降</strong>。多数人担忧透明度不足、监管缺位以及 AI 对社会的深远影响。
+    </div>
+    <div class="item-source">来源：<a href="https://techcrunch.com/2026/03/30/ai-trust-adoption-poll-more-americans-adopt-tools-fewer-say-they-can-trust-the-results/">TechCrunch</a> ｜ 一手媒体 ｜ 3月30日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">"用了但不信"的悖论反映出<strong>AI 产品的实际体验低于预期</strong>。如果信任度持续下滑，可能催生更严格的监管框架，对 AI 公司的合规成本产生直接影响。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-purple">制裁</span>
+      英国罚款 Apple 子公司：违反对俄制裁
+    </div>
+    <div class="item-body">
+      英国政府对 Apple 爱尔兰子公司罚款 <strong>39 万英镑</strong>，因其向受制裁的俄罗斯实体支付了总计 63.5 万英镑的开发者分成。
+    </div>
+    <div class="stat-row">
+      <span class="stat">罚款 <em>£39万</em></span>
+      <span class="stat">违规付款 <em>£63.5万</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://go.theregister.com/feed/www.theregister.com/2026/03/30/apple_fine_russia_sanctions/">The Register</a> ｜ 一手媒体 ｜ 3月30日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">Apple 子公司因<strong>自动化付款流程未能识别制裁实体</strong>而被罚。这给所有全球化科技公司敲响警钟——制裁合规不能仅靠人工审核，需要嵌入支付系统的实时筛查机制。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-blue">职场</span>
+      15% 的美国人愿意为 AI 老板工作
+    </div>
+    <div class="item-body">
+      同一份 Quinnipiac 民调发现：约 <strong>15% 的美国人表示愿意接受 AI 作为直属上级</strong>。这反映了公众对 AI 在职场角色的认知正在快速分化。
+    </div>
+    <div class="stat-row">
+      <span class="stat">愿意 <em>15%</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://techcrunch.com/2026/03/30/ai-work-boss-supervisor-us-quinnipiac-poll/">TechCrunch</a> ｜ 一手媒体 ｜ 3月30日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">15% 听起来不多，但这代表<strong>约 5000 万美国人</strong>。随着 AI Agent 在项目管理、代码审查、客服调度中的应用加速，"AI 主管"可能比预想来得更快。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">
+      <span class="tag tag-orange">宏观</span>
+      Powell：关税对通胀贡献仅 0.5%-1%
+    </div>
+    <div class="item-body">
+      美联储主席 Powell 表示<strong>关税对通胀的贡献仅 0.5%-1%</strong>，且是一次性的。他补充称美联储对中东局势保持"观望"态度，对中长期美国经济"非常乐观"。
+    </div>
+    <div class="stat-row">
+      <span class="stat">关税通胀影响 <em>0.5%-1%</em></span>
+    </div>
+    <div class="item-source">来源：<a href="https://x.com/StockSavvyShay/status/2038637521874329980">@StockSavvyShay</a> ｜ 𝕏 ｜ 3月30日</div>
+    <div class="insight-box">
+      <div class="insight-label">💡 深度洞察</div>
+      <div class="insight-content">Powell 的鸽派表态对科技股是利好信号——<strong>低通胀 = 降息空间 = 估值支撑</strong>。但 Mag 7 今年整体下跌 8%-34%，市场对 AI 的估值预期正在经历理性回调。</div>
+    </div>
+  </div>
+
+</section>
+
+</div>
+
+<footer class="footer">
+  <p class="footer-brand">Tech Daily Brief</p>
+  <p>2026年3月31日 · 覆盖范围：3月29日-31日</p>
+  <p>数据来源：<strong>TechCrunch</strong> · <strong>The Register</strong> · <strong>Engadget</strong> · 𝕏 (@elonmusk · @UnslothAI · @ggerganov · @9to5Google · @9to5Mac · @MacRumors · @IGN) · 微博科技博主</p>
+</footer>
+
+<a href="#" class="back-to-top" id="backToTop" title="回到顶部">&uarr;</a>
+
+<script>
+  function toggleTheme() {
+    const body = document.documentElement;
+    const btn = document.querySelector('.theme-toggle');
+    if (body.getAttribute('data-theme') === 'dark') {
+      body.removeAttribute('data-theme');
+      btn.textContent = '☀️';
+      localStorage.setItem('theme', 'light');
+    } else {
+      body.setAttribute('data-theme', 'dark');
+      btn.textContent = '🌙';
+      localStorage.setItem('theme', 'dark');
+    }
+  }
+
+  (function() {
+    const saved = localStorage.getItem('theme');
+    if (saved === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      document.querySelector('.theme-toggle').textContent = '🌙';
+    }
+  })();
+
+  const backBtn = document.getElementById('backToTop');
+  window.addEventListener('scroll', function() {
+    backBtn.classList.toggle('visible', window.scrollY > 400);
+  });
+</script>
+
+</body>
+</html>
