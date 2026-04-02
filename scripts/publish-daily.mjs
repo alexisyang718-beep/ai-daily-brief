@@ -124,8 +124,11 @@ function htmlToMarkdown(html) {
   
   // 目录
   markdown += `---\n\n## 目录\n\n`;
-  doc.querySelectorAll('.toc a').forEach(a => {
-    markdown += `- ${a.textContent.trim()}\n`;
+  doc.querySelectorAll('.toc li').forEach(li => {
+    const text = li.textContent.trim();
+    if (text) {
+      markdown += `- ${text}\n`;
+    }
   });
   markdown += '\n';
   
@@ -335,14 +338,14 @@ async function uploadImage(accessToken, imagePath) {
   return data.media_id;
 }
 
-async function createDraft(accessToken, title, content, coverMediaId) {
+async function createDraft(accessToken, title, content, coverMediaId, digest) {
   const url = `https://api.weixin.qq.com/cgi-bin/draft/add?access_token=${accessToken}`;
-  
+
   const articles = {
     articles: [{
       title: title,
       author: 'Tech Daily Brief',
-      digest: title.substring(0, 50),
+      digest: (digest || title).substring(0, 120),
       content: content,
       thumb_media_id: coverMediaId,
       need_open_comment: 1,
@@ -401,15 +404,26 @@ async function main() {
   // 提取标题
   const dateMatch = html.match(/(\d{4})年(\d{1,2})月(\d{1,2})日/);
   const title = dateMatch ? `科技资讯日报｜${dateMatch[2]}月${dateMatch[3]}日` : '科技资讯日报';
-  
+
+  // 提取摘要（核心要闻）
+  const dom = new JSDOM(html);
+  const summaryCard = dom.window.document.querySelector('.summary-card');
+  let digest = title;
+  if (summaryCard) {
+    digest = summaryCard.textContent
+      .replace(/\s+/g, ' ')
+      .trim()
+      .substring(0, 120);
+  }
+
   console.log('🔑 获取微信 access_token...');
   const accessToken = await getAccessToken();
-  
+
   console.log(`📷 上传封面图...`);
   const mediaId = await uploadImage(accessToken, coverImage);
-  
+
   console.log('📝 创建草稿...');
-  const draftMediaId = await createDraft(accessToken, title, wechatHtml, mediaId);
+  const draftMediaId = await createDraft(accessToken, title, wechatHtml, mediaId, digest);
   
   console.log('\n✅ 发布成功！');
   console.log(`📰 标题: ${title}`);
