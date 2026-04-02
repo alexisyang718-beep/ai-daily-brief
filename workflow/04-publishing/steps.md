@@ -2,7 +2,7 @@
 
 ## 前置条件
 
-- 日报文件已生成：`../brief/YYYY-MM-DD.html`
+- 日报文件已生成：`brief/YYYY-MM-DD.html`
 - 已确认内容无误
 
 ## 发布步骤
@@ -10,8 +10,8 @@
 ### Step 1: GitHub Pages
 
 ```bash
-cd /Users/yangliu/Documents/Claude\ Code/codebuddy
-git add tech-daily-brief/brief/YYYY-MM-DD.html
+cd "/Users/yangliu/Documents/Claude Code/科技资讯日报-new"
+git add brief/YYYY-MM-DD.html
 git commit -m "Add daily brief YYYY-MM-DD"
 git push origin main
 ```
@@ -23,7 +23,7 @@ git push origin main
 ### Step 2: 测试邮件
 
 ```bash
-cd /Users/yangliu/Documents/Claude\ Code/codebuddy/tech-daily-brief
+cd "/Users/yangliu/Documents/Claude Code/科技资讯日报-new"
 
 # 发送给指定邮箱（测试用）
 python scripts/send_email.py brief/YYYY-MM-DD.html --to alexisyang@tencent.com
@@ -55,8 +55,8 @@ python scripts/send_email.py brief/YYYY-MM-DD.html -y
 ### Step 4: 公众号同步
 
 ```bash
-cd /Users/yangliu/Documents/Claude\ Code/codebuddy/raphael-publish
-node publish-daily.mjs ../tech-daily-brief/brief/YYYY-MM-DD.html
+cd "/Users/yangliu/Documents/Claude Code/codebuddy/raphael-publish"
+node publish-daily.mjs "../科技资讯日报-new/brief/YYYY-MM-DD.html"
 ```
 
 **默认配置**（已固化）：
@@ -70,7 +70,7 @@ node publish-daily.mjs ../tech-daily-brief/brief/YYYY-MM-DD.html
 ## 一键发布（可选）
 
 ```bash
-cd /Users/yangliu/Documents/Claude\ Code/codebuddy/tech-daily-brief
+cd "/Users/yangliu/Documents/Claude Code/科技资讯日报-new"
 
 # 完整流程
 python scripts/publish_all.py brief/YYYY-MM-DD.html

@@ -1,0 +1,10 @@
+{
+  "name": "tech-daily-brief",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "jsdom": "^28.1.0",
+    "markdown-it": "^14.1.0",
+    "highlight.js": "^11.10.0"
+  }
+}

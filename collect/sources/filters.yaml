@@ -1,0 +1,76 @@
+# 粗筛关键词配置
+# 命中 exclude 中任意词 → 丢弃
+# 没有命中 exclude → 保留（不做正向过滤，避免漏内容）
+
+exclude:
+  # 医疗健康
+  - hospital
+  - healthcare
+  - " medical "
+  - clinical trial
+  - " cancer "
+  - " drug "
+  - " FDA "
+  - " NHS "
+  - " vaccine "
+  - " surgery "
+  - " therapy " # 注意：AI therapy 可能误杀，加空格限制
+
+  # 军事战争
+  - " military "
+  - warfare
+  - " weapon "
+  - " missile "
+  - " NATO "
+  - " Ukraine war"
+  - " Gaza "
+  - " airstrike "
+
+  # 能源/石油
+  - " oil price"
+  - " petroleum "
+  - " OPEC "
+  - " natural gas "
+  - " coal mine"
+
+  # 体育
+  - " NFL "
+  - " NBA "
+  - " FIFA "
+  - " Olympics "
+  - " Super Bowl"
+  - " World Cup"
+
+  # 娱乐（非科技）
+  - " Grammy "
+  - " Oscar "
+  - " box office"
+  - " celebrity "
+  - " reality show"
+
+  # 政治（非科技政策）
+  - " election "
+  - " president "
+  - " congress "
+  - " senate "
+  - " parliament "
+  - " tariff "   # 关税，如果影响科技可以去掉这条
+
+  # Steam 具体游戏版本更新（太细，对日报无价值）
+  # 保留游戏行业新闻，只过滤单款游戏的 patch notes / hotfix
+  - "patch notes"
+  - "hotfix"
+  - "daily challenge"
+  - "referral season"
+  - "weekly reset"
+  - "season pass"
+  - "battle pass update"
+  - " firmware update"  # 加空格避免误杀 AI firmware 新闻
+
+  # 金融/投资（非科技公司融资）
+  - "stock market"
+  - "hedge fund"
+  - "mortgage"
+  - " IPO " # 如果想保留科技公司 IPO 消息，可以注释掉这条
+  - "earnings beat"
+  - "dividend"

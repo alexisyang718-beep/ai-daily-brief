@@ -1,0 +1,219 @@
+# daily-brief-collector 信源配置
+# 分三层：官方信源 → 英文媒体 → X账号
+# 修改这个文件来增减信源，脚本会自动读取
+
+# ─────────────────────────────────────────
+# 第一层：官方信源（公司博客、官方公告）
+# 规则：48小时内有几条取几条，不设上限
+# ─────────────────────────────────────────
+official:
+
+  chinese_media:
+    # 机器之心无中文RSS（跳转到数据服务页），依赖微博
+    - entity: 量子位
+      url: https://www.qbitai.com/feed
+
+  ai_labs:
+    - entity: OpenAI
+      url: https://openai.com/blog/rss.xml
+    # Anthropic 不提供 RSS，404 报错 → 依赖 X 上的 @AnthropicAI
+    # - entity: Anthropic
+    #   url: https://www.anthropic.com/rss.xml
+    - entity: Google DeepMind
+      url: https://deepmind.google/blog/rss.xml
+    - entity: Google Research
+      url: https://research.google/blog/rss/
+    - entity: Google Blog
+      url: https://blog.google/rss/
+    # Meta AI 不提供 RSS，404 报错 → 依赖 X 上的 @ylecun 等
+    # - entity: Meta AI
+    #   url: https://ai.meta.com/blog/rss/
+    - entity: Microsoft AI
+      url: https://blogs.microsoft.com/ai/feed/
+    - entity: Mistral AI
+      url: https://mistral.ai/news/rss.xml
+    - entity: Hugging Face
+      url: https://huggingface.co/blog/feed.xml
+    # xAI 不提供 RSS，403 报错 → 依赖 X 上的 @elonmusk 等
+    # - entity: xAI
+    #   url: https://x.ai/blog/rss.xml
+    # DeepSeek 不提供 RSS，返回 HTML → 依赖 X 上的相关账号
+    # - entity: DeepSeek
+    #   url: https://www.deepseek.com/blog/rss.xml
+
+  chips_hardware:
+    - entity: NVIDIA Blog
+      url: https://blogs.nvidia.com/feed/
+    - entity: Intel Newsroom
+      url: https://newsroom.intel.com/feed/
+    - entity: AMD Newsroom
+      url: https://ir.amd.com/rss/news-releases.xml
+    - entity: ARM Newsroom
+      url: https://newsroom.arm.com/feed
+    - entity: Samsung Newsroom
+      url: https://news.samsung.com/global/feed
+    - entity: SemiAnalysis
+      url: https://www.semianalysis.com/feed
+    - entity: Semiconductor Engineering
+      url: https://semiengineering.com/feed/
+
+  mobile:
+    - entity: Apple ML Research
+      url: https://machinelearning.apple.com/rss.xml
+    - entity: 9to5Mac
+      url: https://9to5mac.com/feed/
+    - entity: 9to5Google
+      url: https://9to5google.com/feed/
+    - entity: MacRumors
+      url: https://feeds.macrumors.com/MacRumors-All
+    - entity: Android Headlines
+      url: https://www.androidheadlines.com/feed
+
+  developer_community:
+    - entity: GitHub Blog
+      url: https://github.blog/feed/
+    - entity: Hacker News
+      url: https://hnrss.org/frontpage
+    - entity: Product Hunt
+      url: https://ph.buzzing.cc/feed.xml
+
+  gaming:
+    - entity: Xbox Wire
+      url: https://news.xbox.com/en-us/feed/
+    - entity: PlayStation Blog
+      url: https://blog.playstation.com/feed/
+    # Steam News 内容太细碎（大量游戏更新日志），已禁用
+    # 如需开启请取消注释：
+    # - entity: Steam News
+    #   url: https://store.steampowered.com/feeds/news/
+    - entity: GamesIndustry.biz
+      url: https://www.gamesindustry.biz/feed
+    - entity: Game Developer
+      url: https://www.gamedeveloper.com/rss.xml
+    - entity: Deconstructor of Fun
+      url: https://www.deconstructoroffun.com/blog?format=rss
+    - entity: PocketGamer.biz
+      url: https://www.pocketgamer.biz/rss/
+    - entity: Mobile Gamer Biz
+      url: https://mobilegamer.biz/feed/
+
+  policy:
+    - entity: MIT Technology Review
+      url: https://www.technologyreview.com/feed/
+    - entity: CNBC Tech
+      url: https://www.cnbc.com/id/19854910/device/rss/rss.html
+
+# ─────────────────────────────────────────
+# 第二层：英文媒体
+# 规则：每个源取48小时内所有条目（上限30条），经过粗筛
+# ─────────────────────────────────────────
+media:
+  - entity: TechCrunch AI
+    url: https://techcrunch.com/category/artificial-intelligence/feed/
+  - entity: The Verge
+    url: https://www.theverge.com/rss/index.xml
+  - entity: Ars Technica
+    url: https://feeds.arstechnica.com/arstechnica/index
+  - entity: Wired
+    url: https://www.wired.com/feed/rss
+  - entity: VentureBeat
+    url: https://venturebeat.com/feed/
+  - entity: The Register
+    url: https://www.theregister.com/headlines.atom
+  - entity: TechRadar
+    url: https://www.techradar.com/rss
+  - entity: Tom's Hardware
+    url: https://www.tomshardware.com/feeds/all
+  - entity: Engadget
+    url: https://www.engadget.com/rss.xml
+  - entity: AppleInsider
+    url: https://appleinsider.com/rss/news/
+
+# ─────────────────────────────────────────
+# 第三层：X 账号（twitter-cli 采集）
+# P1：每次必采；P2：尽力采集
+# ─────────────────────────────────────────
+x_accounts:
+
+  p1_must:
+    - handle: sama           # Sam Altman · OpenAI CEO
+    - handle: AnthropicAI    # Anthropic 官方
+    - handle: OpenAI         # OpenAI 官方
+    - handle: GoogleDeepMind # DeepMind 官方
+    - handle: ylecun         # Yann LeCun · Meta
+    - handle: karpathy       # Andrej Karpathy
+    - handle: DrJimFan       # Jim Fan · NVIDIA
+    - handle: mingchikuo     # 郭明錤 · 苹果供应链分析师
+    - handle: markgurman     # Mark Gurman · Bloomberg 苹果线
+    - handle: trendforce     # TrendForce · 半导体/手机出货数据
+    - handle: ZhugeEX        # Daniel Ahmad · 游戏行业数据分析
+    - handle: dnystedt       # Dan Nystedt · 台湾科技/供应链记者
+    - handle: jukan05        # 半导体/供应链分析师（三星/中国芯片）
+
+  p2_optional:
+    - handle: elonmusk       # xAI / Tesla
+    - handle: satyanadella   # Microsoft CEO
+    - handle: ClementDelangue # Hugging Face CEO
+    - handle: swyx           # Latent Space
+    - handle: hardmaru       # David Ha · Sakana AI
+    - handle: nvidia         # NVIDIA 官方
+    - handle: geoffkeighley  # TGA / 游戏行业
+    - handle: UniverseIce    # Ice Universe · 三星/安卓爆料
+    - handle: semi_daily     # 半导体日报
+    - handle: ReutersTech    # Reuters 科技线
+    - handle: Genki_JPN      # Genki · Switch/任天堂周边硬件
+    - handle: IanCutress     # 前 Anandtech 主编 · 芯片架构深度
+    - handle: Mooreslawisdead # GPU/AI芯片深度分析
+    - handle: chinaanalyst   # 中国科技/芯片出口管制专家
+    - handle: Qualcomm       # 高通官方
+    - handle: Nintendo       # 任天堂官方
+    - handle: pstAsiatech    # Paul Triolo · 地缘政治/科技政策
+    - handle: Compute_King   # 算力行业观察
+    - handle: ballmatthew    # Matthew Ball · 游戏/注意力经济战略分析
+
+# ─────────────────────────────────────────
+# 第四层：微博账号（weibo-cli 采集）
+# ─────────────────────────────────────────
+weibo_accounts:
+
+  # AI 核心媒体
+  - name: 机器之心Pro
+    uid: "3996876140"
+    category: AI
+
+  - name: 量子位
+    uid: "6105753431"
+    category: AI
+
+  - name: 新智元
+    uid: "5703921756"
+    category: AI
+
+  - name: 梁赛
+    uid: "1725941200"
+    category: AI
+
+  # 各领域数据/行业
+  - name: RD观测
+    uid: "7928198622"
+    category: 手机/数据
+
+  - name: 智慧芯片案内人
+    uid: "5932872950"
+    category: 手机/芯片
+
+  - name: 智慧皮卡丘
+    uid: "5888095979"
+    category: 手机/数码
+
+  - name: 财联社APP
+    uid: "2868676035"
+    category: 财经/科技
+
+  - name: 竞核
+    uid: "2648435521"
+    category: 游戏/行业
+
+  - name: QuestMobile
+    uid: "5463009082"
+    category: 数据/移动互联网
