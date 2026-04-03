@@ -16,21 +16,12 @@
    - 信源优先级
    - 时效性要求
    - 品牌平衡规则
+   - **国外信源优先规则**（必须遵守）
 
-2. **`../v2/archive/daily/YYYY-MM-DD/x.jsonl`**
-   - X/Twitter采集数据
-   - 提取字段：text, source.url, author, created_at
-
-3. **`../v2/archive/daily/YYYY-MM-DD/weibo.jsonl`**
-   - 微博采集数据
-   - 提取字段：content_raw, source.url, username, created_at
-
-4. **`../v2/archive/daily/YYYY-MM-DD/rss.jsonl`**
-   - RSS采集数据
-   - 提取字段：title, summary, source.url, published
-
-5. **`../config/search_keywords.yaml`**（参考）
-   - 6大模块关键词分类
+2. **`../collect/output/YYYY-MM-DD.md`** ⭐ 采集数据
+   - 当日采集的全量新闻（RSS官方源 + 英文媒体 + X + 微博）
+   - 每条格式：`- [标题](URL)  \n  \`信源名称\` · 时间`
+   - URL 即为原始文章链接，**选题报告中必须保留此URL**
 
 ---
 
@@ -75,6 +66,12 @@
 
 **规则**：同一新闻优先选高优先级信源。
 
+**⚠️ 国外信源优先规则（必须遵守）**：
+- **非国内公司**的新闻（OpenAI、NVIDIA、Apple、Sony等），**必须**使用英文官方/媒体/X来源，禁止用量子位/机器之心/竞核等国内二手媒体替代
+- **国内公司**的新闻（华为、字节、阿里、腾讯等），可以使用国内媒体作为信源
+- **X采集为0条**时，需在选题报告最顶部注明"⚠️ 本期X数据缺失，AI模块已优先使用英文媒体填补"，并确保AI模块每条均有英文RSS或官方博客来源
+- 禁止在AI模块中用国内媒体来报道国外公司的动态（例如"量子位：OpenAI完成融资"这类条目，若有CNBC/TechCrunch同等报道，必须选英文来源）
+
 ### 4. 内容偏好（参考 news-preferences.md）
 
 **强偏好（必选题）**：
@@ -102,13 +99,13 @@
 
 ## 输出格式
 
-输出文件：`../v2/docs/daily_selection_YYYYMMDD.md`
+输出文件：`../selection/selection_YYYYMMDD.md`
 
 ```markdown
 # 选题报告 YYYY-MM-DD
 
 > 生成时间：YYYY-MM-DD HH:MM
-> 数据来源：X (N条) / RSS (N条) / 微博 (N条)
+> 数据来源：RSS (N条) / X (N条) / 微博 (N条)
 > 预选题总数：N条
 
 ---
@@ -117,7 +114,7 @@
 
 ### ✅ 1. {{标题}}
 - **来源**: {{信源名称}}
-- **URL**: {{原始链接（source.url）}}
+- **URL**: {{原始链接（直接从 collect/output 中的链接复制，禁止用首页URL）}}
 - **时间**: {{发布时间}}
 - **核心内容**: {{一句话摘要}}
 - **入选理由**: {{为什么选这条，参考news-preferences.md的偏好}}
@@ -180,15 +177,15 @@
 ## 禁止事项
 
 - ❌ **禁止跳过 news-preferences.md 不读**
-- ❌ 禁止自行编造关键词（使用search_keywords.yaml中的）
 - ❌ 禁止选择超过48小时的旧闻
-- ❌ 禁止丢失原始链接（source.url）
+- ❌ **禁止丢失原始链接**：每条选题必须包含从 collect/output 提取的真实文章URL，不得用信源首页URL（如 https://9to5mac.com/ 这类根域名）替代
+- ❌ **禁止用国内媒体报道国外公司**：国外公司的新闻必须来自英文信源，国内量子位/机器之心等仅用于报道国内公司动态
 - ❌ 禁止跳过人工确认直接进入撰写阶段
 
 ---
 
 ## 执行后
 
-1. 输出选题报告到 `v2/docs/daily_selection_YYYYMMDD.md`
+1. 输出选题报告到 `selection/selection_YYYYMMDD.md`
 2. 告知用户选题报告已生成，等待人工确认
 3. **必须等待用户确认后才能进入撰写阶段**

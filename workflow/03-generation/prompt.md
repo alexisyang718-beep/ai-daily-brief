@@ -23,14 +23,15 @@
    - 占位符格式（见模板末尾注释）
    - **禁止自行创建HTML结构**
 
-3. **`../v2/docs/daily_selection_YYYYMMDD.md`** ⭐ 必须
+3. **`../selection/selection_YYYYMMDD.md`** ⭐ 必须
    - 人工确认后的最终选题
+   - 每条选题已包含原始文章URL（`**URL**: ...`字段）
    - 只写用户确认的新闻，不自行添加
 
-4. **`../v2/archive/daily/YYYY-MM-DD/*.jsonl`** ⭐ 必须（提取链接用）
-   - **必须去JSON文件中提取原始链接（`source.url`）**
-   - x.jsonl（X来源）、weibo.jsonl（微博来源）、rss.jsonl（RSS来源）
-   - 根据选题匹配记录，提取`source.url`填入日报
+4. **链接提取规则**（无需读取额外文件）
+   - 选题报告中每条新闻的 `**URL**` 字段即为原始文章链接
+   - **直接使用该URL**，填入日报HTML
+   - 若URL为空或明显是首页URL（如 `https://9to5mac.com/`），则通过 WebSearch/WebFetch 补充查找具体文章链接
 
 ---
 
@@ -98,36 +99,19 @@ curl -s "https://r.jina.ai/URL"
 - 一手媒体源 ≥ 10条/期
 - 同一二手源整期引用 ≤ 2次
 
-### 5. 原链接规则（必须去JSON文件里找）
+### 5. 原链接规则
 
-**⚠️ 重要**：撰写每条新闻时，必须去JSON文件中提取原始链接，禁止编造！
+**所有链接直接来自选题报告的 `URL` 字段，无需另行查找：**
 
-**链接来源**：
-- X新闻 → 去`x.jsonl`找`source.url`
-- 微博新闻 → 去`weibo.jsonl`找`source.url`
-- RSS新闻 → 去`rss.jsonl`找`source.url`
-
-**如何匹配**：
-1. 根据选题报告中的新闻标题/作者/内容
-2. 在对应JSON文件中搜索匹配的记录
-3. 提取该记录的`source.url`字段
-4. 填入日报HTML：`<a href="原始链接">来源名称</a>`
-
-**示例**：
-```
-选题报告：OpenAI发布GPT-5（来源：X @OpenAI）
-→ 打开x.jsonl，搜索author.screenName="OpenAI"且text包含"GPT-5"的记录
-→ 提取该记录的source.url（如https://x.com/OpenAI/status/123456）
-→ 填入日报：<a href="https://x.com/OpenAI/status/123456">OpenAI</a>
-```
+- 选题报告 `../selection/selection_YYYYMMDD.md` 中每条新闻已包含 `**URL**: https://...` 字段
+- **直接使用该URL**，填入日报 HTML：`<a href="URL" class="source">来源名称</a>`
+- 若某条 URL 明显是首页或根域名（如 `https://9to5mac.com/`），说明选题阶段遗漏了具体链接，此时用 WebSearch 搜索该文章标题补充真实URL
 
 **规则**：
-- ✅ 所有新闻必须有**可点击的原始链接**
-- ✅ **必须**去JSON文件中提取`source.url`，禁止编造链接
-- ✅ X来源用推文链接，RSS用文章链接，微博用微博链接
-- ❌ 禁止丢失或修改原始链接
+- ✅ 所有新闻必须有**可点击的具体文章链接**
+- ✅ 使用选题报告中已提供的URL，禁止使用信源首页URL
+- ❌ 禁止编造或省略链接
 - ❌ 禁止只写来源名称不写链接
-- ❌ 禁止使用转载页面的链接
 
 ### 6. 格式规范
 
@@ -180,9 +164,11 @@ curl -s "https://r.jina.ai/URL"
 - ❌ **禁止跳过 writing-preferences.md 不读**
 - ❌ **禁止不读 template.html 直接写HTML**
 - ❌ 禁止自行添加选题报告中没有的新闻
-- ❌ 禁止丢失原始链接（必须去JSON文件提取`source.url`）
+- ❌ **禁止使用信源首页URL**（如 `https://9to5mac.com/`）：必须是具体文章页面链接
+- ❌ 禁止省略链接（所有新闻必须有可点击链接）
 - ❌ 禁止仅凭搜索摘要写洞察
 - ❌ 禁止空洞描述（必须有数据/事实支撑）
+- ❌ 禁止在 `item-source` 中标注"一手官方""一手媒体""二手编译"等类型标签（用户不需要）
 
 ---
 
